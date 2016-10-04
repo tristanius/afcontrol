@@ -75,6 +75,10 @@
 							<label>Entidad de salud</label>
 							<input value="<?= $per->entidad_salud ?>" type="text" name="entidad_salud" placeholder="Ingrese la empresa de salud que tiene">
 						</div>
+						<div class="medium-5 column">
+							<label>Talla:</label>
+							<input value="<?= $per->talla ?>" type="text" name="talla" placeholder="Ingrese la empresa de salud que tiene">
+						</div>
 
 						<div class="medium-5 column">
 							<label>Tipo registro</label>

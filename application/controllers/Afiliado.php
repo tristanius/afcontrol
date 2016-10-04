@@ -40,6 +40,7 @@ class Afiliado extends CI_Controller {
 		$d["telefono"] = $this->input->post("telefono");
 		$d["entidad_salud"] = $this->input->post("entidad_salud");
 		$d["tipo_registro"] = $this->input->post("tipo_registro");
+		$d["talla"] = $this->input->post("talla");
 		$d["estado"]=TRUE;
 
 		$c["nombre_familiar1"] = $this->input->post("nombre_familiar1");
@@ -153,6 +154,7 @@ class Afiliado extends CI_Controller {
 		$d["entidad_salud"] = $this->input->post("entidad_salud");
 		$d["direccion"] = $this->input->post("direccion");
 		$d["tipo_registro"] = $this->input->post("tipo_registro");
+		$d["talla"] = $this->input->post("talla");
 		$d["estado"]=TRUE;
 
 		$c["nombre_familiar1"] = $this->input->post("nombre_familiar1");

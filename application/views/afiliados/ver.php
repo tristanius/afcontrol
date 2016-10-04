@@ -80,6 +80,13 @@
 							<p>{{af.tipo_registro}} </p>
 						</td>
 					</tr>
+
+					<tr>
+						<td>
+							<label><b>Talla</b></label>
+							<p>{{af.talla}} <span class="white">.</span></p>
+						</td>
+					</tr>
 				</table>
 
 				<table class="bordered column">

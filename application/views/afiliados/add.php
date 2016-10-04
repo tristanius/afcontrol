@@ -74,6 +74,11 @@
 						</div>
 
 						<div class="medium-5 column">
+							<label>Talla:</label>
+							<input value="" type="text" name="talla" placeholder="Ingrese la empresa de salud que tiene">
+						</div>
+
+						<div class="medium-5 column">
 							<label>Tipo registro</label>
 							<select name="tipo_registro">
 								<option value="Deportista">Deportista</option>
