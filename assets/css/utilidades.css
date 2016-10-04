@@ -1,0 +1,53 @@
+.btn-gestion{
+  color: #FFF;
+  margin: 1ex;
+  box-shadow: 0 0 6px 1px #333;
+  text-shadow: 0 0 3px #999;
+  cursor: pointer;
+  border-radius: 10px;
+  width: 30ex;
+  height: 30ex;
+  padding-top: 9ex;
+  opacity: 0.95;
+}
+.btn-gestion div, .btn-gestion p, .btn-gestion h4{
+  opacity: 1;
+}
+
+.float-l{
+  float: left;
+}
+.float-r{
+  float: right;
+}
+.wine{
+  background: #f9be1b;
+  color: #000;
+}
+.dark-blue{
+  background: #8b36ed;
+}
+.blue{
+  background: #16AAF4;
+  color: #000;
+}
+.dark-green{
+  background: #2BD834;
+  color: #000;
+}
+.green{
+  background: #2BD834;
+  color: #000;
+}
+.yellow{
+  background: #F1F42C;
+  color: #000;
+}
+.gray{
+  background: #999;
+  color: #000;
+}
+
+#naver, #naver li a{
+  color: #000;
+}
