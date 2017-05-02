@@ -1,4 +1,4 @@
-
+﻿
 	<!-- -->
 	<section ng-app="afiliado" ng-controller="ver" class="div-center medium-11 panel">
 		<a href="<?= site_url('afiliado/lista') ?>" class="button redondo padding1ex warning" data-icon="W"></a> Ir a listado de afiliados
@@ -84,7 +84,7 @@
 					<tr>
 						<td>
 							<label><b>Talla</b></label>
-							<p>{{af.talla}} <span class="white">.</span></p>
+							<p>{{af.talla}} <span class="white"></span></p>
 						</td>
 					</tr>
 				</table>

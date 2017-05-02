@@ -1,8 +1,7 @@
-<footer class="text-center padding1ex">
-	<p>Todos los derechos reservados a <a href="alianzanortefc.com,">alianzanortefc.com,</a> de <b>ALIANZA NORTE FUTBOL CLUB</b></p>
-	<img src="<?= base_url('assets/img/escudo.png') ?>" style="width:130px;">
-	<p></p>
-	<p><small>Website Created by Yeison Torrado lópez</small></p>
+﻿<footer class="text-center padding1ex">
+	<p>Todos los derechos reservados a <a href="alianzanortefc.com,">alianzanortefc.com,</a> de <b>CLUB DEPORTIVO ALIANZA NORTE F.C.</b></p>
+	
+<p><small>Website Created by Yeison Torrado lópez</small></p>
 </footer>
 
 <!-- foundation -->

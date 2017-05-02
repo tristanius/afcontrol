@@ -57,7 +57,7 @@ class Consulta extends CI_Controller {
 	}
 
 
-	public function examen_medico($id)
+	public function ficha_medica()
 	{
 		try{
 			$this->load->database();
@@ -81,7 +81,7 @@ class Consulta extends CI_Controller {
 
 			$output = $crud->render();
 			$gestion = $this->load->view("grocery",$output, TRUE);
-			$this->mview("afiliados/examen_medico", array("crud"=>$gestion, "af"=>$pers->row()) );
+			$this->mview("consultas/menu_crud", array("gestion"=>$gestion) );
 		}catch(Exception $e){
 			show_error($e->getMessage().' --- '.$e->getTraceAsString());
 		}

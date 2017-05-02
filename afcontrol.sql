@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.3.9
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Servidor: localhost
--- Tiempo de generación: 01-12-2015 a las 23:04:31
--- Versión del servidor: 5.6.23
--- Versión de PHP: 5.5.22
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 10-02-2017 a las 16:35:56
+-- Versión del servidor: 10.1.16-MariaDB
+-- Versión de PHP: 5.6.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,7 +14,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Base de datos: `afcontrol`
@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `afiliado`
 --
 
-CREATE TABLE IF NOT EXISTS `afiliado` (
+CREATE TABLE `afiliado` (
   `idafiliado` int(11) NOT NULL,
   `identificacion` varchar(25) DEFAULT NULL,
   `tipo_identificacion` varchar(45) DEFAULT NULL,
@@ -38,17 +38,102 @@ CREATE TABLE IF NOT EXISTS `afiliado` (
   `telefono` varchar(25) DEFAULT NULL,
   `direccion` varchar(100) DEFAULT NULL,
   `entidad_salud` varchar(60) DEFAULT NULL,
-  `estado` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+  `tipo_registro` varchar(45) NOT NULL,
+  `talla` varchar(25) NOT NULL,
+  `estado` tinyint(1) DEFAULT NULL,
+  `morageneral` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `afiliado`
 --
 
-INSERT INTO `afiliado` (`idafiliado`, `identificacion`, `tipo_identificacion`, `nombres`, `apellidos`, `correo`, `fecha_nacimiento`, `tipo_sanguineo`, `telefono`, `direccion`, `entidad_salud`, `estado`) VALUES
-(1, '00001', 'T.I.', 'Yeison', 'Torrado López', 'test@test.com', '2005-11-04', 'A+', '57881', 'av 11', 'Coomeva', 1),
-(2, '1090422853', 'C.C.', 'Yeison', 'Torrado', 'yeiman_4@hotmail.com', '1990-07-24', 'a+', '5745630', NULL, 'COOMEVA', 1),
-(3, '13504568', 'T.I.', 'LUIS OMAR', 'CHITIVA JACOME', '', '2005-11-10', '', '3214453073', NULL, '', 1);
+INSERT INTO `afiliado` (`idafiliado`, `identificacion`, `tipo_identificacion`, `nombres`, `apellidos`, `correo`, `fecha_nacimiento`, `tipo_sanguineo`, `telefono`, `direccion`, `entidad_salud`, `tipo_registro`, `talla`, `estado`, `morageneral`) VALUES
+(1, '1093592516', 'T.I.', 'SANTIAGO', 'CHITIVA CONTRERAS', 'omarchitiva@hotmail.com', '2006-02-08', 'A+', '3214453073', 'CALLE 5N #3E-102 CEIBA 2', 'FUNDACION MEDICO PREVENTIVA', 'Deportista', '12', 1, 0),
+(2, '1092340890', 'T.I.', 'LEISON ARMANDO', 'OCHOA CASTILLEJO', 'leisonochoa@gmail.com', '2006-03-09', 'O-', '3132524001', 'CRA. 1 CALLE 6 #1-10 VILLA ANTIGUA VILLA DEL ROSARIO', 'SISBEN', 'Deportista', '14', 1, 0),
+(3, '1127046448', 'T.I.', 'CARLOS ESTEBAN', 'SALAZAR BLANCO', 'lila-car@hotmail.com', '2006-04-20', 'O+', '3133288359', 'CALLE 9 #15A-24 BARRIO 20 DE JULIO, VILLA DEL ROSARIO', 'SALUDVIDA', 'Deportista', '12', 1, 0),
+(4, '1141314184', 'T.I.', 'ANDRES GUILLERMO', 'RUIZ DIAZ', 'karendiazgarcia@hotmail.com', '2006-05-13', 'A+', '3118597968', 'CALLE 2N #8-30 BARRIO SANTANDER, VILLA DEL ROSARIO', 'POLICIA NACIONAL', 'Deportista', '12', 1, 0),
+(5, '1127047424', 'T.I.', 'LUIS JACOBO', 'PINZON DURAN', 'leo-30d@hotmail.com', '2007-11-20', 'O+', '3012693845', 'CRA. 3H #4-99 VILLAS DE SEVILLA, VILLA DEL ROSARIO', 'COOSALUD E.S.S.', 'Deportista', '12', 1, 0),
+(6, '1092949873', 'Registro Civil', 'DANIEL', 'CHITIVA CONTRERAS', 'omarchitiva@hotmail.com', '2011-07-06', 'A+', '3214453073', 'CALLE 5N #3E-102 CEIBA 2', 'FUNDACION MEDICO PREVENTIVA', 'Deportista', '8', 1, 0),
+(7, '1092527262', 'T.I.', 'CESAR MANUEL', 'SUAREZ GOMEZ', 'carlosandrescmsg@hotmail.com', '2005-06-13', 'O+', '3162412066', 'CALLE 6 #9E-92 APTO. 401 EDIFICIO REAL PLAZA, CUCUTA', 'PREPAGADA', 'Deportista', '12', 1, 0),
+(8, '1094049297', 'T.I.', 'EUSEBIO ANDRES', 'SUAREZ GOMEZ', 'carlosandrescmsg@hotmail.com', '2007-07-04', 'O+', '3004888635', 'CALLE 6 #9E-92 APTO. 401 EDIFICIO REAL PLAZA, CUCUTA', 'PREPAGADA', 'Deportista', '12', 1, 0),
+(9, '1091971041', 'T.I.', 'MANUEL WALDO', 'CARRERO CONTRERAS', 'arq.mcarrero@yahoo.com', '2006-09-17', 'A+', '3124037854', 'SAMANES DE LOS TRAPICHES CASA 9', 'CAFESALUD', 'Deportista', '12', 1, 0),
+(10, '1093742931', 'T.I.', 'DOUGLAS SAMIR', 'SOTO RAMIREZ', 'samir_soto1329@hotmail.com', '2006-01-13', 'O+', '3114632173', 'AVENIDA 2 #33-36 BARRIO 12 OCTUBRE, LOS PATIOS', 'LA NUEVA EPS', 'Deportista', '12', 1, 0),
+(11, '1091977383', 'Registro Civil', 'VALERIA', 'BUSTAMANTE MARTINEZ', 'jabs999@hotmail.com', '1969-12-31', '', '3008979670', 'AV. 10 #48-10 URB. PUNTA COLORADOS MZ F CASA 7-A, LOS PATIOS', '', 'Deportista', '', 1, 0),
+(12, '1005028148', 'T.I.', 'MANUEL ALEJANDRO', 'URBINA MENDOZA', 'rosaelvam@gmail.com', '2002-07-11', 'O+', '3157197211', 'CALLE 1 #9-62 BELLAVISTA, VILLA DEL ROSARIO', 'SISBEN', 'Deportista', '', 1, 0),
+(13, '1091072439', 'T.I.', 'JUAN DAVID', 'PABON MANRIQUE', '', '2007-06-02', 'O+', '3112294443', 'CRA. 8 24-40 LA GRAN COLOMBIA, VILLA DEL ROSARIO', 'CAFESALUD', 'Deportista', '', 1, 0),
+(14, '1092342172', 'T.I.', 'KLEIBERT SNEIDER', 'ZAPATA LIZCANO', '', '1969-12-31', '', '3212378918', 'CONJUNTO CERRADO HIERBABUENA CASA F2, VILLA DEL ROSARIO', '', 'Deportista', '', 1, 0),
+(15, '1091971803', 'T.I.', 'SEBASTIAN', 'OCANDO BECERRA', 'sebastian.1331@hotmail.com', '2007-01-13', 'O+', '3143972050', 'CALLE 18 CRA. 4 CONJUNTO CERRADO BELLO MONTE, VILLA DEL ROSARIO', 'FUNDACION MEDICO PREVENTIVA', 'Deportista', '12 J', 1, 0),
+(16, '1092345418', 'T.I.', 'JUAN CAMILO', 'PATIÑO SANCHEZ', 'NA', '2008-04-12', 'O+', '3222162850 - 3187700151', 'CALLE 18 CRA. 16 #16-31 BARRIO 1 DE MAYO, VILLA DEL ROSARIO', 'NUEVA EPS', 'Deportista', '', 1, 0),
+(17, '1092538177', 'T.I.', 'JOHN CAMILO', 'GELVEZ CONTRERAS', 'fabagel@hotmail.com', '2010-06-17', 'A+', '3219057644', 'MANZANA J CASA 4 MORICHAL', 'POSITIVA', 'Deportista', '', 1, 0),
+(18, '1094051331', 'T.I.', 'ALEXIS JHOJAN', 'GOMEZ RIOS', 'karinarios10@gmail.com', '2008-05-25', 'O+', '3133630273', 'AVENIDA 4 #25-20 SAN MATEO, CUCUTA', 'SISBEN', 'Deportista', '', 1, 0),
+(19, '88188547', 'C.C.', 'LIBARDO', 'ECHAVARRIA JARAMILLO', 'chiquileja@hotmail.com', '1975-07-12', 'O+', '3124473352', 'CALLE 4N #9-05 BARRIO SANTANDER, VILLA DEL ROSARIO', 'LA NUEVA EPS', 'Deportista', 'XL', 1, 0),
+(20, '1092341188', 'T.I.', 'BRAYAN ALEXIS', 'RODRIGUEZ CORREA', 'soniacorrea161@gmail.com', '2006-10-02', 'A+', '3125819383', 'CARRERA 11 4-47 LA PARADA', 'SALUDVIDA', 'Servicio de formacion deportiva', '12 J', 1, 0),
+(21, '1004914239', 'T.I.', 'ANDRES FABIAN', 'SANABRIA PEREZ', 'esmerasana@hotmail.com', '2000-01-23', 'A+', '3114701863', 'CARRERA 12 11-82 BARRIO EL PARAMO VILLA ROSARIO', 'FUNDACION MEDICO PREVENTIVA', 'Deportista', 'M', 1, 0),
+(22, '1010105823', 'T.I.', 'ANGIE NATALIA', 'URBINA MENDOZA', 'rosaelvam@gmail.com', '2000-04-04', 'O+', '3157197211', 'CALLE 1 9-62 BELLAVISTA, VILLA DEL ROSARIO', 'SISBEN', 'Deportista', '', 1, 0),
+(23, '1004912387', 'T.I.', 'ARNOLD SNEIDER', 'CAPACHO BALSECA', 'arnolsneider@gmail.com', '2001-04-29', 'AB+', 'NA', 'TAMARINDO CLUB CASA R-16, VILLA DEL ROSARIO', 'CAFESALUD', 'Servicio de formacion deportiva', '', 1, 0),
+(24, '1004912408', 'T.I.', 'JOSUE DANIEL', 'PALACIOS JAIMES', 'josuedanielpalaciosjaimes@gmail.com', '2002-08-19', 'O+', '3203897968', 'CARRERA 11 7-28 BARRIO GRAMALOTE, VILLA DEL ROSARIO', 'FUNDACION MEDICO PREVENTIVA', 'Deportista', '', 1, 0),
+(25, '1004911564', 'T.I.', 'JEAN PABLO', 'BLANCO MARTINEZ', 'santiagobm808@gmail.com', '2002-01-07', 'B+', '3142265057 - 3157194706', 'CARRERA 12 18-36 BARRIO SAN JUDAS, VILLA DEL ROSARIO', 'COMPARTA E.P.S.', 'Deportista', '', 1, 0),
+(26, '1004809107', 'T.I.', 'JESUS MANUEL', 'CASTRO VALENZUELA', 'yolimar24@live.com', '2003-03-05', 'O+', 'NA', 'CARRERA 12 18-15 SAN JUDAS TADEO, VILLA DEL ROSARIO', 'SISBEN', 'Servicio de formacion deportiva', '', 1, 0),
+(27, '1004913034', 'T.I.', 'BRIGGIH ANDREINA', 'GARCIA ARIAS', 'andreinagarcia1628@gmail.com', '2003-02-14', 'O+', 'NA', 'CARRERA 6 13-30 BARRIO NARIÑO, VILLA DEL ROSARIO', 'PENDIENTE', 'Servicio de formacion deportiva', '', 1, 0),
+(28, '1092335672', 'T.I.', 'YESSID DAVID', 'PALACIOS JAIMES', 'jesid_david2004@gmail.com', '2004-07-05', 'B+', '3203897968', 'CARRERA 11 7-28 BARRIO GRAMALOTE, VILLA DEL ROSARIO', 'FUNDACION MEDICO PREVENTIVA', 'Deportista', '', 1, 0),
+(29, '1092335606', 'T.I.', 'MARLON DAVID', 'ULLOA VELASCO', 'cevec_@hotmail.com', '2004-05-06', 'B-', 'NA', 'CALLE 7 8-75 APTO. 1 BARRIO GRAMALOTE, VILLA DEL ROSARIO', 'SISBEN', 'Servicio de formacion deportiva', '', 1, 0),
+(30, '1092334715', 'T.I.', 'HASDLEY CAMILO', 'GOMEZ VELASCO', 'hasdley4@hotmail.com', '2004-03-15', 'A+', '5708078', 'CARRERA 6A 10-54 BARRIO LA PALMITA, VILLA DEL ROSARIO', 'SISBEN', 'Deportista', 'S NIÑO', 1, 0),
+(31, '1091964584', 'T.I.', 'JHEYFEL ANTHUAN', 'GARAVITO MORENO', 'danijogapa@hotmail.com', '2004-01-29', 'O+', '3222004126', 'CALLE 1N 14-53 SAN GREGORIO, VILLA DEL ROSARIO ', 'COOMEVA E.P.S.', 'Deportista', '14', 1, 0),
+(32, '1127045556', 'T.I.', 'DEYBI ALEXANDER', 'CUELLAR GOMEZ', 'berthagomez33@yahoo.es', '2005-06-08', 'A+', 'NA', 'CALLE 22 11-30 BARRIO SAN JUDAS, VILLA DEL ROSARIO', 'SISBEN', 'Servicio de formacion deportiva', '', 1, 0),
+(33, '1092338245', 'T.I.', 'VICTOR MANUEL', 'RUIZ SANCHEZ', 'victorjulio.ruizgalvis@gmail.com', '2005-05-31', 'O+', 'NA', 'CALLE 10 6-03 BARRIO PALMITA, VILLA DEL ROSARIO', 'SISBEN', 'Deportista', '', 1, 0),
+(34, '1092337526', 'T.I.', 'ANDRES FELIPE', 'BLANCO MARTINEZ', 'NA', '2005-04-01', 'B+', '3142265057 - 3157194706', 'CARRERA 12 18-36 BARRIO SAN JUDAS, VILLA DEL ROSARIO', 'COOSALUD E.P.S.', 'Deportista', '', 1, 0),
+(35, '1092338182', 'T.I.', 'KLEIBER SNEIDER', 'PALACIOS ARCHILA', 'NA', '2005-01-05', 'B+', '3152142630', 'CARRERA 14 25-60 GRAN COLOMBIA, VILLA DEL ROSARIO', 'COMPARTA E.P.S.', 'Deportista', '', 1, 0),
+(36, '1067715431', 'T.I.', 'JOHAN SEBASTIAN', 'GOMEZ BAYONA', 'yuljul2526@yahoo.es', '2006-05-16', 'A+', '5708078', 'CARRERA 6 10-54 BARRIO LA PALMITA, VILLA DEL ROSARIO', 'SISBEN', 'Deportista', '12', 1, 0),
+(37, '1092338592', 'T.I.', 'JAMES ALBERTO', 'LOZADA PAJOY', 'NA', '2005-09-03', 'O+', '3143959935', 'CARRERA 15 0-56 BARRIO SAN GREGORIO, VILLA DEL ROSARIO', 'SISBEN', 'Deportista', '12 J', 1, 0),
+(38, '1127048027', 'T.I.', 'KERLY JHULIETH', 'PATIÑO BAUTISTA', 'NA', '2009-03-09', 'B+', '3123016934', 'CALLE 26 10-68 GRAN COLOMBIA, VILLA DEL ROSARIO', 'COMPARTA E.P.S.', 'Deportista', '8 NIÑA', 1, 0),
+(39, '1094053505', 'T.I.', 'DARLYN LIZETH', 'PEREZ PATIÑO', 'NA', '2009-04-08', 'A+', '3228705450', 'CALLE 26 11-81 GRAN COLOMBIA, VILLA DEL ROSARIO', 'COMPARTA E.P.S.', 'Deportista', 'TALLA 8 NIÑA', 1, 0),
+(40, '1092345294', 'T.I.', 'JOHAN SEBASTIAN', 'RUEDA BAYONA', 'sebas-2757@outlook.com', '2008-02-27', 'O+', '3114738167', 'CALLE 1 8-60 BARRIO SANTANDER, VILLA DEL ROSARIO', 'SISBEN', 'Deportista', '10 J', 1, 0),
+(41, '1098799865', 'T.I.', 'SANTIAGO MAGNELI', 'TARAZONA OLIVEROS', 'cristina-2625@hotmail.com', '2009-03-26', 'O+', 'NA', 'CARRERA 11 CALLE 26 MZ 26 ALTOS DE ROSARIO, VILLA DEL ROSARIO', 'COMPARTA E.P.S.', 'Servicio de formacion deportiva', '', 1, 0),
+(42, '1092345556', 'T.I.', 'FRANGER JHOEL', 'AVENDAÑLO CELYS', 'NA', '2008-05-17', 'B+', '3125944125', 'CARRERA 12 23-34 GRAN COLOMBIA, VILLA DEL ROSARIO', 'SALUDVIDA', 'Deportista', '10 J', 1, 0),
+(43, '1127918400', 'T.I.', 'THOMAS BENEDIC', 'QUINTERO BRICEÑO', 'ferchita_3@hotmail.com', '2008-12-23', 'O+', '3108706786', 'CASA T-6 ALTOS DEL TAMARINDO, VILLA DEL ROSARIO', 'COOMEVA E.P.S.', 'Deportista', '', 1, 0),
+(44, '1091354397', 'T.I.', 'CARLOS ALBERTO', 'ESCAMILLA MARIÑO', 'mawenca_2010@hotmail.com', '2005-01-16', 'B+', '3213843529', 'CALLE 12 8-44 LA PALMITA', 'SISBEN', 'Deportista', 'S NIÑO', 1, 0),
+(45, '1092946098', 'Registro Civil', 'GILFRAN ANDRES', 'MARTINEZ ROJAS', 'fabian.gomez.82@hotmail.com', '2009-12-25', 'O+', '3112324155', 'CARRERA 6 8-26 BARRIO CENTRO, VILLA ROSARIO', 'COMPARTA E.P.S.', 'Deportista', '8', 1, 0),
+(46, '1092337549', 'T.I.', 'JUAN PABLO', 'RUIZ RODRIGUEZ', 'NA', '2005-03-07', 'A+', '3115758625', 'CALLE 22A 11-50 PUEBLITO ESPAÑOL, VILLA ROSARIO', 'SISBEN', 'Deportista', '12', 1, 0),
+(47, '1004911698', 'T.I.', 'DIDIER JOHAO', 'SILVA ROJAS', 'NA', '2002-02-08', 'O+', '3124856813 - 3124858083', 'CARRERA 16 18-40 PRIMERO DE MAYO, VILLA ROSASRIO', 'COMPARTA E.P.S.', 'Deportista', 'S ARQUERO', 1, 0),
+(48, '1094221236', 'T.I.', 'LUIS GABRIEL', 'SANCHEZ CADENA', 'stefy_21_01@hotmail.com', '2007-08-29', 'O+', '3214376273', 'CARRERA 7 26-42 CONJUNTO VILLA HERMOSA, VILLA ROSARIO', 'CAFESALUD', 'Deportista', '12 J', 1, 0),
+(50, '1092536289', 'T.I.', 'EMERSON STEVEN', 'VARGAS BLANCO', 'NA', '2009-01-28', 'O+', '3176491493 - 804216', 'CALLE 4 5A-106 URBANIZACION ISCALIGUA', 'COOMEVA E.P.S.', 'Deportista', '10 J #19', 1, 0),
+(51, '1007657591', 'T.I.', 'NICOLAS STEVEN', 'CASTRO SALAZAR', 'johanay12@hotmail.com', '2001-04-10', 'O+', '3204211525', 'CALLE 1 #9-81 BELLAVISTA, VILLA ROSARIO', 'SISBEN', 'Deportista', 'S No. 5', 1, 0),
+(52, '1094222171', 'Registro Civil', 'LUIS SANTIAGO', 'GUTIERREZ BLANCO', 'NA', '2010-03-12', 'O+', '3223896869', 'CALLE 32 2-20 CORDIALIDAD, LOS PATIOS', 'ECOOPSOS', 'Deportista', '8 J', 1, 0),
+(53, '1093599843', 'Registro Civil', 'MANUEL JAVIER', 'PARRA AREVALO', 'NA', '2010-03-24', 'B-', '3102456579', 'CARRERA 3 25-58 BARRIO SABANA, PATIOS', 'SANIDAD POLNAL', 'Deportista', '10 J', 1, 0),
+(54, '1092349314', 'T.I.', 'ALAN SANTIAGO', 'PERICO MORALES', 'NA', '2009-10-29', 'O+', '3144005380', 'CALLE 0 14-120 SAN GREGORIO VILLA ROSARIO', 'COOMEVA E.P.S.', 'Deportista', '8 J', 1, 0),
+(55, '1092340203', 'T.I.', 'KEVIN EDUARDO', 'GARCIA MELLIZO', 'monica07370@gmail.com', '2006-07-10', 'O+', '3185407370', 'CALLE 0 15-11 SAN GREGORIO VILLA ROSARIO', 'COMPARTA E.P.S.', 'Servicio de formacion deportiva', '', 1, 0),
+(56, '1092343937', 'T.I.', 'BRANDON SAIR', 'SALAS SANDOVAL', 'NA', '2007-11-07', 'O+', '3115396410', 'CALLE 17 16-05 BARRIO 1 DE MAYO, VILLA ROSARIO', 'COMPARTA E.P.S.', 'Servicio de formacion deportiva', '', 1, 0),
+(57, '1092344209', 'T.I.', 'CRISTIAN ARLEY', 'ORTIZ MARTINEZ', 'NA', '2007-12-04', 'A+', '3204701236 - 3209591994', 'CARRERA 13 21-60 SAN JUDAS, VILLA ROSARIO', 'COMPARTA E.P.S.', 'Servicio de formacion deportiva', '', 1, 0),
+(58, '1091972403', 'T.I.', 'FAVIAN ESTEBAN', 'GELVEZ CONTRERAS', 'fabagel@hotmail.com', '2007-04-30', 'A+', '3219057644', 'MANZANA J CASA 4 MORICHAL', 'POSITIVA', 'Servicio de formacion deportiva', '', 1, 0),
+(59, '1092337893', 'T.I.', 'WILSON ANDRES', 'PINEDA MELO', 'NA', '2005-04-12', 'O+', '3133160595', 'CARRERA 5 19-30 SENDEROS DE PAZ', 'SISBEN', 'Deportista', 'S NIÑO', 1, 0),
+(60, '1093767519', 'Registro Civil', 'CARLOS DAVID', 'BOTELLO BOTELLO', 'NA', '2011-05-05', 'O+', '3204078779', 'CALLE 9 0-40 VILLA ANTIGUA', 'COOSALUD E.P.S.', 'Servicio de formacion deportiva', '', 1, 0),
+(61, '1093295763', 'T.I.', 'JHOAN SEBASTIAN', 'VILLALBA JAIMES', 'villalbao32016@gmail.com', '2006-07-01', 'A+', '3126766887 - 3045619690', 'MANZANA F LOTE 12 VALLES DEL MIRADOR, LOS PATIOS', 'SISBEN', 'Servicio de formacion deportiva', '', 1, 0),
+(62, '1092340950', 'T.I.', 'YEISON SEBASTIAN', 'SUAREZ SILVA', 'NA', '2006-10-04', 'O+', '3108809231', 'CALLE 17 17-74 BARRIO 1 DE MAYO VILLA ROSARIO', 'CAFESALUD', 'Deportista', '', 1, 0),
+(63, '1094708095', 'T.I.', 'WILMAR YESID', 'JURADO CUEVAS', 'maira513alejandra@gmail.com', '2004-05-13', 'A+', '3102839223', 'CALLE 0 12-17 SAN GREGORIO, VILLA ROSARIO', 'COMPARTA E.P.S.', 'Servicio de formacion deportiva', '', 1, 0),
+(64, '1092529013', 'T.I.', 'WILLERS ALEJANDRO', 'JURADO CUEVAS', 'maira513alejandra@gmail.com', '2006-02-25', 'O+', '3102839223', 'CALLE 0 12-17 SAN GREGORIO, VILLA ROSARIO', 'COMPARTA E.P.S.', 'Servicio de formacion deportiva', '', 1, 0),
+(65, '1092341232', 'T.I.', 'CAMILO ANDRES', 'ROJAS HERNANDEZ', 'edilce.camilo@hotmail.com', '2006-11-04', 'O+', 'PENDIENTE', 'CARRERA 13 18-31 SAN JUDAS, VILLA ROSARIO', 'COMPARTA E.P.S.', 'Servicio de formacion deportiva', '', 1, 0),
+(66, '1032798814', 'T.I.', 'JUAN FELIPE', 'RODRIGUEZ SANTAELLA', 'earm.virtual@gmail.com', '2006-09-15', 'O+', '3005682201 - 3005682385', 'AVENIDA 5E 9A-58 CASA 7 LA RIVIERA CUCUTA', 'FUNDACION MEDICO PREVENTIVA', 'Servicio de formacion deportiva', '', 1, 0),
+(67, '1096946260', 'T.I.', 'WILMER GUILLERMO', 'SILVA HURTADO', 'NA', '2004-02-02', 'O+', '3124745133 - 3142764782', 'CARRERA 9 3N-63', 'COMPARTA E.P.S.', 'Servicio de formacion deportiva', '', 1, 0),
+(68, '1128049963', 'T.I.', 'JUAN PABLO', 'CONEO GOMEZ', 'NA', '2004-10-28', 'O+', '3043455661', 'CARRERA 6 8-35 BARRIO CENTRO VILLA ROSARIO', 'SANIDAD MILITAR', 'Deportista', '', 1, 0),
+(69, '1127344876', 'T.I.', 'JOSEPH MATEO', 'CHACON MANRIQUE', 'marcoschacon_29@hotmail.com', '2007-09-11', 'O-', '0426-5754069', 'AVENIDA VENEZUELA 8-23 BARRIO OCUMARE, SAN ANTONIO', 'CAFESALUD', 'Deportista', '', 1, 0),
+(70, '1092531811', 'T.I.', 'JUAN DANIEL', 'RINCON ROLON', 'karlitarolon@hotmail.com', '2007-02-23', 'O+', '3115222310', 'MANZANA 6 CASA 14 QUINTAS DEL TAMARINDO II, VILLA ROSARIO', 'FUNDACION MEDICO PREVENTIVA', 'Deportista', 'ARQUERO', 1, 0),
+(71, '1127946772', 'T.I.', 'ORIANA VALENTINA', 'MOJICA MALDONADO', 'NA', '2006-08-15', 'B-', '3162382564', 'CALLE 4 9-20 BARRIO SANTANDER VILLA ROSARIO', 'SISBEN', 'Servicio de formacion deportiva', '', 1, 0),
+(72, '1091980569', 'Registro Civil', 'JUAN DAVID', 'SUAREZ LUGO', 'lisslugo@hotmail.com', '2010-01-19', 'B+', '3118875278 - 3156369467', 'CALLE 12 6-23 LA PALMITA', 'COOMEVA E.P.S.', 'Servicio de formacion deportiva', '', 1, 0),
+(73, '1092341169', 'T.I.', 'JHONER JOSEU', 'CRUZ CONTRERAS', 'NA', '2006-10-18', 'O+', '3208696593', 'CARRERA 12 23-01 MONTEVIDEO 1', 'COMPARTA E.P.S.', 'Servicio de formacion deportiva', '', 1, 0),
+(74, '1091356380', 'T.I.', 'BRAYAN JOSUE', 'GOM EZ DIAZ', 'renetopog@hotmail.com', '2006-01-11', 'O+', '3145558415', 'AVENIDA 12 2A-23 SAN MARTIN CUCUTA', 'COOSALUD E.P.S.', 'Servicio de formacion deportiva', '', 1, 0),
+(75, '1092357792', 'Registro Civil', 'JHOAN ANDRES', 'PEDRAZA CARDENAS', 'NA', '2013-04-15', 'PENDIENTE', '3118442006', 'CALLE 3 15-46 TURBAY AYALA', 'SALUDVIDA', 'Servicio de formacion deportiva', '', 1, 0),
+(76, '1091972146', 'T.I.', 'DAYRON JOSE', 'TARAZONA VILLAMIZAR', 'NA', '2007-04-09', 'A+', '3214230806', 'CALLE 4 16-101 TURBAY AYALA', 'COMPARTA E.P.S.', 'Servicio de formacion deportiva', '', 1, 0),
+(77, '1093596724', 'T.I.', 'GABRIEL FELIPE', 'MORA AMAYA', 'orenmo72@hotmail.com', '2008-06-15', 'O+', 'PENDIENTE', 'URBANIZACION SANTA MARIA DEL ROSARIO CASA B-5', 'SISBEN', 'Servicio de formacion deportiva', '', 1, 0),
+(78, '1092348321', 'T.I.', 'BAYRON EULISES', 'ROMERO RICO', 'NA', '2009-06-07', 'O+', '3142076460 - 3142245447', 'CALLE 10 11-75 BARRIO 20 DE JULIO', 'COOMEVA E.P.S.', 'Servicio de formacion deportiva', '', 1, 0),
+(79, '1127046985', 'T.I.', 'ANGELO', 'HURTADO RINCON', 'NA', '2006-10-02', 'A+', '3123776345 - 3108663203', 'CALLE 4 13-31 BARRIO SAN MARTIN', 'PENDIENTE', 'Servicio de formacion deportiva', '', 1, 0),
+(80, '1091970926', 'T.I.', 'SEBASTIAN CAMILO', 'FLOREZ BAUTISTA', 'NA', '2006-09-01', 'AB+', '3124319183', 'CALLE 33 5E-101 JUANA PAULA, LOS PATIOS', 'CAFESALUD', 'Servicio de formacion deportiva', '', 1, 0),
+(81, '1094055665', 'Registro Civil', 'JOYNER SNEIJDER', 'CASTRO TRIGOS', 'NA', '2010-07-03', 'O+', '3118504617', 'CARRERA 13 28BN-40 NAVARRO WOLF', 'SALUDVIDA', 'Servicio de formacion deportiva', '', 1, 0),
+(82, '1091360949', 'T.I.', 'FRANKLIN ALEJANDRO', 'GARZON MORENO', 'dianacaro59@hotmail.com', '2009-01-24', 'A+', '3224280598', 'CALLE 15A 15-33 BARRIO 1 DE MAYO', 'CAFESALUD', 'Servicio de formacion deportiva', '', 1, 0),
+(83, '1127047479', 'T.I.', 'FERNANDO EMMANUEL', 'ESTUPIÑAN MARIÑO', 'NA', '2008-09-05', 'O+', '3115184533', 'CARRERA 5 3-57 SAN ANTONIO DEL TACHIRA', 'SISBEN', 'Servicio de formacion deportiva', '', 1, 0),
+(84, '1092353983', 'Registro Civil', 'ANDRES CAMILO', 'FLOREZ DIAZ', 'NA', '2011-08-24', 'O+', '3212004482', 'KDX 65 B-2 JUAN FRIO', 'COMPARTA E.P.S.', 'Servicio de formacion deportiva', '', 1, 0),
+(85, '1193439675', 'T.I.', 'RONAL AUGUSTO', 'OCAMPO CHINCHILLA', 'NA', '2000-06-05', 'O+', 'PENDIENTE', 'K 111 JUAN FRIO', 'SALUDVIDA', 'Servicio de formacion deportiva', '', 1, 0),
+(86, '1092347690', 'T.I.', 'ESNEIDER FELIPE', 'SALINAS ESTUPIÑAN', 'NA', '2009-01-06', 'O+', '3113344646', 'CARRERA 11B 8-35 LA PARADA', 'SISBEN', 'Servicio de formacion deportiva', '', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -56,23 +141,67 @@ INSERT INTO `afiliado` (`idafiliado`, `identificacion`, `tipo_identificacion`, `
 -- Estructura de tabla para la tabla `afiliado_grupo`
 --
 
-CREATE TABLE IF NOT EXISTS `afiliado_grupo` (
+CREATE TABLE `afiliado_grupo` (
   `idafiliado_grupo` int(11) NOT NULL,
   `fecha_afiliacion` date DEFAULT NULL,
   `fecha_inicio` date DEFAULT NULL,
-  `fecha_finzalizacion` date DEFAULT NULL,
+  `fecha_fin` date DEFAULT NULL,
   `estado` tinyint(1) DEFAULT NULL,
+  `mora` tinyint(1) NOT NULL,
   `afiliado_idafiliado` int(11) NOT NULL,
   `grupo_idgrupo` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `afiliado_grupo`
 --
 
-INSERT INTO `afiliado_grupo` (`idafiliado_grupo`, `fecha_afiliacion`, `fecha_inicio`, `fecha_finzalizacion`, `estado`, `afiliado_idafiliado`, `grupo_idgrupo`) VALUES
-(6, '2014-10-01', '2015-11-05', NULL, 1, 1, 1),
-(7, '2015-11-30', '2015-11-30', NULL, 1, 1, 2);
+INSERT INTO `afiliado_grupo` (`idafiliado_grupo`, `fecha_afiliacion`, `fecha_inicio`, `fecha_fin`, `estado`, `mora`, `afiliado_idafiliado`, `grupo_idgrupo`) VALUES
+(1, '2017-01-29', '2016-10-01', NULL, 1, 0, 5, 24),
+(2, '2017-01-29', '2016-10-01', NULL, 1, 0, 3, 23),
+(3, '2017-01-29', '2016-10-01', NULL, 1, 0, 2, 23),
+(4, '2017-01-29', '2016-10-01', NULL, 1, 0, 9, 23),
+(5, '2017-01-29', '2016-10-01', NULL, 1, 0, 10, 23),
+(6, '2017-01-29', '2016-10-01', NULL, 1, 0, 7, 29),
+(7, '2017-01-29', '2016-10-01', NULL, 1, 0, 8, 24),
+(8, '2017-01-29', '2016-10-01', NULL, 1, 0, 4, 23),
+(9, '2017-01-29', '2016-10-01', NULL, 1, 0, 1, 23),
+(10, '2017-01-29', '2016-10-01', NULL, 1, 0, 6, 27),
+(11, '2017-01-29', '2016-10-01', NULL, 1, 0, 19, 30),
+(12, '2017-02-03', '2016-10-01', NULL, 1, 0, 15, 24),
+(13, '2017-02-05', '2016-01-18', '2017-02-05', 0, 0, 58, 24),
+(14, '2017-02-05', '2016-01-18', '2017-02-05', 0, 0, 17, 31),
+(15, '2017-02-05', '2016-01-18', '2017-02-05', 0, 0, 72, 31),
+(16, '2017-02-05', '2016-01-18', '2017-02-05', 0, 0, 44, 29),
+(17, '2017-02-05', '2016-01-18', '2017-02-05', 0, 0, 60, 23),
+(18, '2017-02-05', '2016-01-18', '2017-02-05', 0, 0, 59, 29),
+(19, '2017-02-05', '2017-01-16', NULL, 1, 0, 59, 29),
+(20, '2017-02-05', '2017-01-16', NULL, 1, 0, 12, 19),
+(21, '2017-02-05', '2017-01-16', NULL, 1, 0, 58, 24),
+(22, '2017-02-05', '2017-01-16', NULL, 1, 0, 17, 31),
+(23, '2017-02-05', '2017-01-16', NULL, 1, 0, 72, 31),
+(24, '2017-02-05', '2017-01-16', NULL, 1, 0, 44, 29),
+(25, '2017-02-05', '2017-01-16', NULL, 1, 0, 60, 27),
+(26, '2017-02-05', '2017-01-16', NULL, 1, 0, 63, 20),
+(27, '2017-02-05', '2017-01-16', NULL, 1, 0, 67, 20),
+(28, '2017-02-05', '2017-01-16', NULL, 1, 0, 56, 24),
+(29, '2017-02-05', '2017-01-16', NULL, 1, 0, 57, 24),
+(30, '2017-02-05', '2017-01-16', NULL, 1, 0, 37, 29),
+(31, '2017-02-05', '2017-01-16', NULL, 1, 0, 39, 26),
+(32, '2017-02-05', '2017-01-16', NULL, 1, 0, 52, 31),
+(33, '2017-02-05', '2017-01-16', NULL, 1, 0, 38, 26),
+(34, '2017-02-05', '2017-01-16', NULL, 1, 0, 76, 24),
+(35, '2017-02-05', '2017-01-16', NULL, 1, 0, 46, 29),
+(36, '2017-02-10', '2016-02-01', '2017-02-10', 0, 0, 55, 23),
+(37, '2017-02-10', '2017-02-01', '2017-02-10', 0, 0, 55, 23),
+(38, '2017-02-10', '2017-01-16', NULL, 1, 0, 55, 23),
+(39, '2017-02-10', '2017-01-16', NULL, 1, 0, 43, 25),
+(40, '2017-02-10', '2017-02-01', NULL, 1, 0, 16, 25),
+(41, '2017-02-10', '2017-01-16', NULL, 1, 0, 18, 25),
+(42, '2017-02-10', '2017-01-16', NULL, 1, 0, 53, 31),
+(43, '2017-02-10', '2017-01-16', NULL, 1, 0, 48, 24),
+(44, '2017-02-10', '2017-02-01', NULL, 1, 0, 85, 17),
+(45, '2017-02-10', '2017-01-16', NULL, 1, 0, 31, 20);
 
 -- --------------------------------------------------------
 
@@ -80,7 +209,7 @@ INSERT INTO `afiliado_grupo` (`idafiliado_grupo`, `fecha_afiliacion`, `fecha_ini
 -- Estructura de tabla para la tabla `afiliado_has_entidad`
 --
 
-CREATE TABLE IF NOT EXISTS `afiliado_has_entidad` (
+CREATE TABLE `afiliado_has_entidad` (
   `idafiliado_has_entidad` int(11) NOT NULL,
   `entidad_identidad` int(11) NOT NULL,
   `afiliado_idafiliado` int(11) NOT NULL
@@ -92,20 +221,30 @@ CREATE TABLE IF NOT EXISTS `afiliado_has_entidad` (
 -- Estructura de tabla para la tabla `categoria`
 --
 
-CREATE TABLE IF NOT EXISTS `categoria` (
+CREATE TABLE `categoria` (
   `idcategoria` int(11) NOT NULL,
-  `descripcion` varchar(120) DEFAULT NULL,
-  `valor_mensual` double DEFAULT NULL,
-  `limite` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `descripcion` varchar(120) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `categoria`
 --
 
-INSERT INTO `categoria` (`idcategoria`, `descripcion`, `valor_mensual`, `limite`) VALUES
-(1, 'JUNIOR', 12200, 300),
-(2, 'CATEGORIA 2006', NULL, NULL);
+INSERT INTO `categoria` (`idcategoria`, `descripcion`) VALUES
+(15, '2006'),
+(16, '2011'),
+(17, '2010'),
+(18, '2009'),
+(19, '2008'),
+(20, '2007'),
+(21, '2005'),
+(22, '2004'),
+(23, '2003'),
+(25, '2002'),
+(26, '2001'),
+(27, '2000'),
+(28, 'ARQUEROS'),
+(29, 'CONTRIBUYENTES');
 
 -- --------------------------------------------------------
 
@@ -113,7 +252,7 @@ INSERT INTO `categoria` (`idcategoria`, `descripcion`, `valor_mensual`, `limite`
 -- Estructura de tabla para la tabla `contacto`
 --
 
-CREATE TABLE IF NOT EXISTS `contacto` (
+CREATE TABLE `contacto` (
   `idcontacto` int(11) NOT NULL,
   `nombre_familiar1` varchar(60) DEFAULT NULL,
   `telefono_familiar_1` varchar(25) DEFAULT NULL,
@@ -122,16 +261,98 @@ CREATE TABLE IF NOT EXISTS `contacto` (
   `telefono_familiar2` varchar(25) DEFAULT NULL,
   `tipo_familiar2` varchar(45) DEFAULT NULL,
   `afiliado_idafiliado` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `contacto`
 --
 
 INSERT INTO `contacto` (`idcontacto`, `nombre_familiar1`, `telefono_familiar_1`, `tipo_familiar1`, `nombre_familiar2`, `telefono_familiar2`, `tipo_familiar2`, `afiliado_idafiliado`) VALUES
-(1, 'test', NULL, NULL, 'TESTPADRE', NULL, NULL, 1),
-(2, 'Nancy Lopez', NULL, NULL, 'Edgar Torrado (Fallecido)', NULL, NULL, 2),
-(3, 'GRACIAE', NULL, NULL, 'LAFONSO', NULL, NULL, 3);
+(1, 'MAGDA CELENA CONTRERAS PRADO', NULL, NULL, 'LUIS OMAR CHITIVA JACOME', NULL, NULL, 1),
+(2, 'LEYDIZ CASTILLEJO YARURO', NULL, NULL, 'DIEGO ARMANDO OCHOA FLOREZ', NULL, NULL, 2),
+(3, 'NELLY BLANCO JAIMES', NULL, NULL, 'CARLOS AUGUSTO SALAZAR PEREIRA', NULL, NULL, 3),
+(4, 'KAREN MARBENY DIAZ GARCIA', NULL, NULL, 'JOSE GUILLERMO RUIZ SANCHEZ', NULL, NULL, 4),
+(5, 'LEONOR DURAN DUARTE', NULL, NULL, 'JAIRO PINZON PABON', NULL, NULL, 5),
+(6, 'MAGDA CELENA CONTRERAS PRADO', NULL, NULL, 'LUIS OMAR CHITIVA JACOME', NULL, NULL, 6),
+(7, 'MARIA INES GOMEZ CANABAL', NULL, NULL, 'CARLOS ANDRES SUAREZ ', NULL, NULL, 7),
+(8, 'MARIA INES GOMEZ CANABAL', NULL, NULL, 'CARLOS ANDRES SUAREZ ', NULL, NULL, 8),
+(9, 'MARIA VICTORIA CONTRERAS PAYARES', NULL, NULL, 'MARCOS MARTIN CARRERO LAMUN', NULL, NULL, 9),
+(10, 'AMPARO RAMIREZ ARENALES', NULL, NULL, 'AGUSTIN SOTO ORTEGA', NULL, NULL, 10),
+(11, '', NULL, NULL, 'JAIME BUSTAMANTE SUAREZ', NULL, NULL, 11),
+(12, 'TERESA MENDOZA MONCADA', NULL, NULL, 'PASCUAL URBINA GELVEZ', NULL, NULL, 12),
+(13, 'NANCY MANRIQUE BUITRAGO', NULL, NULL, 'DOUGLAS GEOVANNY PABON ORTIZ', NULL, NULL, 13),
+(14, '', NULL, NULL, '', NULL, NULL, 14),
+(15, 'CAROLINA BECERRA GARCIA', NULL, NULL, 'JHON JAIRO OCANDO AMADO', NULL, NULL, 15),
+(16, 'MARTHA ZULAY SANCHEZ ANGARITA', NULL, NULL, 'TITO JAIR PATIÑO ORTIZ', NULL, NULL, 16),
+(17, 'ADRIANA CONTRERAS DELGADO', NULL, NULL, 'FAVIAN ALBERTO GELVEZ BUSTOS', NULL, NULL, 17),
+(18, 'KARINA ELIZABETH RIOS RODRIGUEZ', NULL, NULL, 'ALEXIS YOJAN GOMEZ TORO', NULL, NULL, 18),
+(19, 'MARTHA LUCIA JARAMILLO', NULL, NULL, 'LIBARDO JAIME ECHAVARRIA', NULL, NULL, 19),
+(20, 'SONIA MARCELA CORREA BECERRA', NULL, NULL, 'EMERSON ALEXIS RODRIGUEZ RODRIGUEZ', NULL, NULL, 20),
+(21, 'ESMERALDA SANABRIA PEREZ', NULL, NULL, 'NA', NULL, NULL, 21),
+(22, 'TERESA MENDOZA MONCADA', NULL, NULL, 'PASCUAL URBINA GELVEZ', NULL, NULL, 22),
+(23, 'MAYRA ALEJANDRA BALSECA CAPACHO', NULL, NULL, 'CARLOS ALIRIO CAPACHO VEGA', NULL, NULL, 23),
+(24, 'MARIA PRUDENCIA JAIMES BURGOS', NULL, NULL, 'WASHINTON DANIEL PALACIOS RIVERA', NULL, NULL, 24),
+(25, 'DELFINA MARTINEZ OLIVEROS', NULL, NULL, 'PEDRO PABLO BLANCO MANRIQUE', NULL, NULL, 25),
+(26, 'MARIA SILVIA VALENZUELA SEPULVEDA', NULL, NULL, 'LUIS MARIA CASTRO ARIAS', NULL, NULL, 26),
+(27, 'DELIA MILENA ARIAS', NULL, NULL, 'JOSE ENRIQUE GARCIA MANRIQUE', NULL, NULL, 27),
+(28, 'MARIA PRUDENCIA JAIMES BURGOS', NULL, NULL, 'WASHINTON DANIEL PALACIOS RIVERA', NULL, NULL, 28),
+(29, 'MARIA ANGELICA VELASCO RANGEL', NULL, NULL, 'VICTOR MARLON ULLOA MEJIA', NULL, NULL, 29),
+(30, 'OLGA TERESA VELASCO RANGEL', NULL, NULL, 'FRANKLIN ARMANDO GOMEZ HERNANDEZ', NULL, NULL, 30),
+(31, 'ERIKA MARCELA MORENO VALBUENA', NULL, NULL, 'DANI JOEL GARAVITO PAJOI', NULL, NULL, 31),
+(32, 'BERTHA OMAIRA GOMEZ DELGADO', NULL, NULL, 'GERZON ALBERTO CUELLAR MIRANDA', NULL, NULL, 32),
+(33, 'NANCY SANCHEZ ASCANIO', NULL, NULL, 'VICTOR JULIO RUIZ GALVIS', NULL, NULL, 33),
+(34, 'DELFINA MARTINEZ OLIVEROS', NULL, NULL, 'PEDRO PABLO BLANCO MANRIQUE', NULL, NULL, 34),
+(35, 'DAISY VIVIANA ARCHILA LOPEZ', NULL, NULL, 'ALEXANDER PALACIOS SANCHEZ', NULL, NULL, 35),
+(36, 'YULEIMA BAYONA CUELLAR', NULL, NULL, 'JULIO ERNESTO GOMEZ HERNANDEZ', NULL, NULL, 36),
+(37, 'JEIMMY LINEHY PAJOY RAMIREZ', NULL, NULL, 'JAIME LOZADA RAMIREZ', NULL, NULL, 37),
+(38, 'MARIA MAGDALENA BAUTISTA CARDENAS', NULL, NULL, 'VICTOR MANUEL PATIÑO ORTIZ', NULL, NULL, 38),
+(39, 'EXI PATIÑO ORTIZ', NULL, NULL, 'JOSE EDUARDO PEREZ AVILA', NULL, NULL, 39),
+(40, 'ALBA YAJAIRA BAYONA ECHEVERRIA', NULL, NULL, 'LEONARDO RUEDA ACOSTA', NULL, NULL, 40),
+(41, 'TEODORA CRISTINA OLIVEROS GUTIERREZ', NULL, NULL, 'NILSON RICARDO TARAZONA CRISTANCHO', NULL, NULL, 41),
+(42, 'LUZ IRENE CELYS RAMIREZ', NULL, NULL, 'WALTER AVENDAÑO DELGADO', NULL, NULL, 42),
+(43, 'MARIA FERNANDA BRICEÑO CANO', NULL, NULL, 'JESUS ANTONIO QUINTERO DURAN', NULL, NULL, 43),
+(44, 'MARIA EUGENIA MARIÑO QUINTERO', NULL, NULL, 'CARLOS ALBERTO ESCAMILLA GRANADOS', NULL, NULL, 44),
+(45, 'STEPHANIA GISSELLA ROJAS TARAZONA', NULL, NULL, 'JHON FRANSUE MARTINEZ ALDANA', NULL, NULL, 45),
+(46, 'ALBA LUCIA RODRIGUEZ', NULL, NULL, 'JHON EVER RUIZ SUAREZ', NULL, NULL, 46),
+(47, 'OLGA LUCIA ROJAS TARAZONA', NULL, NULL, 'CERAFIN SILVA TRIANA', NULL, NULL, 47),
+(48, 'STEPHANNY LIZZETH CADENA ARIAS', NULL, NULL, 'ANDRES MAURICIO SANCHEZ MORENO', NULL, NULL, 48),
+(49, 'ERIKA TATIANA BLANCO BECERRA', NULL, NULL, 'DAVID DANIEL VARGAS GARCIA', NULL, NULL, 50),
+(50, 'YOLIMA JOHANNA SALAZAR CANTOR', NULL, NULL, 'RODRIGO CASTRO TOVAR', NULL, NULL, 51),
+(51, 'MARIA LUDY BLANCO VEGA', NULL, NULL, 'LUIS ALBERTO GUTIERREZ PARDO', NULL, NULL, 52),
+(52, 'NEILA JOSEFINA AREVALO COTAMO', NULL, NULL, 'MANUEL PARRA GUTIERREZ', NULL, NULL, 53),
+(53, 'MARYELIN MORALES GALLARDO', NULL, NULL, 'IVAN PERICO PITA', NULL, NULL, 54),
+(54, 'MARTHA MONICA MELLIZO BUSTAMANTE', NULL, NULL, 'LUIS FERNANDO GARCIA PRADO', NULL, NULL, 55),
+(55, 'MARITZA SANDOVAL DELGADO', NULL, NULL, 'WILSON SALAS', NULL, NULL, 56),
+(56, 'DELIBETH KARINA', NULL, NULL, 'MARTINEZ GOMEZ', NULL, NULL, 57),
+(57, 'ADRIANA CONTRERAS DELGADO', NULL, NULL, 'FAVIAN ALBERTO GELVEZ BUSTOS', NULL, NULL, 58),
+(58, 'ALBA ELIZABET MELO LEON', NULL, NULL, 'WILSON PINEDA ANGULO', NULL, NULL, 59),
+(59, 'NELLY ESPERANZA BOTELLO PIÑA', NULL, NULL, 'JUAN CARLOS BOTELLO LUNA', NULL, NULL, 60),
+(60, 'ROSA AMINTA JAIMES JEREZ', NULL, NULL, 'DELNIS MANUEL VILLALBA DIAZ', NULL, NULL, 61),
+(61, 'REINA SILVA SANDOVAL', NULL, NULL, 'SIXTO SUAREZ ACUÑA', NULL, NULL, 62),
+(62, 'MAIRA ALEJANDRA CUEVAS', NULL, NULL, 'WILSON JURADO SAENZ', NULL, NULL, 63),
+(63, 'MAIRA ALEJANDRA CUEVAS', NULL, NULL, 'WILSON JURADO SAENZ', NULL, NULL, 64),
+(64, 'EDILCE HERNANDEZ ALVAREZ', NULL, NULL, 'ALFREDO ROJAS LEON', NULL, NULL, 65),
+(65, 'ANNY CAROLINA SANTAELLA BERMUDEZ', NULL, NULL, 'ENRIQUE ALEXANDER RODRIGUEZ MOLINA', NULL, NULL, 66),
+(66, 'DORIS ALIRIA SILVA HURTADO', NULL, NULL, 'NO REGISTRA', NULL, NULL, 67),
+(67, 'DIANA CAROLINA GOMEZ GUERRERO', NULL, NULL, 'ADAN JOSE CONEO FONSECA', NULL, NULL, 68),
+(68, 'JENIFER BELLAIRE MANRIQUE VALENCIA', NULL, NULL, 'MARCOS CHACON MORALES', NULL, NULL, 69),
+(69, 'CARLA LIZBETH ROLON OMAÑA', NULL, NULL, 'LUIS DANIEL RINCON QUINTERO', NULL, NULL, 70),
+(70, 'LENNIS MARIAN MALDONADO ANDARA', NULL, NULL, 'JHON WILMER MOJICA OCHOA', NULL, NULL, 71),
+(71, 'LICETH DORELY LUGO GARCIA', NULL, NULL, 'JUAN CAMILO SUAREZ SIERRA', NULL, NULL, 72),
+(72, 'LILIANA CONTRERAS SANTOS', NULL, NULL, 'JUAN CARLOS CRUZ MOLANO', NULL, NULL, 73),
+(73, 'KARINA YOVANA DIAZ PACHECO', NULL, NULL, 'JESUS RENE GOMEZ PINTO', NULL, NULL, 74),
+(74, 'DARLIG JAISURY CARDENAS OSORIO', NULL, NULL, 'DANNY FABIAN PEDRAZA PATIÑO', NULL, NULL, 75),
+(75, 'MAYRA ALEJANDRA VILLAMIZAR VALENCIA', NULL, NULL, 'JOSE CRISANTO TARAZONA', NULL, NULL, 76),
+(76, 'MARYLU AMAYA QUINTERO', NULL, NULL, 'ORLANDO ENRIQUE MORA GRANADOS', NULL, NULL, 77),
+(77, 'ZULAY RICO GARZA', NULL, NULL, 'EULISES ROMERO MILLAN', NULL, NULL, 78),
+(78, 'YENNI ALEJANDRA RINCON MEDINA', NULL, NULL, 'WILLIAM HURTADO QUINTERO', NULL, NULL, 79),
+(79, 'CARMEN CECILIA BAUTISTA HERNANDEZ', NULL, NULL, 'WILSON FLOREZ SERRANO', NULL, NULL, 80),
+(80, 'AURA ELENA TRIGOS NAVARRO', NULL, NULL, 'YONATHAN ALBERTO CASTRO GALVIS', NULL, NULL, 81),
+(81, 'DIANA CAROLINA MORENO CARDONA', NULL, NULL, 'FRANKLIN GARZON GUTIERREZ', NULL, NULL, 82),
+(82, 'LETTY MARIBEL MARIÑO', NULL, NULL, 'NELSON FERNANDO ESTUPIÑAN DUARTE', NULL, NULL, 83),
+(83, 'MARIA MILAGROS DIAZ RIVERA', NULL, NULL, 'RONAL STIVEN FLOREZ HINESTROZA', NULL, NULL, 84),
+(84, 'PENDIENTE', NULL, NULL, 'PENDIENTE', NULL, NULL, 85),
+(85, 'ESLENDY DAYANA ESTUPIÑAN FLOREZ', NULL, NULL, 'LUIS RICARDO SALINAS BARRERA', NULL, NULL, 86);
 
 -- --------------------------------------------------------
 
@@ -139,7 +360,7 @@ INSERT INTO `contacto` (`idcontacto`, `nombre_familiar1`, `telefono_familiar_1`,
 -- Estructura de tabla para la tabla `entidad`
 --
 
-CREATE TABLE IF NOT EXISTS `entidad` (
+CREATE TABLE `entidad` (
   `identidad` int(11) NOT NULL,
   `nombre` varchar(50) DEFAULT NULL,
   `nit` varchar(20) DEFAULT NULL,
@@ -149,23 +370,127 @@ CREATE TABLE IF NOT EXISTS `entidad` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `examen_medico`
+--
+
+CREATE TABLE `examen_medico` (
+  `idexamen_medico` int(11) NOT NULL,
+  `afiliado_idafiliado` int(11) DEFAULT NULL,
+  `fecha_examen` date DEFAULT NULL,
+  `peso` varchar(10) DEFAULT NULL,
+  `estatura` varchar(10) DEFAULT NULL,
+  `presion_arterial` varchar(25) DEFAULT NULL,
+  `rh` varchar(5) DEFAULT NULL,
+  `enfermedades` text,
+  `alergias` text,
+  `vacunas` text,
+  `medicamentos` varchar(250) DEFAULT NULL,
+  `apto_actividad` tinyint(1) DEFAULT '1',
+  `observaciones` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `examen_medico`
+--
+
+INSERT INTO `examen_medico` (`idexamen_medico`, `afiliado_idafiliado`, `fecha_examen`, `peso`, `estatura`, `presion_arterial`, `rh`, `enfermedades`, `alergias`, `vacunas`, `medicamentos`, `apto_actividad`, `observaciones`) VALUES
+(4, 20, '2016-11-09', '25.6', '1.31', NULL, 'A+', NULL, NULL, NULL, NULL, 1, NULL),
+(6, 21, '2016-11-15', '52.9', '1.71', NULL, 'A+', NULL, NULL, NULL, NULL, 1, NULL),
+(7, 22, '2016-11-15', '59.7', '1.62', NULL, 'O+', NULL, NULL, NULL, NULL, 1, NULL),
+(8, 24, '2016-11-16', '57', '1.57', NULL, 'O+', NULL, NULL, NULL, NULL, 1, NULL),
+(9, 12, '2016-11-15', '56.8', '1.63', NULL, 'O+', NULL, NULL, NULL, NULL, 1, NULL),
+(10, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL),
+(11, 25, '2016-11-28', '57.2', '1.58', NULL, 'B+', NULL, NULL, NULL, NULL, 1, NULL),
+(12, 26, '2016-11-15', '44.9', '1.55', NULL, 'O+', NULL, NULL, NULL, NULL, 1, NULL),
+(13, 27, '2016-11-15', '51.9', '1.54', NULL, 'O+', NULL, NULL, NULL, NULL, 1, NULL),
+(14, 28, '2016-11-22', '45', '1.45', NULL, 'B+', NULL, NULL, NULL, NULL, 1, NULL),
+(15, 29, '2016-11-09', '50.7', '1.43', NULL, 'B-', NULL, NULL, NULL, NULL, 1, NULL),
+(16, 30, '2016-11-15', '64.4', '1.60', NULL, 'A+', NULL, NULL, NULL, NULL, 1, NULL),
+(17, 31, '2016-11-09', '41.6', '1.52', NULL, 'O+', NULL, NULL, NULL, NULL, 1, NULL),
+(18, 33, '2016-11-09', '25.1', '1.34', NULL, 'O+', NULL, NULL, NULL, NULL, 1, NULL),
+(19, 34, '2016-11-28', '35.8', '1.43', NULL, 'B+', NULL, NULL, NULL, NULL, 1, NULL),
+(20, 36, '2016-11-15', '42.5', '1.45', NULL, 'A+', NULL, NULL, NULL, NULL, 1, NULL),
+(21, 38, '2016-11-23', '27.1', '1.29', NULL, 'B+', NULL, NULL, NULL, NULL, 1, NULL),
+(22, 39, '2016-11-23', '27.1', '1.29', NULL, 'A+', NULL, NULL, NULL, NULL, 1, NULL),
+(23, 40, '2016-11-09', '30.1', '1.30', NULL, 'O+', NULL, NULL, NULL, NULL, 1, NULL),
+(24, 41, '2016-11-22', '22.8', '1.23', NULL, 'O+', NULL, NULL, NULL, NULL, 1, NULL),
+(25, 42, '2016-12-01', '23', '1.20', NULL, 'B+', NULL, NULL, NULL, NULL, 1, NULL),
+(26, 44, '2016-11-21', '54.2', '1.52', NULL, 'B+', NULL, NULL, NULL, NULL, 1, NULL),
+(27, 45, '2016-12-15', '20.9', '1.20', NULL, 'O+', NULL, NULL, NULL, NULL, 1, NULL),
+(28, 46, '2017-01-16', '34.7', '1.40', NULL, 'A+', NULL, NULL, NULL, NULL, 1, NULL),
+(29, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL),
+(30, 10, '2016-11-09', '31.6', '1.40', NULL, 'O+', NULL, NULL, NULL, NULL, 1, NULL),
+(31, 47, '2017-01-16', '43.6', '1.72', NULL, 'O+', NULL, NULL, NULL, NULL, 1, NULL),
+(32, 50, '2017-01-14', '25', '1.28', NULL, 'O+', NULL, NULL, NULL, NULL, 1, NULL),
+(33, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL),
+(34, 51, '2017-01-16', '52.9', '1.63', NULL, 'O+', NULL, NULL, NULL, NULL, 1, NULL),
+(35, 55, '2017-01-16', '28', '1.33', NULL, 'O+', NULL, NULL, NULL, NULL, 1, NULL),
+(36, 56, '2017-01-17', '28.1', '1.34', NULL, 'O+', NULL, NULL, NULL, NULL, 1, NULL),
+(37, 57, '2017-01-17', '39.5', '1.38', NULL, 'A+', NULL, NULL, NULL, NULL, 1, NULL),
+(38, 59, '2017-01-16', '49.7', '1.53', NULL, 'O+', NULL, NULL, NULL, NULL, 1, NULL),
+(39, 60, '2017-01-17', '25.9', '1.20', NULL, 'O+', NULL, NULL, NULL, NULL, 1, NULL),
+(40, 61, '2017-01-20', '31.6', '1.36', NULL, 'A+', NULL, NULL, NULL, NULL, 1, NULL),
+(41, 5, '2017-01-17', '34.5', '1.35', NULL, 'O+', NULL, NULL, NULL, NULL, 1, NULL),
+(42, 62, '2016-11-15', '33.8', '1.34', NULL, 'O+', NULL, NULL, NULL, NULL, 1, NULL),
+(43, 63, '2016-11-17', '43.5', '1.51', NULL, 'A+', NULL, NULL, NULL, NULL, 1, NULL),
+(44, 64, '2016-11-17', '32.3', '1.34', NULL, 'O+', NULL, NULL, NULL, NULL, 1, NULL),
+(45, 65, '2016-11-17', '37.0', '1.39', NULL, 'O+', NULL, NULL, NULL, NULL, 1, NULL),
+(46, 3, '2017-01-25', '31.2', '1.35', NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL),
+(47, 48, '2017-01-25', '33.3', '1.40', NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL),
+(48, 58, '2017-01-26', '29', '1.33', NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL),
+(49, 17, '2017-01-26', '26.2', '1.26', NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL),
+(50, 68, '2017-01-19', '33.0', '1.34', NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL),
+(51, 69, '2017-01-26', '27', '1.27', NULL, 'O-', NULL, NULL, NULL, NULL, 1, NULL),
+(52, 70, '2017-01-24', '45.4', '1.46', NULL, 'O+', NULL, NULL, NULL, NULL, 1, NULL),
+(53, 71, '2017-01-25', '34.3', '1.41', NULL, 'B-', NULL, NULL, NULL, NULL, 1, NULL),
+(54, 35, '2017-01-16', 'PENDIENTE', 'PENDIENTE', NULL, 'B+', NULL, NULL, NULL, NULL, 1, NULL),
+(55, 74, '2017-01-24', NULL, NULL, NULL, 'O+', NULL, NULL, NULL, NULL, 1, NULL),
+(56, 75, '2017-01-27', '15.2', '0.98', NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL),
+(57, 76, '2017-01-30', '29.3', '1.30', NULL, 'A+', NULL, NULL, NULL, NULL, 1, NULL),
+(58, 72, '2017-01-30', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL),
+(59, 43, '2017-01-26', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL),
+(60, 18, '2017-01-30', '27.6', '1.33', NULL, 'O+', NULL, NULL, NULL, NULL, 1, NULL),
+(61, 78, '2017-01-31', '34.1', '1.22', NULL, 'O+', NULL, NULL, NULL, NULL, 1, NULL),
+(62, 52, '2017-02-06', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL),
+(63, 53, '2017-02-01', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL),
+(64, 66, '2017-01-20', '42', '1.45', NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL),
+(65, 79, '2017-02-01', '25', '1.32', NULL, 'A+', NULL, NULL, NULL, NULL, 1, NULL),
+(66, 13, '2017-02-01', '32', '1.34', NULL, 'O+', NULL, NULL, NULL, NULL, 1, NULL),
+(67, 16, '2017-01-30', '39.3', '1.34', NULL, 'O+', NULL, NULL, NULL, NULL, 1, NULL),
+(68, 82, '2017-02-01', NULL, NULL, NULL, 'A+', NULL, NULL, NULL, NULL, 1, NULL),
+(69, 83, '2017-01-19', '40', '1.36', NULL, 'O+', NULL, NULL, NULL, NULL, 1, NULL);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `grupo`
 --
 
-CREATE TABLE IF NOT EXISTS `grupo` (
+CREATE TABLE `grupo` (
   `idgrupo` int(11) NOT NULL,
   `nombre_grupo` varchar(50) DEFAULT NULL,
-  `limite_personas` int(11) DEFAULT NULL,
   `categoria_idcategoria` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `grupo`
 --
 
-INSERT INTO `grupo` (`idgrupo`, `nombre_grupo`, `limite_personas`, `categoria_idcategoria`) VALUES
-(1, 'ARQUEROS J1', 300, 1),
-(2, 'JUGADORES', NULL, 2);
+INSERT INTO `grupo` (`idgrupo`, `nombre_grupo`, `categoria_idcategoria`) VALUES
+(17, 'JUGADORES', 27),
+(18, 'JUGADORES', 26),
+(19, 'JUGADORES', 25),
+(20, 'JUGADORES', 22),
+(22, 'JUGADORES', 23),
+(23, 'JUGADORES', 15),
+(24, 'JUGADORES', 20),
+(25, 'JUGADORES', 19),
+(26, 'JUGADORES', 18),
+(27, 'JUGADORES', 16),
+(28, 'ARQUEROS', 28),
+(29, 'JUGADORES', 21),
+(30, 'AFILIADOS', 29),
+(31, 'JUGADORES', 17);
 
 -- --------------------------------------------------------
 
@@ -173,21 +498,64 @@ INSERT INTO `grupo` (`idgrupo`, `nombre_grupo`, `limite_personas`, `categoria_id
 -- Estructura de tabla para la tabla `img`
 --
 
-CREATE TABLE IF NOT EXISTS `img` (
+CREATE TABLE `img` (
   `idimg` int(11) NOT NULL,
   `nombre_img` varchar(45) NOT NULL,
   `ruta` varchar(45) NOT NULL,
   `afiliado_idafiliado` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `img`
 --
 
 INSERT INTO `img` (`idimg`, `nombre_img`, `ruta`, `afiliado_idafiliado`) VALUES
-(1, '1.jpg', './uploads/afiliados/', 1),
-(3, '21.png', './uploads/afiliados/', 2),
-(4, '3.jpg', './uploads/afiliados/', 3);
+(2, '11.jpg', './uploads/afiliados/', 1),
+(3, '46.JPG', './uploads/afiliados/', 46),
+(4, '51.JPG', './uploads/afiliados/', 51),
+(5, '37.JPG', './uploads/afiliados/', 37),
+(6, '21.JPG', './uploads/afiliados/', 21),
+(7, '30.JPG', './uploads/afiliados/', 30),
+(8, '2.JPG', './uploads/afiliados/', 2),
+(9, '36.JPG', './uploads/afiliados/', 36),
+(10, '101.JPG', './uploads/afiliados/', 10),
+(11, '47.JPG', './uploads/afiliados/', 47),
+(12, '44.JPG', './uploads/afiliados/', 44),
+(13, '4.JPG', './uploads/afiliados/', 4),
+(14, '48.JPG', './uploads/afiliados/', 48),
+(15, '15.JPG', './uploads/afiliados/', 15),
+(16, '40.JPG', './uploads/afiliados/', 40),
+(17, '43.JPG', './uploads/afiliados/', 43),
+(18, '50.JPG', './uploads/afiliados/', 50),
+(19, '38.JPG', './uploads/afiliados/', 38),
+(20, '39.JPG', './uploads/afiliados/', 39),
+(21, '42.JPG', './uploads/afiliados/', 42),
+(22, '52.JPG', './uploads/afiliados/', 52),
+(23, '53.JPG', './uploads/afiliados/', 53),
+(24, '54.JPG', './uploads/afiliados/', 54),
+(25, '7.JPG', './uploads/afiliados/', 7),
+(26, '8.JPG', './uploads/afiliados/', 8),
+(27, '55.JPG', './uploads/afiliados/', 55),
+(28, '56.JPG', './uploads/afiliados/', 56),
+(29, '57.JPG', './uploads/afiliados/', 57),
+(31, '171.JPG', './uploads/afiliados/', 17),
+(32, '58.JPG', './uploads/afiliados/', 58),
+(33, '65.JPG', './uploads/afiliados/', 65),
+(34, '3.JPG', './uploads/afiliados/', 3),
+(35, '69.JPG', './uploads/afiliados/', 69),
+(36, '5.JPG', './uploads/afiliados/', 5),
+(37, '45.JPG', './uploads/afiliados/', 45),
+(38, '68.JPG', './uploads/afiliados/', 68),
+(39, '59.JPG', './uploads/afiliados/', 59),
+(40, '35.JPG', './uploads/afiliados/', 35),
+(41, '24.JPG', './uploads/afiliados/', 24),
+(42, '28.JPG', './uploads/afiliados/', 28),
+(43, '12.JPG', './uploads/afiliados/', 12),
+(44, '62.JPG', './uploads/afiliados/', 62),
+(45, '70.JPG', './uploads/afiliados/', 70),
+(46, '19.JPG', './uploads/afiliados/', 19),
+(47, '74.JPG', './uploads/afiliados/', 74),
+(48, '76.JPG', './uploads/afiliados/', 76);
 
 -- --------------------------------------------------------
 
@@ -195,12 +563,14 @@ INSERT INTO `img` (`idimg`, `nombre_img`, `ruta`, `afiliado_idafiliado`) VALUES
 -- Estructura de tabla para la tabla `mensualidad`
 --
 
-CREATE TABLE IF NOT EXISTS `mensualidad` (
+CREATE TABLE `mensualidad` (
   `idmensualidad` int(11) NOT NULL,
   `valor_mensualidad` double DEFAULT NULL,
   `fecha_pago` date DEFAULT NULL,
   `mes` int(11) DEFAULT NULL,
   `year` int(11) DEFAULT NULL,
+  `observacion` varchar(2000) NOT NULL,
+  `recibo_idrecibo` int(11) NOT NULL,
   `afiliado_grupo_idafiliado_grupo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -208,10 +578,168 @@ CREATE TABLE IF NOT EXISTS `mensualidad` (
 -- Volcado de datos para la tabla `mensualidad`
 --
 
-INSERT INTO `mensualidad` (`idmensualidad`, `valor_mensualidad`, `fecha_pago`, `mes`, `year`, `afiliado_grupo_idafiliado_grupo`) VALUES
-(2, 25000, '2015-11-26', 1, 2015, 6),
-(3, 25000, '2015-11-26', 2, 2015, 6),
-(4, 25000, '2015-11-26', 3, 2015, 6);
+INSERT INTO `mensualidad` (`idmensualidad`, `valor_mensualidad`, `fecha_pago`, `mes`, `year`, `observacion`, `recibo_idrecibo`, `afiliado_grupo_idafiliado_grupo`) VALUES
+(1, 60000, '2017-01-29', 10, 2016, 'AFILIACION $30.000, CUOTA SOSTENIMIENTO $30.000', 1, 1),
+(2, 60000, '2017-01-29', 10, 2016, 'AFILIACION $30.000 Y SOSTENIIMENTO OCT 2016 $30.000', 2, 2),
+(3, 60000, '2017-01-29', 10, 2016, 'AFILIACION $30.000, SOSTENIMIENTO OCT 2016 $30.000', 3, 3),
+(4, 60000, '2017-01-29', 10, 2016, 'AFILIACION $30.000, SOSTENIMIENTO OCT 2016 $30.000', 4, 4),
+(5, 60000, '2017-01-29', 10, 2016, 'AFILIACION $30.000, CUOTA SOSTENIMIENTO OCT 2016 $30.000', 5, 5),
+(6, 60000, '2017-01-29', 10, 2016, 'AFILIACION $30.000, SOSTENIMIENTO OCT 2016 $30.000', 6, 6),
+(7, 60000, '2017-01-29', 10, 2016, 'AFILIACION $30.000, SOSTENIMIENTO OCT 2016 $30.000', 7, 7),
+(8, 60000, '2017-01-29', 10, 2016, 'AFILIACION $30.000, CUOTA SOSTENIMIENTO OCT 2016 $30.000', 8, 8),
+(9, 60000, '2017-01-29', 10, 2016, 'AFILIACION $30.000, SOSTENIMIENTO OCT 2016 $30.000', 9, 9),
+(10, 60000, '2017-01-29', 10, 2016, 'AFILIACION $30.000, SOSTENIMIENTO OCT 2016 $30.000', 10, 10),
+(11, 60000, '2017-01-29', 10, 2016, 'AFILIACION $30.000, SOSTENIMIENTO OCT 2016 $30.000', 11, 11),
+(12, 30000, '2017-02-03', 11, 2016, '', 12, 7),
+(13, 30000, '2017-02-03', 11, 2016, '', 13, 6),
+(14, 30000, '2017-02-03', 11, 2016, '', 14, 8),
+(15, 30000, '2017-02-03', 11, 2016, '', 15, 2),
+(16, 30000, '2017-02-03', 11, 2016, '', 16, 9),
+(17, 30000, '2017-02-03', 11, 2016, '', 17, 10),
+(18, 30000, '2017-02-03', 12, 2016, '', 18, 8),
+(19, 30000, '2017-02-03', 11, 2016, '', 19, 1),
+(20, 30000, '2017-02-03', 12, 2016, '', 20, 1),
+(21, 30000, '2017-02-03', 11, 2016, '', 21, 3),
+(22, 30000, '2017-02-03', 12, 2016, '', 22, 3),
+(23, 30000, '2017-02-03', 12, 2016, '', 23, 6),
+(24, 30000, '2017-02-03', 12, 2016, '', 24, 7),
+(25, 30000, '2017-02-03', 12, 2016, '', 25, 7),
+(26, 30000, '2017-02-03', 12, 2016, '', 26, 9),
+(27, 30000, '2017-02-03', 12, 2016, '', 27, 10),
+(28, 30000, '2017-02-03', 11, 2016, '', 28, 5),
+(30, 10000, '2017-02-05', 1, 2017, '', 30, 22),
+(31, 15000, '2017-02-05', 1, 2017, '', 31, 1),
+(32, 30000, '2017-02-05', 12, 2016, '', 32, 5),
+(33, 15000, '2017-02-05', 1, 2017, '', 33, 23),
+(34, 15000, '2017-02-05', 1, 2017, '', 34, 24),
+(35, 15000, '2017-02-05', 1, 2017, '', 35, 25),
+(36, 30000, '2017-02-05', 12, 2016, '', 36, 2),
+(37, 15000, '2017-02-05', 1, 2017, '', 37, 2),
+(38, 15000, '2017-02-05', 1, 2017, '', 38, 19),
+(39, 15000, '2017-02-05', 1, 2017, '', 39, 20),
+(40, 10000, '2017-02-05', 1, 2017, '', 40, 21),
+(41, 10000, '2017-02-05', 1, 2017, '', 41, 26),
+(42, 15000, '2017-02-05', 1, 2017, '', 42, 8),
+(43, 15000, '2017-02-05', 1, 2017, '', 43, 3),
+(44, 15000, '2017-02-05', 1, 2017, '', 44, 27),
+(45, 15000, '2017-02-05', 1, 2017, '', 45, 28),
+(46, 15000, '2017-02-05', 1, 2017, '', 46, 29),
+(47, 15000, '2017-02-05', 1, 2017, '', 47, 7),
+(48, 15000, '2017-02-05', 1, 2017, '', 48, 6),
+(49, 15000, '2017-02-05', 1, 2017, '', 49, 30),
+(50, 15000, '2017-02-05', 1, 2017, '', 50, 9),
+(51, 15000, '2017-02-05', 1, 2017, '', 51, 10),
+(52, 15000, '2017-02-05', 1, 2017, '', 52, 31),
+(53, 15000, '2017-02-05', 1, 2017, '', 53, 32),
+(54, 15000, '2017-02-05', 1, 2017, '', 54, 33),
+(55, 10000, '2017-02-05', 1, 2017, '', 55, 34),
+(56, 15000, '2017-02-05', 1, 2017, '', 56, 35),
+(57, 15000, '2017-02-10', 1, 2017, '', 57, 38),
+(58, 15000, '2017-02-10', 1, 2017, '', 58, 39),
+(59, 30000, '2017-02-10', 2, 2017, '', 59, 8),
+(60, 30000, '2017-02-10', 2, 2017, '', 60, 40),
+(61, 15000, '2017-02-10', 1, 2017, '', 61, 41),
+(62, 15000, '2017-02-10', 1, 2017, '', 62, 42),
+(63, 15000, '2017-02-10', 1, 2017, '', 63, 43),
+(64, 30000, '2017-02-10', 2, 2017, '', 64, 24),
+(65, 30000, '2017-02-10', 2, 2017, '', 65, 1),
+(66, 30000, '2017-02-10', 2, 2017, '', 66, 44),
+(67, 15000, '2017-02-10', 1, 2017, '', 67, 45),
+(68, 30000, '2017-02-10', 2, 2017, '', 68, 45),
+(69, 60000, '2017-02-10', 2, 2017, 'MES DE FEBRERO DE MANUEL Y JUAN MARZO', 69, 4),
+(70, 20000, '2017-02-10', 2, 2017, '', 70, 21),
+(71, 20000, '2017-02-10', 2, 2017, '', 71, 22);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `recibo`
+--
+
+CREATE TABLE `recibo` (
+  `idrecibo` int(11) NOT NULL,
+  `fecha_creacion` date NOT NULL,
+  `total_recibo` double NOT NULL,
+  `idafiliado` int(11) NOT NULL,
+  `idusuario` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `recibo`
+--
+
+INSERT INTO `recibo` (`idrecibo`, `fecha_creacion`, `total_recibo`, `idafiliado`, `idusuario`) VALUES
+(1, '2017-01-29', 60000, 5, 1),
+(2, '2017-01-29', 60000, 3, 1),
+(3, '2017-01-29', 60000, 2, 1),
+(4, '2017-01-29', 60000, 9, 1),
+(5, '2017-01-29', 60000, 10, 1),
+(6, '2017-01-29', 60000, 7, 1),
+(7, '2017-01-29', 60000, 8, 1),
+(8, '2017-01-29', 60000, 4, 1),
+(9, '2017-01-29', 60000, 1, 1),
+(10, '2017-01-29', 60000, 6, 1),
+(11, '2017-01-29', 60000, 19, 1),
+(12, '2017-02-03', 30000, 8, 1),
+(13, '2017-02-03', 30000, 7, 1),
+(14, '2017-02-03', 30000, 4, 1),
+(15, '2017-02-03', 30000, 3, 1),
+(16, '2017-02-03', 30000, 1, 1),
+(17, '2017-02-03', 30000, 6, 1),
+(18, '2017-02-03', 30000, 4, 1),
+(19, '2017-02-03', 30000, 5, 1),
+(20, '2017-02-03', 30000, 5, 1),
+(21, '2017-02-03', 30000, 2, 1),
+(22, '2017-02-03', 30000, 2, 1),
+(23, '2017-02-03', 30000, 7, 1),
+(24, '2017-02-03', 30000, 8, 1),
+(25, '2017-02-03', 30000, 8, 1),
+(26, '2017-02-03', 30000, 1, 1),
+(27, '2017-02-03', 30000, 6, 1),
+(28, '2017-02-03', 30000, 10, 1),
+(29, '2017-02-05', 15000, 58, 1),
+(30, '2017-02-05', 10000, 17, 1),
+(31, '2017-02-05', 15000, 5, 1),
+(32, '2017-02-05', 30000, 10, 1),
+(33, '2017-02-05', 15000, 72, 1),
+(34, '2017-02-05', 15000, 44, 1),
+(35, '2017-02-05', 15000, 60, 1),
+(36, '2017-02-05', 30000, 3, 1),
+(37, '2017-02-05', 15000, 3, 1),
+(38, '2017-02-05', 15000, 59, 1),
+(39, '2017-02-05', 15000, 12, 1),
+(40, '2017-02-05', 10000, 58, 1),
+(41, '2017-02-05', 10000, 63, 1),
+(42, '2017-02-05', 15000, 4, 1),
+(43, '2017-02-05', 15000, 2, 1),
+(44, '2017-02-05', 15000, 67, 1),
+(45, '2017-02-05', 15000, 56, 1),
+(46, '2017-02-05', 15000, 57, 1),
+(47, '2017-02-05', 15000, 8, 1),
+(48, '2017-02-05', 15000, 7, 1),
+(49, '2017-02-05', 15000, 37, 1),
+(50, '2017-02-05', 15000, 1, 1),
+(51, '2017-02-05', 15000, 6, 1),
+(52, '2017-02-05', 15000, 39, 1),
+(53, '2017-02-05', 15000, 52, 1),
+(54, '2017-02-05', 15000, 38, 1),
+(55, '2017-02-05', 10000, 76, 1),
+(56, '2017-02-05', 15000, 46, 1),
+(57, '2017-02-10', 15000, 55, 1),
+(58, '2017-02-10', 15000, 43, 1),
+(59, '2017-02-10', 30000, 4, 1),
+(60, '2017-02-10', 30000, 16, 1),
+(61, '2017-02-10', 15000, 18, 1),
+(62, '2017-02-10', 15000, 53, 1),
+(63, '2017-02-10', 15000, 48, 1),
+(64, '2017-02-10', 30000, 44, 1),
+(65, '2017-02-10', 30000, 5, 1),
+(66, '2017-02-10', 30000, 85, 1),
+(67, '2017-02-10', 15000, 31, 1),
+(68, '2017-02-10', 30000, 31, 1),
+(69, '2017-02-10', 60000, 9, 1),
+(70, '2017-02-10', 20000, 58, 1),
+(71, '2017-02-10', 20000, 17, 1);
 
 -- --------------------------------------------------------
 
@@ -219,20 +747,21 @@ INSERT INTO `mensualidad` (`idmensualidad`, `valor_mensualidad`, `fecha_pago`, `
 -- Estructura de tabla para la tabla `usuario`
 --
 
-CREATE TABLE IF NOT EXISTS `usuario` (
+CREATE TABLE `usuario` (
   `idusuario` int(11) NOT NULL,
   `usuario` varchar(45) NOT NULL,
   `password` varchar(150) DEFAULT NULL,
   `mail` varchar(100) DEFAULT NULL,
   `tipo` varchar(45) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
 INSERT INTO `usuario` (`idusuario`, `usuario`, `password`, `mail`, `tipo`) VALUES
-(1, '00000', 'MPNO7uUQ+f5e4ifOHgUPT70F/pQNSHC6GwyrDLKdwbt9gpok6TyHvQV+mcikeYWmMY2O7LN60siaaMQwdsaYAg==', 'yeiman_4@hotmail.com', 'AdminSys');
+(1, '00000', 'dFzyNlbJTDKit2N80KPhL6/pWr5jNGVg0M4w+cmQnamh+Nwn0jS2IxXElF2lcr+SsuHceS3E7fp6/nSdfCyuZw==', 'correo@hotmail.com', 'Presidente'),
+(4, 'TESORERO', 'wybpzMl2jo7xx7B7+/XIxcDNZL9S8j3G/+bcZ9Aykw5sDMEBMGxoasgkuBQ+FvaSmiqJLVzG8e7vBubapTt5Gw==', NULL, 'Tesorero');
 
 --
 -- Índices para tablas volcadas
@@ -242,19 +771,24 @@ INSERT INTO `usuario` (`idusuario`, `usuario`, `password`, `mail`, `tipo`) VALUE
 -- Indices de la tabla `afiliado`
 --
 ALTER TABLE `afiliado`
-  ADD PRIMARY KEY (`idafiliado`), ADD UNIQUE KEY `identificacion_UNIQUE` (`identificacion`);
+  ADD PRIMARY KEY (`idafiliado`),
+  ADD UNIQUE KEY `identificacion_UNIQUE` (`identificacion`);
 
 --
 -- Indices de la tabla `afiliado_grupo`
 --
 ALTER TABLE `afiliado_grupo`
-  ADD PRIMARY KEY (`idafiliado_grupo`), ADD KEY `fk_afiliado_grupo_afiliado1_idx` (`afiliado_idafiliado`), ADD KEY `fk_afiliado_grupo_grupo1_idx` (`grupo_idgrupo`);
+  ADD PRIMARY KEY (`idafiliado_grupo`),
+  ADD KEY `fk_afiliado_grupo_afiliado1_idx` (`afiliado_idafiliado`),
+  ADD KEY `fk_afiliado_grupo_grupo1_idx` (`grupo_idgrupo`);
 
 --
 -- Indices de la tabla `afiliado_has_entidad`
 --
 ALTER TABLE `afiliado_has_entidad`
-  ADD PRIMARY KEY (`idafiliado_has_entidad`), ADD KEY `fk_afiliado_has_entidad_entidad1_idx` (`entidad_identidad`), ADD KEY `fk_afiliado_has_entidad_afiliado_idx` (`afiliado_idafiliado`);
+  ADD PRIMARY KEY (`idafiliado_has_entidad`),
+  ADD KEY `fk_afiliado_has_entidad_entidad1_idx` (`entidad_identidad`),
+  ADD KEY `fk_afiliado_has_entidad_afiliado_idx` (`afiliado_idafiliado`);
 
 --
 -- Indices de la tabla `categoria`
@@ -266,7 +800,8 @@ ALTER TABLE `categoria`
 -- Indices de la tabla `contacto`
 --
 ALTER TABLE `contacto`
-  ADD PRIMARY KEY (`idcontacto`,`afiliado_idafiliado`), ADD KEY `fk_contacto_afiliado1_idx` (`afiliado_idafiliado`);
+  ADD PRIMARY KEY (`idcontacto`,`afiliado_idafiliado`),
+  ADD KEY `fk_contacto_afiliado1_idx` (`afiliado_idafiliado`);
 
 --
 -- Indices de la tabla `entidad`
@@ -275,22 +810,41 @@ ALTER TABLE `entidad`
   ADD PRIMARY KEY (`identidad`);
 
 --
+-- Indices de la tabla `examen_medico`
+--
+ALTER TABLE `examen_medico`
+  ADD PRIMARY KEY (`idexamen_medico`),
+  ADD KEY `afiliado_idafiliado` (`afiliado_idafiliado`);
+
+--
 -- Indices de la tabla `grupo`
 --
 ALTER TABLE `grupo`
-  ADD PRIMARY KEY (`idgrupo`), ADD KEY `fk_grupo_categoria1_idx` (`categoria_idcategoria`);
+  ADD PRIMARY KEY (`idgrupo`),
+  ADD KEY `fk_grupo_categoria1_idx` (`categoria_idcategoria`);
 
 --
 -- Indices de la tabla `img`
 --
 ALTER TABLE `img`
-  ADD PRIMARY KEY (`idimg`), ADD KEY `fk_img_afiliado1_idx` (`afiliado_idafiliado`);
+  ADD PRIMARY KEY (`idimg`),
+  ADD KEY `fk_img_afiliado1_idx` (`afiliado_idafiliado`);
 
 --
 -- Indices de la tabla `mensualidad`
 --
 ALTER TABLE `mensualidad`
-  ADD PRIMARY KEY (`idmensualidad`), ADD KEY `fk_mensualidad_afiliado_grupo1_idx` (`afiliado_grupo_idafiliado_grupo`);
+  ADD PRIMARY KEY (`idmensualidad`),
+  ADD KEY `fk_mensualidad_afiliado_grupo1_idx` (`afiliado_grupo_idafiliado_grupo`),
+  ADD KEY `recibo_idrecibo` (`recibo_idrecibo`);
+
+--
+-- Indices de la tabla `recibo`
+--
+ALTER TABLE `recibo`
+  ADD PRIMARY KEY (`idrecibo`),
+  ADD KEY `idusuario` (`idusuario`),
+  ADD KEY `idafiliado` (`idafiliado`);
 
 --
 -- Indices de la tabla `usuario`
@@ -306,12 +860,12 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `afiliado`
 --
 ALTER TABLE `afiliado`
-  MODIFY `idafiliado` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `idafiliado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 --
 -- AUTO_INCREMENT de la tabla `afiliado_grupo`
 --
 ALTER TABLE `afiliado_grupo`
-  MODIFY `idafiliado_grupo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+  MODIFY `idafiliado_grupo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 --
 -- AUTO_INCREMENT de la tabla `afiliado_has_entidad`
 --
@@ -321,32 +875,47 @@ ALTER TABLE `afiliado_has_entidad`
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `idcategoria` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `idcategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT de la tabla `contacto`
 --
 ALTER TABLE `contacto`
-  MODIFY `idcontacto` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `idcontacto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
 --
 -- AUTO_INCREMENT de la tabla `entidad`
 --
 ALTER TABLE `entidad`
   MODIFY `identidad` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT de la tabla `examen_medico`
+--
+ALTER TABLE `examen_medico`
+  MODIFY `idexamen_medico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+--
 -- AUTO_INCREMENT de la tabla `grupo`
 --
 ALTER TABLE `grupo`
-  MODIFY `idgrupo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `idgrupo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 --
 -- AUTO_INCREMENT de la tabla `img`
 --
 ALTER TABLE `img`
-  MODIFY `idimg` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `idimg` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+--
+-- AUTO_INCREMENT de la tabla `mensualidad`
+--
+ALTER TABLE `mensualidad`
+  MODIFY `idmensualidad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+--
+-- AUTO_INCREMENT de la tabla `recibo`
+--
+ALTER TABLE `recibo`
+  MODIFY `idrecibo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- Restricciones para tablas volcadas
 --
@@ -355,39 +924,45 @@ ALTER TABLE `usuario`
 -- Filtros para la tabla `afiliado_grupo`
 --
 ALTER TABLE `afiliado_grupo`
-ADD CONSTRAINT `fk_afiliado_grupo_afiliado1` FOREIGN KEY (`afiliado_idafiliado`) REFERENCES `afiliado` (`idafiliado`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-ADD CONSTRAINT `fk_afiliado_grupo_grupo1` FOREIGN KEY (`grupo_idgrupo`) REFERENCES `grupo` (`idgrupo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_afiliado_grupo_afiliado1` FOREIGN KEY (`afiliado_idafiliado`) REFERENCES `afiliado` (`idafiliado`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_afiliado_grupo_grupo1` FOREIGN KEY (`grupo_idgrupo`) REFERENCES `grupo` (`idgrupo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `afiliado_has_entidad`
 --
 ALTER TABLE `afiliado_has_entidad`
-ADD CONSTRAINT `fk_afiliado_has_entidad_afiliado` FOREIGN KEY (`afiliado_idafiliado`) REFERENCES `afiliado` (`idafiliado`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-ADD CONSTRAINT `fk_afiliado_has_entidad_entidad1` FOREIGN KEY (`entidad_identidad`) REFERENCES `entidad` (`identidad`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_afiliado_has_entidad_afiliado` FOREIGN KEY (`afiliado_idafiliado`) REFERENCES `afiliado` (`idafiliado`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_afiliado_has_entidad_entidad1` FOREIGN KEY (`entidad_identidad`) REFERENCES `entidad` (`identidad`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `contacto`
 --
 ALTER TABLE `contacto`
-ADD CONSTRAINT `fk_contacto_afiliado1` FOREIGN KEY (`afiliado_idafiliado`) REFERENCES `afiliado` (`idafiliado`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_contacto_afiliado1` FOREIGN KEY (`afiliado_idafiliado`) REFERENCES `afiliado` (`idafiliado`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `examen_medico`
+--
+ALTER TABLE `examen_medico`
+  ADD CONSTRAINT `examen_medico_ibfk_1` FOREIGN KEY (`afiliado_idafiliado`) REFERENCES `afiliado` (`idafiliado`);
 
 --
 -- Filtros para la tabla `grupo`
 --
 ALTER TABLE `grupo`
-ADD CONSTRAINT `fk_grupo_categoria1` FOREIGN KEY (`categoria_idcategoria`) REFERENCES `categoria` (`idcategoria`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_grupo_categoria1` FOREIGN KEY (`categoria_idcategoria`) REFERENCES `categoria` (`idcategoria`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `img`
 --
 ALTER TABLE `img`
-ADD CONSTRAINT `fk_img_afiliado1` FOREIGN KEY (`afiliado_idafiliado`) REFERENCES `afiliado` (`idafiliado`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_img_afiliado1` FOREIGN KEY (`afiliado_idafiliado`) REFERENCES `afiliado` (`idafiliado`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `mensualidad`
 --
 ALTER TABLE `mensualidad`
-ADD CONSTRAINT `fk_mensualidad_afiliado_grupo1` FOREIGN KEY (`afiliado_grupo_idafiliado_grupo`) REFERENCES `afiliado_grupo` (`idafiliado_grupo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_mensualidad_afiliado_grupo1` FOREIGN KEY (`afiliado_grupo_idafiliado_grupo`) REFERENCES `afiliado_grupo` (`idafiliado_grupo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -1,4 +1,4 @@
-	<script src='<?= base_url('assets/js/pdfmake/build/pdfmake.min.js') ?>'></script>
+﻿	<script src='<?= base_url('assets/js/pdfmake/build/pdfmake.min.js') ?>'></script>
 	<script src='<?= base_url('assets/js/pdfmake/build/vfs_fonts.js')?>'></script>
 
 	<section ng-app="pagos" ng-controller="add" class="medium-11 div-center panel">
@@ -262,7 +262,7 @@
 							        image: '<?= 'data: '.mime_content_type('./assets/img/escudo.png').' ;base64, '.base64_encode( file_get_contents('./assets/img/escudo.png') )  ?>',
 							        width: 60
 								},
-								{ text:'ALIANZA NORTE FC', alignment: 'center',  fontSize: 14},
+								{ text:'CLUB DEPORTIVO ALIANZA NORTE FC', alignment: 'center',  fontSize: 14},
 								{ text:' ',  fontSize: 10},
 								{ text:'RECIBO DE PAGO: No. '+$scope.idrecibo,  fontSize: 10},
 								{ text:'AFILIADO A LA ESCUELA: '+$scope.afiliado.nombres+" "+$scope.afiliado.apellidos+"    Identificacion: "+$scope.afiliado.identificacion,  fontSize: 11},
@@ -297,7 +297,7 @@
 							}
 						}
 						for (var i = 0; i < $scope.pagar.length; i++) {
-							dd.content[7].table.body.push(["Pago de mensualidad", $scope.pagar[i].nombre, $scope.pagar[i].year, $scope.mensualidad]);
+							dd.content[7].table.body.push(["Pago de mensualidad", $scope.pagar[i].nombre, $scope.pagar[i].year, "$ "+$scope.mensualidad]);
 						};
 						dd.content[7].table.body.push(["", "", "TOTAL", "$ "+$scope.valor_total]);
 						//pdfMake.createPdf(dd).open();

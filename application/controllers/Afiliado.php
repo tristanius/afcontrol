@@ -187,13 +187,13 @@ class Afiliado extends CI_Controller {
 			$crud->set_table($table);
 			$crud->set_subject($table);
 			$crud->set_subject('Ficha medica');
-			$crud->set_relation("afiliado_idafiliado","afiliado","{nombres} {apellidos}");
+			$crud->set_relation("afiliado_idafiliado","afiliado",'idafiliado');
 			
 			$crud->where('afiliado_idafiliado',$id);
 			
 			$crud->callback_add_field('afiliado_idafiliado', function(){
 				$id = $this->uri->segment(3);
-				return '<input type="text" maxlength="10" value="'.$id.'" name="afiliado_idafiliado" style="width:6ex" disabled>';
+				return '<input type="text" maxlength="10" value="'.$id.'" name="afiliado_idafiliado" id="afiliado_idafiliado" style="width:6ex" >';
 			});
 			$crud->callback_edit_field('afiliado_idafiliado',array($this,'edit_field_callback'));
 
@@ -207,7 +207,7 @@ class Afiliado extends CI_Controller {
 	} 
 	function edit_field_callback($value, $primary_key)
 	{
-		return '<input type="text" maxlength="10" value="'.$value.'" name="afiliado_idafiliado" style="width:6ex" disabled>';
+		return '<input type="text" maxlength="10" value="'.$value.'" name="afiliado_idafiliado" id="afiliado_idafiliado" style="width:6ex" >';
 	}
 
 

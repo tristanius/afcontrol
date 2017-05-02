@@ -30,6 +30,7 @@
 								<option value="Registro Civil">R.C: Registro civíl</option>
 								<option value="T.I.">T.I. Tarjeta de identidad</option>
 								<option value="C.C.">C.C: Cedula</option>
+								<option value="Otro">Otro</option>
 							</select>
 						</div>
 

@@ -76,9 +76,8 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
-	'username' => 'alianzan_root',
-	'password' => '1.afcontrol',
-	'database' => 'alianzan_afcontrol',
+	'username' => 'root',
+	'password' => '', 'database' => 'afcontrol',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

@@ -33,6 +33,7 @@
 								<option value="T.I." <?= $per->tipo_identificacion =="T.I."?"selected":""; ?>>T.I. Tarjeta de identidad</option>
 								<option value="C.C." <?= $per->tipo_identificacion =="C.C."?"selected":""; ?> >C.C: Cedula</option>
 								<option value="Registro Civil" <?= $per->tipo_identificacion =="Registro Civil"?"selected":""; ?> >Registro civíl</option>
+								<option value="Otro" <?= $per->tipo_identificacion =="Otro"?"selected":""; ?> >Otro</option>
 							</select>
 						</div>
 

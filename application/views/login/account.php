@@ -1,4 +1,4 @@
-
+﻿
 	<!-- cuenta -->
 
 	<style type="text/css">
@@ -11,7 +11,7 @@
 	<div class="colummns">
 		<fieldset id="gestiones" class="medium-10" style="background: #FFF; margin:0 auto">
 			<div class="text-center">
-				<h4 class="text-red medium-10 div-center padding1ex "> CLUB DEPORTIVO: ALIANZA NORTE F.C. </h4>
+				<h4 class="text-red medium-10 div-center padding1ex "> CLUB DEPORTIVO ALIANZA NORTE F.C. </h4>
 				<p class="text-center" style="padding:2px; border:1px solid #2199E8; color:#2199E8">Control de afiliación y pagos</p>
 			</div>
 			<hr>
