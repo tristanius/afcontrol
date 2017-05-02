@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | environments.
 |
 */
-$config['base_url'] = 'http://localhost/afcontrol';
+$config['base_url'] = 'http://local:8080/afcontrol';
 //$config['base_url'] = 'http://localhost/afcontrol';
 
 /*
