@@ -1,0 +1,15 @@
+table.sticked{
+	display: block;
+}
+table.sticked thead{
+	display: table;
+	width: 100%;
+	background: #000;
+	color: #FFF;
+	position: sticky;
+	top: 0px;
+}
+table.sticked tbody{
+	display: table;
+	width: 100%;
+}
