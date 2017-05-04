@@ -1,15 +1,17 @@
 table.sticked{
+	border-collapse: collapse;
 	display: block;
 }
+table.sticked td, table.sticked th{
+	display: table-cell;
+	border: 1px solid #999;
+}
 table.sticked thead{
-	display: table;
-	width: 100%;
-	background: #000;
-	color: #FFF;
 	position: sticky;
 	top: 0px;
+	z-index: 5;
 }
-table.sticked tbody{
-	display: table;
-	width: 100%;
+thead, tbody, tfoot {
+  display: table;
+  width: 100%;
 }
