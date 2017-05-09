@@ -49,3 +49,4 @@ Temporary Items
 # mydir
 application/config/database.php
 application/config/config.php
+sess

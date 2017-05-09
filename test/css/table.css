@@ -1,6 +1,7 @@
 table.sticked{
 	border-collapse: collapse;
 	display: block;
+  	width: 100%;
 }
 table.sticked td, table.sticked th{
 	display: table-cell;
@@ -10,6 +11,9 @@ table.sticked thead{
 	position: sticky;
 	top: 0px;
 	z-index: 5;
+}
+table.sticked tbody	{
+	position: relative;
 }
 thead, tbody, tfoot {
   display: table;
