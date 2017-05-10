@@ -4,16 +4,12 @@ table.sticked{
   	width: 100%;
 }
 table.sticked td, table.sticked th{
-	display: table-cell;
 	border: 1px solid #999;
 }
 table.sticked thead{
 	position: sticky;
 	top: 0px;
 	z-index: 5;
-}
-table.sticked tbody	{
-	position: relative;
 }
 thead, tbody, tfoot {
   display: table;
