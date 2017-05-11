@@ -1,18 +1,46 @@
-nav#navegacion{
-	font-size: 2rem;
+body{
+	background-image: url('../../assets/img/color-bg.png');
+	background-repeat: no-repeat;
+    background-attachment: fixed;;
 }
-footer{
-	text-align: center;
+.rounded{
+	border-radius: 10px;
 }
-nav#navegacion, footer{
-	background-color: #000;
-	color:#FFF;
+.columns, .column{
+	padding: 0px;
 }
-section#body-content{
-
+.primary-color{
+	background-color: #1779BA;
 }
-section#body-content section#menu{
-	border:1px solid #999;
+.secondary-color{
+	background-color: #767676;
+	color: #FFF;
 }
-section#body-content section#content{
+.success-color{
+	background-color: #3ADB76;
+}
+.warning-color{
+	background-color: #FFAE00;
+}
+.alert-color{
+	background-color: #CC4B37;
+}
+.cyan-color{
+	background: #6BEFEB;
+	color: #111;
+}
+.blue2-color{
+	background: #134E82;
+	color: #FFF;
+}
+.blue2-color:hover{
+	background: #3D82BF;
+}
+.skin1, a.skin1{
+	background-image: url('../../assets/img/skin1.jpg');
+	color: #FFF;
+}
+.skin2, a.skin2{
+	background-image: url('../../assets/img/skin2.jpg');
+	color: #FFF;
 }
