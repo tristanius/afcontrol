@@ -10,3 +10,8 @@
 #menu ul li a:hover{
 	font-size: 1.1rem;
 }
+
+/* form.css */
+.padding1ex{
+	padding: 1ex;
+}

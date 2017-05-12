@@ -6,6 +6,9 @@ body{
 .rounded{
 	border-radius: 10px;
 }
+h3, h4, h5, h6{
+	margin: 0;
+}
 .columns, .column{
 	padding: 0px;
 }
@@ -38,9 +41,7 @@ body{
 }
 .skin1, a.skin1{
 	background-image: url('../../assets/img/skin1.jpg');
-	color: #FFF;
 }
 .skin2, a.skin2{
 	background-image: url('../../assets/img/skin2.jpg');
-	color: #FFF;
 }
