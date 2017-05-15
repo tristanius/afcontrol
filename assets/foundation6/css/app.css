@@ -1,44 +1,55 @@
-body{
-	background-image: url('../../img/color-bg.png');
+/* -------------------------------------------------------- */
+/* Elementos de la app */
+
+/* nav */
+nav {
+	/*background-color: #FFF112;*/
+	background: #000;
+}
+
+nav ul{
+	overflow: hidden;
+}
+nav ul li a{
+	color: #FFF;
+}
+
+
+/* ----------- */
+#content #panel{
+	min-height: 100%;
+}
+#content #panel > div{
+	border: 1px solid #777;
+}
+
+/* princpal boxes */
+#menu, #panel{
+	padding: 1ex;
+}
+
+#panel > section, #panel article{
+	padding: 1ex;
+}
+
+/* -------------------------------------------------------- */
+/* utils */
+.nodisplay{
+	display: none;
+}
+
+.text-white{
+	color:#FFF;
+}
+
+/* -------------------------------------------------------- */
+/* Manejo de backgrounds */
+.skin1, a.skin1, .skin2, a.skin2{
 	background-repeat: no-repeat;
-    background-attachment: fixed;;
+	background-size: 100% 100%;
+    background-attachment: fixed;
 }
-.rounded{
-	border-radius: 10px;
-}
-h3, h4, h5, h6{
-	margin: 0;
-}
-.columns, .column{
-	padding: 0px;
-}
-.primary-color{
-	background-color: #1779BA;
-}
-.secondary-color{
-	background-color: #767676;
-	color: #FFF;
-}
-.success-color{
-	background-color: #3ADB76;
-}
-.warning-color{
-	background-color: #FFAE00;
-}
-.alert-color{
-	background-color: #CC4B37;
-}
-.cyan-color{
-	background: #6BEFEB;
-	color: #111;
-}
-.blue2-color{
-	background: #134E82;
-	color: #FFF;
-}
-.blue2-color:hover{
-	background: #3D82BF;
-}
+
 .skin1, a.skin1{
 	background-image: url('../../img/skin1.jpg');
 }

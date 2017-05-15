@@ -11,8 +11,13 @@ class Test extends CI_Controller {
 	{
 		$test = $this->load->view('test/form', array(), TRUE);
 		$html = $this->load->view('init/panel', array('view'=>$test), TRUE);
-		$this->load->view('init/principal', array('titulo'=>'panel principal', 'html'=>$html));
+		$this->vw('Panel Principal', $html);
 
+	}
+
+	public function vw($titulo='', $html='')
+	{
+		$this->load->view('init/principal', array('titulo'=>$titulo, 'html'=>$html));
 	}
 
 }

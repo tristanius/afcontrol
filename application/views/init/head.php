@@ -5,6 +5,8 @@
 	<title><?= "Afcontrol - ".$titulo ?></title>	
     <link rel="stylesheet" href="<?= base_url('assets/foundation6/css/foundation.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/foundation6/css/app.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/foundation6/css/box.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/foundation6/css/pestanas.css') ?>">
     <link rel="stylesheet" href="<?= base_url('assets/foundation6/css/menu.css') ?>">
 	<title></title>
 </head>

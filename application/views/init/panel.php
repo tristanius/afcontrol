@@ -1,21 +1,19 @@
 	<div>
 
-		<?php $this->load->view('init/header'); ?>
+		<?php $this->load->view('init/nav'); ?>
 		
-		<section id="content" class="expanded row skin2">
-			
+		<section id="content" class="expanded row">
 			<?php $this->load->view('init/menu'); ?>
 
-			<div class="columns large-10">
-				<section>
-
+			<div id="panel" class="columns large-10" >
+				<div>
 					<?= $view ?>
-					
-				</section>
-				
-				<?php $this->load->view('init/footer'); ?>
+				</div>
 			</div>
-
 		</section>
+
+
+				
+		<?php $this->load->view('init/footer'); ?>
 
 	</div>
