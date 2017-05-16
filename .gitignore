@@ -46,6 +46,7 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-# mydir
+# mydirs
+sess
 application/config/config.php
 application/config/database.php
