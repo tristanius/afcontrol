@@ -17,7 +17,7 @@
     		</ul>
 	  	</li>
 	  	<li>
-	  		<a href="#">Consultas</a>
+	  		<a href="#"> <i class="fa fa-table"></i> Consultas</a>
     		<ul class="menu vertical nested">
       			<li><a class="" href="#">- Estados de cuenta</a></li>
       			<li><a class="" href="#">- Afiliados</a></li>
@@ -26,10 +26,13 @@
     		</ul>
 	  	</li>
 	  	<li>
-	  		<a href="#">Configuración</a>
+	  		<a href="#"> <i class="fa fa-wrench"></i> Configuración</a>
 	  	</li>
 	  	<li>
-	  		<a href="#">Sesión</a>
+	  		<a href="#"> 
+	  			<i class="fa fa-user-circle"></i> 
+	  			Sesión
+	  		</a>
 	  	</li>
 	</ul>
 </div>

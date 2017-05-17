@@ -1,4 +1,4 @@
-<div style="background: #FFF;">
+<div>
 	<div class="expanded row" style="border: 1px solid #999; background: #CCC;">
 		<div class="columns medium-1"></div>
 		<div class="columns medium-11" >
@@ -37,6 +37,8 @@
 					</div>
 				</div>
 				
+	  			<i class="fa fa-cog fa-spin fa-lg fa-fw"></i> 
+	  			<i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i>
 			</fieldset>
 		</form>
 		<div class="columns medium-12">
