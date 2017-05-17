@@ -4,14 +4,13 @@
 /* nav */
 nav {
 	/*background-color: #FFF112;*/
-	background: #000;
+	border: 1px solid #EEE;
 }
 
 nav ul{
 	overflow: hidden;
 }
 nav ul li a{
-	color: #FFF;
 }
 
 
