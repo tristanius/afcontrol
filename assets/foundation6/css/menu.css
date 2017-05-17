@@ -2,10 +2,9 @@
 }
 #menu{
 	/*background: #153554;*/
-	background: #FFF;
 }
 #menu ul{
-	border: 1px solid #777;
+	border: 1px solid #AAA;
 	border-radius: 5px;
 }
 #menu ul li a{

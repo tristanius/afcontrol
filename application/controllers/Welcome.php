@@ -22,6 +22,13 @@ class Welcome extends CI_Controller {
 		$this->vw('Panel Principal', $html);
 	}
 
+	public function test()
+	{
+		$vista = $this->load->view('test/form', array(), TRUE);
+		$html = $this->load->view('init/panel', array('view'=>$vista), TRUE);
+		$this->vw('Panel Principal', $html);
+	}
+
 	public function plantilla1($titulo='', $content='')
 	{
 		$test = $this->load->view(
