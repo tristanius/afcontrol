@@ -3,10 +3,13 @@
 #menu{
 	/*background: #153554;*/
 }
-#menu ul{
+#menu > ul{
 	background: #FFF;
 	border-radius: 5px;
 	box-shadow: 0px 0px 6px #000;
+}
+#menu ul ul{
+	background: #F0F0F0;
 }
 #menu ul li a{
 	/*color: #FFF;*/

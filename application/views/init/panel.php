@@ -1,6 +1,8 @@
 	<div>
 
 		<?php $this->load->view('init/nav'); ?>
+
+		<br>
 		
 		<section id="content" class="expanded row">
 			<?php $this->load->view('init/menu'); ?>
