@@ -1,9 +1,9 @@
 <header class="expanded row">
-	<div class=" columns small-1" style="padding: 0ex 1ex 0ex 1ex;">
-		<img src="<?= base_url('assets/img/escudo.png') ?>" alt="logo">
-	</div>
-	<nav class="columns small-11 end" style="margin-top: 2ex;">
+	<nav class="columns small-12 end">
 		<ul class="menu align-left">
+			<li>
+				<img src="<?= base_url('assets/img/escudo.png') ?>" alt="logo" width="60">
+			</li>
 		  	<li>
 		  		<a href="#" id="toggleMenu">
 		  			<i class="fa fa-bars"></i>
