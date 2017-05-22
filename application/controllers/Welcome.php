@@ -18,7 +18,8 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
-		$html = $this->plantilla1('Panel principal de control de afiliado App.', 'x');
+		$v = $this->load->view('init/entrada', array(), TRUE);
+		$html = $this->plantilla1('Panel principal de control de afiliado App.', $v);
 		$this->vw('Panel Principal', $html);
 	}
 
