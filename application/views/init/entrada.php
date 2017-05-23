@@ -10,9 +10,15 @@
 		<div class="callout" style="margin:5px;">
 			<b>Afiliados:</b>
 			<div class="row">
-				<a href="" class="columns white-bg small-3 touch-btn"> <i class="fa fa-user-plus"></i> <p>Add. afiliado</p></a>
-				<a href="" class="columns white-bg small-3 touch-btn"> <i class="fa fa-eye"></i> <p>Ir a afiliado</p></a>
-				<a href="" class="columns white-bg small-3 touch-btn end"> <i class="fa fa-users"></i> <p>Listar afiliados</p></a>
+				<a href="" class="columns white-bg small-3 touch-btn"> 
+					<i class="fa fa-user-plus"></i> <p>Add. afiliado</p>
+				</a>
+				<a href="" class="columns white-bg small-3 touch-btn"> 
+					<i class="fa fa-eye"></i> <p>Ir a afiliado</p>
+				</a>
+				<a href="" class="columns white-bg small-3 touch-btn end"> 
+					<i class="fa fa-users"></i> <p>Listar afiliados</p>
+				</a>
 			</div>
 		</div>			
 	</section>
@@ -21,14 +27,20 @@
 		<div class="callout" style="margin:5px;">
 			<b>Pagos:</b>
 			<div class="row">
-				<a href="" class="columns white-bg small-3 touch-btn"> <i class="fa fa-money"></i> <p>Pagos no viculantes</p></a>
-				<a href="" class="columns white-bg small-3 touch-btn"> <i class="fa fa-dollar"></i> <p>Pagos por afiliado</p></a>
-				<a href="" class="columns white-bg small-3 touch-btn end"> <i class="fa fa-list-alt "></i> <p>Listar pagos (todo)</p></a>
+				<a href="" class="columns white-bg small-3 touch-btn"> 
+					<i class="fa fa-money"></i> <p>Pagos no viculantes</p>
+				</a>
+				<a href="" class="columns white-bg small-3 touch-btn"> 
+					<i class="fa fa-dollar"></i> <p>Pagos por afiliado</p>
+				</a>
+				<a href="" class="columns white-bg small-3 touch-btn end"> 
+					<i class="fa fa-list-alt "></i> <p>Listar pagos (todo)</p>
+				</a>
 			</div>
 		</div>
 	</section>
 
-	<section class="columns medium-6 end">
+	<section class="columns medium-6">
 		<div class="callout" style="margin:5px;">
 			<b>Consultas:</b>
 			<div class="row">
