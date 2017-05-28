@@ -1,10 +1,4 @@
-<div class="row" style="background: url('<?= base_url('assets/img/footer3.png') ?>'); background-size: 100% 100%; background-attachment: fixed;">
-
-	<section class="" style="margin:5px;">
-		<div class="callout">			
-			<p>AFControl, aplicación web para el majo de una lista de afiliados, con estados de afiliación, pagos y categorias de afiliación.</p>
-		</div>		
-	</section>
+<div class="row">
 	
 	<section class="columns medium-6">
 		<div class="callout" style="margin:5px;">
