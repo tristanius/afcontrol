@@ -1,24 +1,26 @@
-.pestanas{
+#pestanas{
+	margin:0;
+	padding: 0;
+	overflow: hidden;
+	border-bottom: 1px solid #888;
+	margin-bottom: 3px;
+}
+#pestanas .pestana{
 	position: relative;
-	z-index: 2;
-}
-.pestanas .menu{
-}
-.pestanas .menu li{
+	bottom: -1px;
+	padding: 1ex;
+	margin: 0;
 	background: #DDD;
-	border-top: 1px solid #777;
-	border-left: 1px solid #777;
-	border-right: 1px solid #777;
+	display: inline-block;
+	border: 1px solid #777;
+	line-height: 5px;
 	border-radius: 10px 10px 0px 0px;
+	cursor: pointer;
 }
-.pestanas .menu .active-tab{
+#pestanas .pestana.active{
+	z-index: 2;
 	background: #FFF;
 }
-.pestanasDiv{
-	top: -1px;
-	position: relative;
-	border: 1px solid #777;
-}
-.pestanasDiv div{
-	padding: 1ex;
+#pentana_view{
+
 }

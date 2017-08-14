@@ -11,7 +11,7 @@
 					<i class="fa fa-eye"></i> <p>Ir a afiliado</p>
 				</a>
 				<a href="" class="columns white-bg small-3 touch-btn end"> 
-					<i class="fa fa-users"></i> <p>Listar afiliados</p>
+					<i class="fa fa-list-ol"></i> <p>Listar afiliados</p>
 				</a>
 			</div>
 		</div>			

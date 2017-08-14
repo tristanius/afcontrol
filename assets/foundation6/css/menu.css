@@ -1,7 +1,17 @@
 #content{
 }
 #menu{
+	transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.4s;
+}
+#menu.hidden-menu{
 	/*background: #153554;*/
+	transition:all cubic-bezier(0.450, 0.460, 0.450, 0.260) 0.4s;
+	position: absolute;
+	width: 0;
+	height: 0;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
 }
 #menu > ul{
 	background: #FFF;
@@ -21,4 +31,12 @@
 /* form.css */
 .padding1ex{
 	padding: 1ex;
+}
+
+@media only screen and (max-width : 900px){
+	#menu{
+		position: fixed;
+		z-index: 3;
+		height: 100%;
+	}
 }

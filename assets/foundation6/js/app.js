@@ -7,7 +7,7 @@ function menuHeight(){
 
 function toggleMenu(){
 	$('#menu').toggleClass('nodisplay');
-	$('#panel').toggleClass('large-10');
+	$('#panel-content').toggleClass('large-10');
 }
 
 $(document).ready(function(){
