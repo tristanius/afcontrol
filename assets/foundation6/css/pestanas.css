@@ -2,24 +2,27 @@
 	margin:0;
 	padding: 0;
 	overflow: hidden;
-	border-bottom: 1px solid #888;
+	border-bottom: 1px solid #aaa;
 	margin-bottom: 3px;
 }
 #pestanas .pestana{
+	color: #555;
 	position: relative;
 	bottom: -1px;
 	padding: 1ex;
 	margin: 0;
 	background: #DDD;
 	display: inline-block;
-	border: 1px solid #777;
-	line-height: 5px;
-	border-radius: 10px 10px 0px 0px;
-	cursor: pointer;
+	border: 1px solid #999;
+	line-height: 10px;
+	border-radius: 5px 5px 0px 0px;
 }
 #pestanas .pestana.active{
 	z-index: 2;
 	background: #FFF;
+}
+#pestanas .pestana > span{
+	cursor: pointer;
 }
 #pentana_view{
 

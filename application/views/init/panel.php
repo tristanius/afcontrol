@@ -7,15 +7,21 @@
 		<section id="content" class="expanded row" ng-init="site_url = '<?= site_url('/') ?>' ">
 			<?php $this->load->view('init/menu'); ?>
 
-			<div id="panel-content" class="columns large-10">
+			<div id="panel-content" class="columns large-10" ng-init="initTabs()">
 
 				<div id="pestanas">
-					<div class="pestana {{ tab.active?'active':'' }}" ng-repeat="tab in tabs" ng-click="selectedTab(tab)">{{tab.title}}</div>
+					<div class="pestana {{ tab.active?'active':'' }}" ng-repeat="tab in tabs">
+						<span ng-bind="tab.title" ng-click="selectedTab(tab)"></span>
+						<small>(<span ng-bind="(1+tab.id)"></span>)</small>
+						&nbsp;
+						<span class="fa fa-times-circle" ng-if="tab.rm" ng-click="closeTab(tab)" style="color: #FC4747; margin:0; padding: 0; line-height: 5px;" ></span>
+					</div>
 				</div>
 
-				<div id="pestana_view" ng-include="( site_url + selected_tab.lnk )" ng-init="initTabs()">
-					
+				<div class="pestana_view" ng-repeat="tab in tabs" ng-if="tab.active">
+					<div ng-include="( site_url + tab.lnk )"></div>					
 				</div>
+
 			</div>
 		</section>
 				

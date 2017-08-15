@@ -4,7 +4,7 @@
 	  	<li>
 	    	<a href="#"> <i class="fa fa-address-book-o"></i> Afiliados</a>
     		<ul class="menu vertical nested">
-      			<li><a class="" href="#">- Add. Afiliado</a></li>
+      			<li><a class="" ng-click="addNewTab('afiliado/add','agregar afiliado')">- Add. Afiliado</a></li>
       			<li><a class="" href="#">- Ver Afiliado</a></li>
       			<li><a class="" href="#">- Listar Afiliado</a></li>
     		</ul>
