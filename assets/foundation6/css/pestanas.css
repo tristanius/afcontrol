@@ -2,23 +2,23 @@
 	margin:0;
 	padding: 0;
 	overflow: hidden;
-	border-bottom: 1px solid #aaa;
 	margin-bottom: 3px;
+	border-bottom: 1px solid #DDD;
 }
 #pestanas .pestana{
 	color: #555;
 	position: relative;
-	bottom: -1px;
 	padding: 1ex;
 	margin: 0;
 	background: #DDD;
 	display: inline-block;
 	border: 1px solid #999;
+	border-bottom: none;
 	line-height: 10px;
-	border-radius: 5px 5px 0px 0px;
+	border-radius: 2px 2px 0px 0px;
 }
 #pestanas .pestana.active{
-	z-index: 2;
+	z-index: 3;
 	background: #FFF;
 }
 #pestanas .pestana > span{

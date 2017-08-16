@@ -4,7 +4,7 @@
 
 /* -------------------------------------------------------- */
 body{
-	background: url('../../img/footer.png');
+	background: url('../../img/bg4.jpg');
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
     background-attachment: fixed;
@@ -31,6 +31,7 @@ nav {
 	background: #FFF;
 	border: 1px solid #EEE;
 	box-shadow: 0px 0px 6px #000;
+	margin-bottom: 1ex;
 }
 
 nav ul{
@@ -46,7 +47,9 @@ nav ul li a{
 	min-height: 100%;
 	padding: 2px;
 	box-shadow: 0px 0px 6px #000;
-	background-color: rgba(255,255,255,0.5);
+	background-color: rgba(255,255,255,0.9);
+	/*background: #FFF;*/
+	border-radius: 2px;
 }
 #panel-content > section, #panel article{
 	padding: 1ex;

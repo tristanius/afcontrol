@@ -2,8 +2,6 @@
 
 		<?php $this->load->view('init/nav'); ?>
 
-		<br>
-		
 		<section id="content" class="expanded row" ng-init="site_url = '<?= site_url('/') ?>' ">
 			<?php $this->load->view('init/menu'); ?>
 

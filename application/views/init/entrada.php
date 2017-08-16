@@ -1,4 +1,4 @@
-<div class="row">
+<div class="expanded row">
 	
 	<section class="columns medium-6">
 		<div class="callout" style="margin:5px;">
