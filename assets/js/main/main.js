@@ -4,7 +4,7 @@ app.controller('main', function($scope, $http, $timeout, $templateCache){
 	$scope.selected_tab = {active:false};
 	$scope.tab_counter = 0;
 	$scope.tabs = [
-		{ id:0, title:"Inicio", lnk:"welcome/entrada", active: true, rm: false }
+		{ id:0, title:"Inicio", lnk:"welcome/entrada", active: true, rm: true }
 	]
 	//---------------------------------//
 	// Visualizacion de menu y cajas
@@ -15,6 +15,12 @@ app.controller('main', function($scope, $http, $timeout, $templateCache){
 	$scope.toggleMenu = function(selector, selector2, myclass){
 		$(selector).toggleClass(myclass);
 		$(selector2).toggleClass('large-10');
+	}
+
+	// Click del menu lateral //
+	$scope.clickOpcionMenu = function(link, titulo){
+		$scope.addNewTab(link, titulo);
+		$scope.toggleMenu('#menu','#panel-content','hidden-menu');
 	}
 	//---------------------------------//
 	// Manejo de pestañas
@@ -55,3 +61,7 @@ app.controller('main', function($scope, $http, $timeout, $templateCache){
 	//---------------------------------//
 	// Gestion de general de forms
 });
+
+app.controller('add_afiliado', function($scope, $http, $timeout, $templateCache){
+	add_afiliado( $scope, $http, $timeout );
+} );

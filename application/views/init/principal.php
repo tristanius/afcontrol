@@ -8,6 +8,8 @@
     <script src="<?= base_url('assets/foundation6/js/vendor/foundation.js') ?>"></script>
     <script src="<?= base_url('assets/foundation6/js/app.js') ?>"></script>
     <script src="<?= base_url('assets/js/angular.min.js') ?>"></script>
+
+    <script src="<?= base_url('assets/js/main/afiliado.js?v='.rand()) ?>"></script>
     <script src="<?= base_url('assets/js/main/main.js?v='.rand()) ?>"></script>
 
 </body>

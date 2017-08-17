@@ -1,18 +1,23 @@
 #content{
 }
-#menu, .large-10{
-	transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.4s;
+#menu, #panel-content.large-10, #panel-content{
+	transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
 	padding: 2px;
 }
 #menu.hidden-menu{
 	/*background: #153554;*/
-	transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.3s;
+	transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
 	position: absolute;
 	width: 0;
 	height: 0;
 	margin: 0;
 	padding: 0;
 	z-index: 4;
+}
+#menu.hidden-menu ul li a, #menu.hidden-menu ul li a::after{
+	transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.1s;
+	color: transparent;
+	border-color: transparent;
 }
 #menu > ul{
 	overflow: hidden;
@@ -25,7 +30,6 @@
 	background: #F0F0F0;
 }
 #menu ul li a{
-	/*color: #FFF;*/
 }
 #menu ul li a:hover, #menu ul li a:active{
 	text-shadow: 0px 0px 1px #999;
@@ -39,7 +43,7 @@
 @media only screen and (max-width : 900px){
 	#menu{
 		position: fixed;
-		z-index: 3;
+		z-index: 4;
 		height: 100%;
 	}
 }

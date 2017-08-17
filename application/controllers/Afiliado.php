@@ -15,9 +15,10 @@ class Afiliado extends CI_Controller {
 	// Agregar un nuevo afiliado
 	public function add()
 	{
-		echo "Prueba <input type='text'> <p>".rand()."</p>";
+		$vw = $this->load->view('afiliado/add', array(), TRUE);
+		$this->load->view('util/plantilla', array('titulo'=>'Agregar nuevo afiliado', 'content'=>$vw) );
 	}
-	public function insert($value='')
+	public function insert()
 	{
 		# code...
 	}
@@ -27,13 +28,13 @@ class Afiliado extends CI_Controller {
 	{
 		# code...
 	}
-	public function mod()
+	public function mod($id=NULL)
 	{
 		# code...
 	}
 
 	// listado de afiliado
-	public function lista($value='')
+	public function lista()
 	{
 		# code...
 	}
@@ -45,6 +46,13 @@ class Afiliado extends CI_Controller {
 	}
 
 	// subir archivos
+	public function upload()
+	{
+		# code...
+	}
+
+	// ---------------------------
+	// Utilidades generales
 
 }
 

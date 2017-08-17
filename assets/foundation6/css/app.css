@@ -4,7 +4,7 @@
 
 /* -------------------------------------------------------- */
 body{
-	background: url('../../img/bg4.jpg');
+	background: url('../../img/tw.jpg');
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
     background-attachment: fixed;
@@ -44,7 +44,7 @@ nav ul li a{
 /* ----------- */
 /* contenedores y cajas */
 #content #panel-content{
-	min-height: 100%;
+	min-height: 20em;
 	padding: 2px;
 	box-shadow: 0px 0px 6px #000;
 	background-color: rgba(255,255,255,0.9);

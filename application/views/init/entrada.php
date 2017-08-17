@@ -1,63 +1,17 @@
-<div class="expanded row">
-	
-	<section class="columns medium-6">
-		<div class="callout" style="margin:5px;">
-			<b>Afiliados:</b>
-			<div class="row">
-				<a href="" class="columns white-bg small-3 touch-btn"> 
-					<i class="fa fa-user-plus"></i> <p>Add. afiliado</p>
-				</a>
-				<a href="" class="columns white-bg small-3 touch-btn"> 
-					<i class="fa fa-eye"></i> <p>Ir a afiliado</p>
-				</a>
-				<a href="" class="columns white-bg small-3 touch-btn end"> 
-					<i class="fa fa-list-ol"></i> <p>Listar afiliados</p>
-				</a>
-			</div>
-		</div>			
-	</section>
+<div class="row">
+	<div  class="columns medium-2 hide-for-small-only">
+		<img src="<?= base_url('assets/img/icons/balances.png') ?>">
+	</div>
+	<div class="columns medium-4 small-6 end">
+		<ul class="no-bullet">
+			<button class="button primary">Afiliados</button>
+			<button class="button success">Pagos</button>
+			<button class="button warning">Consultas</button>
+			<button class="button secondary">Maestros</button> 
+			<button class="button alert">Configuración app</button> 
+		</ul>
+	</div>
 
-	<section class="columns medium-6">
-		<div class="callout" style="margin:5px;">
-			<b>Pagos:</b>
-			<div class="row">
-				<a href="" class="columns white-bg small-3 touch-btn"> 
-					<i class="fa fa-money"></i> <p>Pagos no viculantes</p>
-				</a>
-				<a href="" class="columns white-bg small-3 touch-btn"> 
-					<i class="fa fa-dollar"></i> <p>Pagos por afiliado</p>
-				</a>
-				<a href="" class="columns white-bg small-3 touch-btn end"> 
-					<i class="fa fa-list-alt "></i> <p>Listar pagos (todo)</p>
-				</a>
-			</div>
-		</div>
-	</section>
-
-	<section class="columns medium-6">
-		<div class="callout" style="margin:5px;">
-			<b>Consultas:</b>
-			<div class="row">
-				<a href="" class="columns white-bg small-3 touch-btn end"> <i class="fa fa-table"></i> <p>consultas de afiliados</p></a>
-				<a href="" class="columns white-bg small-3 touch-btn end"> <i class="fa fa-file-excel-o"></i> <p>Exportar información</p></a>
-			</div>
-		</div>			
-	</section>
-
+	<div class="columns medium-4 small-6">
+	</div>
 </div>
-
-<style type="text/css">
-	.touch-btn{
-		border:1px solid #333;
-		border-radius: 10px;
-		padding: 1ex;
-		height: 13ex;
-		width: 13ex;
-		overflow: hidden;
-		margin: 5px;
-		text-align: center;
-	}
-	.white-bg{
-		background: #FFF;
-	}
-</style>

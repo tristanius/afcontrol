@@ -5,7 +5,7 @@
 		<section id="content" class="expanded row" ng-init="site_url = '<?= site_url('/') ?>' ">
 			<?php $this->load->view('init/menu'); ?>
 
-			<div id="panel-content" class="columns large-10" ng-init="initTabs()">
+			<div id="panel-content" class="columns" ng-init="initTabs()">
 
 				<div id="pestanas">
 					<div class="pestana {{ tab.active?'active':'' }}" ng-repeat="tab in tabs">

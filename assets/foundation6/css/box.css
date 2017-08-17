@@ -41,3 +41,13 @@ html, body{
 h3, h4, h5, h6{
 	margin: 0;
 }
+.panel-white{
+	padding: 1ex;
+	background: #FFF;
+	border: 1px solid #AAA;
+	border-radius: 3px;
+}
+fieldset{
+	padding: 1ex;
+	border: 1px solid #EEE;
+}
