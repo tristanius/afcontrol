@@ -36,16 +36,16 @@ app.controller('main', function($scope, $http, $timeout, $templateCache){
 		})
 	}
 	$scope.addNewTab = function(link, titulo){
-		let n = $scope.tabs.length;
+		var n = $scope.tabs.length;
 		$scope.tabs.push({id: (++$scope.tab_counter) , title: titulo, lnk:link, active: false, rm: true });
 		$scope.selectedTab($scope.tabs[n]); // se auto selecciona la nueva pestaña
 		$templateCache.removeAll();
 	}
 	$scope.closeTab = function(tab){
-		let b = confirm('¿Esta seguro de cerrar esta pestaña?');
+		var b = confirm('¿Esta seguro de cerrar esta pestaña?');
 		if (b) {
-			let n = $scope.tabs.length;
-			let i = $scope.tabs.indexOf(tab);
+			var n = $scope.tabs.length;
+			var i = $scope.tabs.indexOf(tab);
 			if(tab.active && i!=0){
 				$scope.selectedTab($scope.tabs[i-1]);
 			}else if(i==0 && n > 1){
