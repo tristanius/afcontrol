@@ -2,10 +2,14 @@
 
 		<?php $this->load->view('init/nav'); ?>
 
-		<section id="content" class="expanded row" ng-init="site_url = '<?= site_url('/') ?>' ">
-			<?php $this->load->view('init/menu'); ?>
+		<section id="content" class="off-canvas-wrapper" ng-init="site_url = '<?= site_url('/') ?>' ">
+			
+			<div class="off-canvas position-left" id="offCanvas" data-off-canvas>
+				<!-- Menu -->	
+				<?php $this->load->view('init/menu'); ?>
+			</div>
 
-			<div id="panel-content" class="columns" ng-init="initTabs()">
+			<div id="panel-content" class="off-canvas-content" data-off-canvas-content ng-init="initTabs()">
 
 				<div id="pestanas">
 					<div class="pestana {{ tab.active?'active':'' }}" ng-repeat="tab in tabs">

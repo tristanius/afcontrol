@@ -7,20 +7,9 @@ app.controller('main', function($scope, $http, $timeout, $templateCache){
 		{ id:0, title:"Inicio", lnk:"welcome/entrada", active: true, rm: true }
 	]
 	//---------------------------------//
-	// Visualizacion de menu y cajas
-	$scope.toggleClass = function(selector, myclass){
-		$(selector).toggleClass(myclass);
-	}
-
-	$scope.toggleMenu = function(selector, selector2, myclass){
-		$(selector).toggleClass(myclass);
-		$(selector2).toggleClass('large-10');
-	}
-
 	// Click del menu lateral //
 	$scope.clickOpcionMenu = function(link, titulo){
 		$scope.addNewTab(link, titulo);
-		$scope.toggleMenu('#menu','#panel-content','hidden-menu');
 	}
 	//---------------------------------//
 	// Manejo de pestañas

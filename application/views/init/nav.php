@@ -5,7 +5,7 @@
 				<img src="<?= base_url('assets/img/escudo.png') ?>" alt="logo" width="60">
 			</li>
 		  	<li>
-		  		<a href="" ng-click="toggleMenu('#menu', '#panel-content','hidden-menu','showed-menu')">
+		  		<a href="#" data-toggle="offCanvas">
 		  			<i class="fa fa-bars"></i>
 		  			Menú
 		  		</a>

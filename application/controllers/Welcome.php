@@ -19,10 +19,10 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('test/form', array() );
-		/*$v = $this->load->view('init/entrada', array(), TRUE);
+		//$this->load->view('test/form', array() );
+		$v = $this->load->view('init/entrada', array(), TRUE);
 		$html = $this->plantilla1('Panel entrada App Control de afiliados', $v);
-		$this->vw('Panel Principal', $html);*/
+		$this->vw('Panel Principal', $html);
 	}
 
 	public function entrada()

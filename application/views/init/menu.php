@@ -1,8 +1,12 @@
-<div id="menu" class="columns large-2 hidden-menu">
+<div id="menu" class="">
 	<ul class="vertical menu" data-accordion-menu>
-		<li ng-click="toggleMenu('#menu', '#panel-content','hidden-menu')">
-			<a href="#" style="background: #000; color: yellow" ><big>Opciones</big></a>
-		</li>
+		<li>
+			<h4><a href="#">AFControl </a></h4>
+	    	<!-- Close button -->
+	    	<button class="close-button" aria-label="close menu" type="button" data-toggle="offCanvas">
+		      	<span aria-hidden="true">&times;</span>
+		    </button>
+	    </li>
 	  	<li>
 	    	<a href="#"> <i class="fa fa-address-book-o"></i> Afiliados</a>
     		<ul class="menu vertical nested">
