@@ -2,8 +2,8 @@
 	margin:0;
 	padding: 0;
 	overflow: hidden;
-	margin-bottom: 3px;
-	border-bottom: 1px solid #DDD;
+	position: relative;
+	top: 1px
 }
 #pestanas .pestana{
 	color: #555;
@@ -12,18 +12,21 @@
 	margin: 0;
 	background: #DDD;
 	display: inline-block;
-	border: 1px solid #999;
-	border-bottom: none;
 	line-height: 10px;
-	border-radius: 2px 2px 0px 0px;
+	border-radius: 3px 3px 0px 0px;
+	border: 1px solid #999;
 }
 #pestanas .pestana.active{
 	z-index: 2;
+	top: 1px;
+	line-height: 11px;
 	background: #FFF;
+	border-bottom: none;
 }
 #pestanas .pestana > span{
 	cursor: pointer;
 }
-#pentana_view{
-
+#pestana_view{
+	padding: 1ex;	
+	border: 1px solid #999;
 }

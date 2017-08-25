@@ -1,11 +1,8 @@
 <div>
-	<div class="expanded row" style="border: 1px solid #999; background: #CCC; margin-bottom: 5px;">
-		<div class="columns medium-1 text-center"> </div>
-		<div class="columns medium-11" >
-			<h4 style="background: #FFF; padding: 5px;" class="center-align"> <?= $titulo ?> </h4>
-		</div>
+	<div style="border: 1px solid #999; background: #CCC; margin-bottom: 5px;">
+		<h4 style="background: #FFF; padding: 5px;" class="center-align"> <?= $titulo ?> </h4>
 	</div>
-	<article class="expanded row">
+	<article>
 		<?= $content ?>
 	</article>
 	<br>

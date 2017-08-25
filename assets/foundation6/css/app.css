@@ -1,6 +1,12 @@
 #offCanvas{
-	background: #333;
+	background: #274b82;
 }
 #menu li a, #menu li{
 	color:#FEFEFE;
+}
+#panel-content {
+}
+nav{
+	box-shadow: 0px 0px 5px #555;
+	padding: 1px;
 }

@@ -9,9 +9,9 @@
 				<?php $this->load->view('init/menu'); ?>
 			</div>
 
-			<div id="panel-content" class="off-canvas-content" data-off-canvas-content ng-init="initTabs()">
+			<div id="panel-content" class="grid-x off-canvas-content" data-off-canvas-content ng-init="initTabs()" style="margin: 1ex;">
 
-				<div id="pestanas">
+				<div id="pestanas" class="cell">
 					<div class="pestana {{ tab.active?'active':'' }}" ng-repeat="tab in tabs">
 						<span ng-bind="tab.title" ng-click="selectedTab(tab)"></span>
 						<small>(<span ng-bind="(1+tab.id)"></span>)</small>
@@ -20,7 +20,7 @@
 					</div>
 				</div>
 
-				<div class="pestana_view" ng-repeat="tab in tabs" ng-if="tab.active">
+				<div id="pestana_view" class="cell" ng-repeat="tab in tabs" ng-if="tab.active">
 					<div ng-include="( site_url + tab.lnk )"></div>					
 				</div>
 
