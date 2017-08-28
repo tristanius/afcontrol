@@ -75,7 +75,7 @@
 						</div>
 
 						<div class="medium-5 column">
-							<label>Talla:</label>
+							<label>Talla actual:</label>
 							<input value="" type="text" name="talla" placeholder="Ingrese la empresa de salud que tiene">
 						</div>
 
