@@ -51,6 +51,6 @@ app.controller('main', function($scope, $http, $timeout, $templateCache){
 	// Gestion de general de forms
 });
 
-app.controller('add_afiliado', function($scope, $http, $timeout, $templateCache){
-	add_afiliado( $scope, $http, $timeout );
+app.controller('form_afiliado', function($scope, $http, $timeout, $templateCache){
+	form_afiliado( $scope, $http, $timeout );
 } );

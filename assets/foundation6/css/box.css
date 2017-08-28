@@ -51,3 +51,12 @@ fieldset{
 	padding: 1ex;
 	border: 1px solid #EEE;
 }
+
+.blocks-container{
+
+}
+.blocks-container > div{
+	border-radius: 3px;
+	padding: 1ex;
+	border: 1px solid #999;
+}

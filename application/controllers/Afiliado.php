@@ -15,7 +15,7 @@ class Afiliado extends CI_Controller {
 	// Agregar un nuevo afiliado
 	public function add()
 	{
-		$vw = $this->load->view('afiliado/add', array(), TRUE);
+		$vw = $this->load->view('afiliado/form', array(), TRUE);
 		$this->load->view('util/plantilla', array('titulo'=>'Agregar nuevo afiliado', 'content'=>$vw) );
 	}
 	public function insert()
