@@ -1,4 +1,30 @@
 <section ng-controller="form_afiliado">
+	<div class="grid-x"> 
+		<div class="cell auto text-left">
+			<span>
+				<i class="fa fa-pencil" aria-hidden="true"></i>
+				<div class="switch" style="display: inline;">
+				  	<input class="switch-input" id="exampleSwitch" type="checkbox" name="exampleSwitch">
+				  	<label class="switch-paddle" for="exampleSwitch" style="vertical-align: middle;">
+				    	<span class="show-for-sr">Edit</span>
+				  	</label>
+				</div>
+			</span>
+		</div>
+		<div class="cell auto text-right">
+			<small>Guardar: </small>
+			<button class="button success margin-none padding1ex"> 
+				<span class="text-white" data-icon="&#xe058;"></span>
+			</button>
+			&nbsp;
+			&nbsp;
+			<small>Eliminar: </small>
+			<button class="button alert margin-none padding1ex">
+				<i class="fa fa-trash" aria-hidden="true"></i>
+			</button>
+		</div>
+		<br>
+	</div>
 	<fieldset>
 		<div class="grid-y">
 			<div class="grid-x cell">
@@ -10,14 +36,14 @@
 						alt="Photo of Uranus."
 						style="width: 100%;" 
 					/>
-					<button class="button">Cargar foto</button>
+					<button class="button" ng-if="!af.idafiliado">Cargar foto</button>
 				</fieldset>
 
-				<fieldset class="cell medium-8 large-10">
+				<fieldset class="cell medium-8 large-5">
 					<caption><strong style="color: #3E6F9E">Datos personales: </strong></caption>
 					
 					<div class="grid-x">
-						<div class="cell medium-12 large-6 padding1ex">							
+						<div class="cell medium-6 large-6 padding1ex">							
 							<label>Tipo identificación:
 								<select ng-model="af.tipo_identificacion">
 									<option value="Registro Civil">R.C: Registro civíl</option>
@@ -40,7 +66,7 @@
 							</label>
 						</div>
 
-						<div class="cell medium-12 large-6 padding1ex">
+						<div class="cell medium-6 large-6 padding1ex">
 							<label>
 								fecha nacimiento:
 								<input type="text" class="datepicker" ng-model="af.fecha_nacimiento" placeholder="ingrese una fecha">
@@ -55,11 +81,9 @@
 							</label>
 						</div>
 					</div>
-
 				</fieldset>
-			</div>		
-			<div class="grid-x">
-				<fieldset class="cell large-8">
+
+				<fieldset class="cell  medium-8 large-5">
 					<caption><strong style="color: #3E6F9E">Datos de contacto: </strong></caption>
 					
 					<div class="grid-x">
@@ -92,12 +116,13 @@
 							</label>
 						</div>
 					</div>
-				</fieldset>			
-				<fieldset class="cell large-4">				
+				</fieldset>	
+
+				<fieldset class="cell medium-4 large-4" ng-if="!af.idafiliado">				
 					<caption><strong style="color: #3E6F9E">Documentos asociados: </strong></caption>
 
 					<button class="button"> + </button>
-					<table>
+					<table class="font12">
 						<thead>
 							<tr>
 								<th>No.</th>
@@ -116,10 +141,10 @@
 
 				</fieldset>
 
-				<fieldset class="cell">
+				<fieldset class="cell medium-12 large-8"  ng-if="!af.idafiliado">
 					<caption><strong style="color: #3E6F9E">Afiliaciones: </strong></caption>
 					<button class="button"> + </button>
-					<table>
+					<table class="font12">
 						<thead>
 							<tr>
 								<th>Categoria</th>

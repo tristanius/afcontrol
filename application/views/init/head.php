@@ -10,5 +10,6 @@
     <link rel="stylesheet" href="<?= base_url('assets/foundation6/css/pestanas.css?v='.rand()) ?>">
     <link rel="stylesheet" href="<?= base_url('assets/foundation6/css/box.css?v='.rand()) ?>">
     <link rel="stylesheet" href="<?= base_url('assets/font-awesome/css/font-awesome.min.css?v='.rand()) ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/fontastic/styles.css?v='.rand()) ?>">
 
 </head>
