@@ -7,160 +7,54 @@ class Afiliado_db extends CI_Model {
 	public function __construct()
 	{
 		parent::__construct();
-		
+		$this->load->database('afc');	
 	}
 
-	#================================================================================================================
-	# agregar datos de contacto
-	#================================================================================================================
-	public function add($data)
+	// Datos basicos
+	public function add($obj)
 	{
-		$this->load->database();
-		$this->db->insert("afiliado",$data);
+		$data = array(
+				'tipo_identificacion' => $obj->tipo_identificacion, 
+				'identificacion' => $obj->identificacion, 
+				'nombres' => $obj->nombres, 
+				'apellidos' => $obj->apellidos, 
+				'fecha_nacimiento' => $obj->fecha_nacimiento, 
+				'telefono' => $obj->telefono, 
+				'direccion' => $obj->direccion, 
+				'correo' => $obj->correo
+				'tipo_sangre' => $obj->tipo_sangre
+				'talla' => $obj->talla
+			);
+		$this->db->insert('afiliado', $data);
 		return $this->db->insert_id();
 	}
-
-	public function addcontacto($contact)
+	public function update($obj)
 	{
-		$this->load->database();
-		$this->db->insert("contacto",$contact);
-		return $this->db->insert_id();
+		# code...
 	}
 
-	#================================================================================================================
-	# Actualizar
-	#================================================================================================================
-	public function update($id, $data)
+	// Datos de contacto
+	public function addContacto($obj)
 	{
-		$this->load->database();
-		$this->db->update("afiliado",$data, "idafiliado = ".$id);
+		$data = array('' => , );
+		$this->db->insert('afiliado_contacto', $data);
+	}
+	public function deleteContacto($obj)
+	{
+		$this->db->delete('table', $array, '');
 	}
 
-	public function updateContacto($id, $data)
+	// consultas
+	public function get($id)
 	{
-		$this->load->database();
-		$this->db->update("contacto",$data, "afiliado_idafiliado = ".$id);
-	}
-	#=================================================================================================================
-	# IMG de afiliado
-	#=================================================================================================================
-	public function setMora($idaf, $mora)
-	{
-		$this->load->database();
-		$this->db->update("afiliado_grupo",array("mora"=>$mora), "idafiliado_grupo = ".$idaf);
-	}
-	public function moraGeneral($idaf, $mora)
-	{
-		$this->load->database();
-		$this->db->update("afiliado",array("morageneral"=>$mora), "idafiliado = ".$idaf);		
-	}
-	#================================================================================================================
-	# agregar datos de contacto
-	#================================================================================================================
-
-	public function getActives()
-	{
-		$this->load->database();
-		return $this->db->select("af.*, (SELECT COUNT(afg.idafiliado_grupo) FROM afiliado_grupo afg WHERE afg.estado = TRUE AND afg.afiliado_idafiliado = af.idafiliado) AS cant")
-						->from("afiliado AS af")
-						->where("estado",TRUE)
-						->get();
+		# code...
 	}
 
-	public function getActivesByGroup()
+	public function getBy($field, $val)
 	{
-		$this->load->database();
-		return $this->db->select("af.*,g.*, afg.*, cat.*")
-						->from("afiliado AS af")
-						->join("afiliado_grupo AS afg","afg.afiliado_idafiliado = af.idafiliado")
-						->join("grupo AS g","g.idgrupo = afg.grupo_idgrupo")
-						->join('categoria AS cat', 'cat.idcategoria = g.categoria_idcategoria')
-						->where("afg.estado",TRUE)
-						->get();
-	}
-	#=================================================================================================================
-	# Get
-	#=================================================================================================================
-	public function getById($id)
-	{
-		$this->load->database();
-		return $this->db->from("afiliado AS af")
-						->join("contacto AS c","c.afiliado_idafiliado = af.idafiliado")
-						->join("img","img.afiliado_idafiliado = af.idafiliado","LEFT")
-	 					->where("idafiliado",$id)
-	 					->get();
+		# code...
 	}
 
-
-	public function addgrupo($idaf , $idgrupo , $mfecha = NULL)
-	{
-		$fecha = date("Y-m-d",strtotime($mfecha));
-		$this->load->database();
-		$this->db->insert('afiliado_grupo', array("afiliado_idafiliado"=>$idaf, "grupo_idgrupo"=>$idgrupo, "fecha_afiliacion"=>date("Y-m-d"), "fecha_inicio"=>$fecha, "estado"=>TRUE));
-	}
-
-	public function getGruposBy($id = NULL)
-	{
-		$this->load->database();
-		return $this->db->from("afiliado_grupo AS afg")
-					->join("grupo AS g","g.idgrupo = afg.grupo_idgrupo")
-					->where("afg.afiliado_idafiliado",$id)
-					->get();
-	}
-
-	public function getGruposActivosBy($id = NULL)
-	{
-		$this->load->database();
-		return $this->db->from("afiliado_grupo AS afg")
-					->join("grupo AS g","g.idgrupo = afg.grupo_idgrupo")
-					->where("afg.afiliado_idafiliado",$id)
-					->where("afg.estado",TRUE)
-					->get();
-	}
-
-	public function getAfiliadoGrupo($id = NULL)
-	{
-		$this->load->database();
-		return $this->db->from("afiliado_grupo AS afg")
-					->join("afiliado As af", "af.idafiliado = afg.afiliado_idafiliado")
-					->join("grupo AS g","g.idgrupo = afg.grupo_idgrupo")
-					->join("categoria AS c","c.idcategoria = g.categoria_idcategoria")
-					->where("afg.idafiliado_grupo",$id)
-					->get();
-	}
-
-	#=================================================================================================================
-	# Finalizar afiliación
-	#=================================================================================================================
-	public function desafiliar($id)
-	{
-		$this->load->database();
-		$data = array('estado' => FALSE, "fecha_fin"=>date("Y-m-d"), "mora"=>FALSE );
-		$where = "idafiliado_grupo = ".$id;
-		$this->db->update("afiliado_grupo", $data, $where);
-	}
-	#=================================================================================================================
-	# IMG de afiliado
-	#=================================================================================================================
-
-	public function addimg($idaf, $ruta, $nombre_img)
-	{
-		$this->load->database();
-		$this->db->insert('img', array("afiliado_idafiliado"=>$idaf, "ruta"=>$ruta, "nombre_img"=>$nombre_img ) );
-		return $this->db->insert_id();
-	}
-
-	public function getimg($idaf)
-	{
-		$this->load->database();
-		return $this->db->get_where('img', array("afiliado_idafiliado"=>$idaf) );
-	}
-
-	public function delimg($id)
-	{
-		$this->load->database();
-		$this->db->delete("img",array("idimg"=>$id));
-	}
 }
 
 /* End of file Afiliado_db.php */

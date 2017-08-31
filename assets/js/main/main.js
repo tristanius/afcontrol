@@ -47,6 +47,11 @@ app.controller('main', function($scope, $http, $timeout, $templateCache){
 		}
 	}
 
+	$scope.updateMyActualTab = function(lnk, titulo){
+		$scope.selected_tab.link = lnk;
+		$scope.selected_tab.titulo = titulo;
+	}
+
 	//---------------------------------//
 	// Gestion de general de forms
 });

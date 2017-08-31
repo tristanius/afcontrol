@@ -18,19 +18,30 @@ class Afiliado extends CI_Controller {
 		$vw = $this->load->view('afiliado/form', array(), TRUE);
 		$this->load->view('util/plantilla', array('titulo'=>'Agregar nuevo afiliado', 'content'=>$vw) );
 	}
-	public function insert()
-	{
-		# code...
-	}
 
 	// modificar un afiliado
 	public function edit($id=NULL)
 	{
 		# code...
 	}
-	public function mod($id=NULL)
+	public function existeBy($field, $val)
 	{
-		# code...
+		$this->load->model('afiliado_db', 'myaf');
+		$result = $this->myaf->getBy($field, $val);
+		return $result->num_rows()>0?TRUE:FALSE;
+	}
+
+	// guardar afiliado
+	public function save()
+	{
+		$post = json_decode(file_get_contents('php://input'));
+		$this->load->model('afiliad_db', 'myaf');
+		if ( isset($post->idafiliado) ) {
+			$this->myaf->update($post);
+		}else{
+			$idaf = $this->myaf->add($post);
+			$post->idafiliado = $idaf;			
+		}
 	}
 
 	// listado de afiliado
