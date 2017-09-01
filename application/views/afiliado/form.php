@@ -1,7 +1,12 @@
 <section ng-controller="form_afiliado">
 	<div class="grid-x"> 
 		<div class="cell auto text-left">
-			<div ng-if="af.idafiliado">
+			Guardar:
+			<button class="button success margin-none padding1ex"> 
+				<span class="text-white" data-icon="&#xe058;"></span>
+			</button>
+			Edit:
+			<div ng-if="!af.idafiliado" class="inline_block">
 				<i class="fa fa-pencil" aria-hidden="true"></i>
 				<div class="switch" style="display: inline;">
 				  	<input class="switch-input" id="exampleSwitch" type="checkbox" name="exampleSwitch">
@@ -11,12 +16,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="cell auto text-right">
-			<button class="button success margin-none padding1ex"> 
-				<span class="text-white" data-icon="&#xe058;"></span>
-			</button>
-			&nbsp;
-			&nbsp;
+		<div class="cell auto text-right">			
 			<button ng-if="af.idafiliado" class="button alert margin-none padding1ex">
 				<i class="fa fa-trash" aria-hidden="true"></i>
 			</button>
@@ -86,131 +86,19 @@
 				</fieldset>
 
 				<fieldset class="cell  medium-6 large-5">					
-					<div class="grid-x">
-						<div class="cell padding1ex">
-							<caption><strong style="color: #3E6F9E">Otros datos: </strong></caption>							
-
-							<div class="grid-x">
-								<label class="cell large-6 medium-6 padding1ex">
-									Tipo de sangre: <input type="text" ng-model="af.tipo_sangre" placeholder="EJ: A+">
-								</label>
-
-								<label class="cell large-6 medium-6 padding1ex">
-									Talla actual: <input type="text" ng-model="af.talla" placeholder="EJ: 14/16/S/M/L/XL">
-								</label>
-							</div>
-						</div>
-
-						<div class="cell padding1ex">
-							<caption><strong style="color: #3E6F9E">Contactos / Referencia: </strong></caption>
-							<button class="button" type="button" data-open="form_contacto" ng-if="!af.idafiliado"> + </button>
-
-							<div class="reveal" id="form_contacto" data-reveal>
-							  <h1>Awesome. I Have It.</h1>
-							  <p class="lead">Your couch. It is mine.</p>
-							  <p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
-							  <button class="close-button" data-close aria-label="Close modal" type="button">
-							    <span aria-hidden="true">&times;</span>
-							  </button>
-							</div>
-
-							<table class="font11">
-								<thead>
-									<tr>
-										<th>Nombre Contacto</th>
-										<th>Telefono</th>
-										<th>Tipo</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td></td>
-										<td></td>
-										<td></td>
-									</tr>
-								</tbody>
-							</table>					
-						</div>
-					</div>
+					<?php $this->load->view('afiliado/form/contactos', array()); ?>
 				</fieldset>	
 
 				<fieldset class="cell medium-6 large-3" ng-if="af.idafiliado">				
-					<caption><strong style="color: #3E6F9E">Documentos asociados: </strong></caption>
-					<button class="button"> + </button>
-
-					<table class="font11">
-						<thead>
-							<tr>
-								<th>No.</th>
-								<th>Nombre documento</th>
-								<th>Ver/descarga</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr ng-repeat="d in af.documentos" ng-if="af.documentos">
-								<td ng-bind="d.iddocumento"></td>
-								<td ng-bind="d.nombre_documento"></td>
-								<td> <a ng-href="{{ d.link }}"></a> </td>
-							</tr>
-						</tbody>
-					</table>
-
+					<?php $this->load->view('afiliado/form/docs', array()); ?>
 				</fieldset>
 
-
-
 				<fieldset class="cell medium-5 large-4"  ng-if="af.idafiliado">
-					<caption><strong style="color: #3E6F9E">Examenes medicos: </strong></caption>
-					<button class="button"> + </button>
-
-					<table class="font11">
-						<thead>
-							<tr>
-								<th>No.</th>
-								<th>Fecha de examen</th>
-								<th>Tipo</th>
-								<th>Fecha registro</th>
-								<th>Detalle</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-						</tbody>
-					</table>
+					<?php $this->load->view('afiliado/form/examen_medico', array()); ?>
 				</fieldset>
 
 				<fieldset class="cell medium-7 large-5"  ng-if="af.idafiliado">
-					<caption><strong style="color: #3E6F9E">Afiliaciones: </strong></caption>
-					<button class="button"> + </button>
-					
-					<table class="font11">
-						<thead>
-							<tr>
-								<th>Categoria</th>
-								<th>Grupo</th>
-								<th>Estado</th>
-								<th>Fecha afiliación</th>
-								<th>Fecha registro</th>
-								<th>Detalle</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-						</tbody>
-					</table>
+					<?php $this->load->view('afiliado/form/afiliacion_grupo', array()); ?>
 				</fieldset>
 			</div>
 		</div>
