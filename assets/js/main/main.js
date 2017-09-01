@@ -29,6 +29,7 @@ app.controller('main', function($scope, $http, $timeout, $templateCache){
 		$scope.tabs.push({id: (++$scope.tab_counter) , title: titulo, lnk:link, active: false, rm: true });
 		$scope.selectedTab($scope.tabs[n]); // se auto selecciona la nueva pestaña
 		$templateCache.removeAll();
+		Foundation.reInit('reveal');
 	}
 	$scope.closeTab = function(tab){
 		var b = confirm('¿Esta seguro de cerrar esta pestaña?');
@@ -51,7 +52,8 @@ app.controller('main', function($scope, $http, $timeout, $templateCache){
 		$scope.selected_tab.link = lnk;
 		$scope.selected_tab.titulo = titulo;
 	}
-
+	//---------------------------------//
+	$scope.viewVentanaModal = function(){}
 	//---------------------------------//
 	// Gestion de general de forms
 });

@@ -30,18 +30,50 @@ class Afiliado_db extends CI_Model {
 	}
 	public function update($obj)
 	{
-		# code...
+		$data = array(
+				'tipo_identificacion' => $obj->tipo_identificacion, 
+				'identificacion' => $obj->identificacion, 
+				'nombres' => $obj->nombres, 
+				'apellidos' => $obj->apellidos, 
+				'fecha_nacimiento' => $obj->fecha_nacimiento, 
+				'telefono' => $obj->telefono, 
+				'direccion' => $obj->direccion, 
+				'correo' => $obj->correo
+				'tipo_sangre' => $obj->tipo_sangre
+				'talla' => $obj->talla
+			);
+		return $this->db->update('afiliado', $data, 'idafiliado = '.$obj->idafiliado);
 	}
 
 	// Datos de contacto
 	public function addContacto($obj)
 	{
-		$data = array('' => , );
+		$data = array(
+				'nombre_ref' => $obj->nombre_ref, 
+				'telefono_ref' => $obj->telefono_ref,
+				'parentesco_ref' => $obj->parentesco_ref,
+				'afiliado_idafiliado' =>$obj->afiliado_idafiliado
+			);
 		$this->db->insert('afiliado_contacto', $data);
+		return $this->db->insert_id();
 	}
 	public function deleteContacto($obj)
 	{
-		$this->db->delete('table', $array, '');
+		$this->db->delete('afiliado', $data, 'idafiliado_contacto = '.$obj->idafiliado_contacto);
+	}
+
+	// Datos de examen medico
+	public function addExamenMedico($value='')
+	{
+		# code...
+	}
+	public function updateExamenMedico($value='')
+	{
+		# code...
+	}
+	public function delExamenMedico($value='')
+	{
+		# code...
 	}
 
 	// consultas
