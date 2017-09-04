@@ -42,6 +42,34 @@ class Afiliado extends CI_Controller {
 			$idaf = $this->myaf->add($post);
 			$post->idafiliado = $idaf;			
 		}
+		//$this->guardarContactos($post->contactos);
+
+		$ret =  new stdClass();
+		$ret->return = $post;
+		$ret->success = TRUE;
+		$ret->msj = 'Datos registrados exitosamente.';
+		return json_encode( $ret );
+	}
+
+	// Contactos de afiliado
+
+	public function addContact()
+	{
+		$contact = json_decode(file_get_contents('php://input'));
+		$this->load->model('afiliado_db', 'myaf');
+		$contact->idafiliado_contacto = $this->myaf->addContacto($contact);
+		$ret =  new stdClass();
+		$ret->return = $contact;
+		$ret->success = TRUE;
+		$ret->msj = 'Contacto agregado exitosamente.';
+		return json_encode( $ret );
+	}
+
+	public function delContact($idContac='')
+	{
+		$contact = json_decode(file_get_contents('php://input'));
+		$this->load->model('afiliado_db', 'myaf');
+		$this->myaf->delContacto($contact);
 	}
 
 	// listado de afiliado

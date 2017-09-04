@@ -18,25 +18,21 @@ var form_afiliado = function($scope, $http, $timeout){
 	}
 
 	$scope.guardar = function(){
-		if (af.idafiliado){
-			$http.post($scope.$parent.site_url+'afiliado/save',{})
-				.then(
-					function(response){
-						if(response.data.success){
-							$scope.afiliado = response.data.afiliado;
-						}else{
-							alert('Algo no ha salido bien');
-							console.log(response.data);
-						}
-					},
-					function(response){
-						alert('Error en el proceso');
+		$http.post($scope.$parent.site_url+'afiliado/save', $scope.af )
+			.then(
+				function(response){
+					if(response.data.success){
+						$scope.afiliado = response.data.afiliado;
+					}else{
+						alert('Algo no ha salido bien');
 						console.log(response.data);
 					}
-				);
-		}else{
-
-		}
+				},
+				function(response){
+					alert('Error en el proceso');
+					console.log(response.data);
+				}
+			);
 	}
 
 	$scope.insertar = function(){
