@@ -22,7 +22,9 @@ var form_afiliado = function($scope, $http, $timeout){
 			.then(
 				function(response){
 					if(response.data.success){
-						$scope.afiliado = response.data.afiliado;
+						$scope.afiliado = response.data.return;
+						$scope.saved = true;
+						$scope.saved_msj = response.data.msj;
 					}else{
 						alert('Algo no ha salido bien');
 						console.log(response.data);

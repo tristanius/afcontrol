@@ -1,10 +1,6 @@
 <section ng-controller="form_afiliado">
 	<div class="grid-x"> 
 		<div class="cell auto text-left">
-			Guardar:
-			<button class="button success margin-none padding1ex"> 
-				<span class="text-white" data-icon="&#xe058;"></span>
-			</button>
 			Edit:
 			<div ng-if="!af.idafiliado" class="inline_block">
 				<i class="fa fa-pencil" aria-hidden="true"></i>
@@ -26,8 +22,9 @@
 	<fieldset>
 		<div class="grid-y">
 			<div class="grid-x cell">
+				<div class="callout warning" ng-show="saved" ng-bind="saved-msj"></div>
 
-				<fieldset class="cell medium-2 large-2">
+				<fieldset class="cell small-10 medium-2 large-2">
 					<!-- foto del afiliado -->
 					<img ng-src="{{ af.foto?af.foto:'<?= base_url('assets/img/icon.png') ?>'; }}" 
 						class="thumbnail" 
@@ -37,9 +34,9 @@
 					<button class="button" ng-if="af.idafiliado">Cargar foto</button>
 				</fieldset>
 
-				<fieldset class="cell medium-10 large-5">					
+				<fieldset class="cell medium-10 large-10">					
 					<div class="grid-x">
-						<div class="cell medium-6 large-6 padding1ex">
+						<div class="cell medium-4 large-4 padding1ex">
 							<caption><strong style="color: #3E6F9E">Datos personales: </strong></caption>
 							<label>Tipo identificación:
 								<select ng-model="af.tipo_identificacion">
@@ -61,35 +58,59 @@
 							<label>
 								Apellidos: <input type="text" ng-model="af.apellidos_completos" placeholder="por favor ingrese sus apellidos">
 							</label>
-
-							<label>
-								fecha nacimiento:
-								<input type="text" class="datepicker" ng-model="af.fecha_nacimiento" placeholder="ingrese una fecha">
-							</label>
 						</div>
-						<div class="cell medium-6 large-6 padding1ex">
+						<div class="cell medium-4 large-4 padding1ex">
+							<caption><strong style="color: #3E6F9E">Otros datos: </strong></caption>							
+
+							<div>
+								<label>
+									Tipo de sangre: <input type="text" ng-model="af.tipo_sanguineo" placeholder="EJ: A+">
+								</label>
+
+								<label>
+									Talla actual: <input type="text" ng-model="af.talla" placeholder="EJ: 14/16/S/M/L/XL">
+								</label>
+
+								<label>
+									fecha nacimiento:
+									<input type="text" class="datepicker" ng-model="af.fecha_nacimiento" placeholder="ingrese una fecha">
+								</label>
+
+								<label>
+									Entidad de salud:
+									<input type="text" ng-model="af.entidad_salud" placeholder="ingrese una fecha">
+								</label>
+							</div>
+						</div>
+						<div class="cell padding1ex medium-4 large-4">
 							<caption><strong style="color: #3E6F9E">Datos de localización: </strong></caption>
 							<label>
-								Telefono: <input type="text" ng-model="af.identificacion" placeholder="No. de identificación">
+								Telefono: <input type="text" ng-model="af.telefono" placeholder="No. de identificación">
 							</label>
 							<label>
-								Movìl: <input type="text" ng-model="af.identificacion" placeholder="No. de identificación">
+								Movìl: <input type="text" ng-model="af.telefono_movil" placeholder="No. de identificación">
 							</label>
 							<label>
 								Dirección: <input type="text" ng-model="af.direccion" placeholder="No. de dirección">
 							</label>
 							<label>
-								Correo Electronico: <input type="text" ng-model="af.direccion" placeholder="Correo-E">
+								Correo Electronico: <input type="text" ng-model="af.correo" placeholder="Correo-E">
 							</label>
+						</div>
+						<div class="cell">
+							Guardar:
+							<button class="button success margin-none padding1ex" ng-click="Guardar()"> 
+								<span class="text-white" data-icon="&#xe058;" ></span>
+							</button>
 						</div>
 					</div>
 				</fieldset>
 
-				<fieldset class="cell  medium-6 large-5">					
+				<fieldset class="cell  medium-12 large-6">					
 					<?php $this->load->view('afiliado/form/contactos', array()); ?>
 				</fieldset>	
 
-				<fieldset class="cell medium-6 large-3" ng-if="af.idafiliado">				
+				<fieldset class="cell medium-6 large-6" ng-if="af.idafiliado">				
 					<?php $this->load->view('afiliado/form/docs', array()); ?>
 				</fieldset>
 

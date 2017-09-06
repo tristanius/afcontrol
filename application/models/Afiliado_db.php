@@ -20,10 +20,12 @@ class Afiliado_db extends CI_Model {
 				'apellidos' => $obj->apellidos, 
 				'fecha_nacimiento' => $obj->fecha_nacimiento, 
 				'telefono' => $obj->telefono, 
+				'movil'=>$obj->movil,
 				'direccion' => $obj->direccion, 
 				'correo' => $obj->correo
-				'tipo_sangre' => $obj->tipo_sangre
-				'talla' => $obj->talla
+				'tipo_sanguineo' => $obj->tipo_sanguineo
+				'talla' => $obj->talla,
+				'tipo_sanguineo' =>$obj->tipo_sanguineo
 			);
 		$this->db->insert('afiliado', $data);
 		return $this->db->insert_id();
@@ -37,10 +39,12 @@ class Afiliado_db extends CI_Model {
 				'apellidos' => $obj->apellidos, 
 				'fecha_nacimiento' => $obj->fecha_nacimiento, 
 				'telefono' => $obj->telefono, 
+				'movil'=>$obj->movil,
 				'direccion' => $obj->direccion, 
 				'correo' => $obj->correo
-				'tipo_sangre' => $obj->tipo_sangre
-				'talla' => $obj->talla
+				'tipo_sanguineo' => $obj->tipo_sanguineo
+				'talla' => $obj->talla,
+				'tipo_sanguineo' =>$obj->tipo_sanguineo
 			);
 		return $this->db->update('afiliado', $data, 'idafiliado = '.$obj->idafiliado);
 	}

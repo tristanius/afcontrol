@@ -1,21 +1,7 @@
-	<div class="grid-x">
-		<div class="cell padding1ex">
-			<caption><strong style="color: #3E6F9E">Otros datos: </strong></caption>							
-
-			<div class="grid-x">
-				<label class="cell large-6 medium-6 padding1ex">
-					Tipo de sangre: <input type="text" ng-model="af.tipo_sangre" placeholder="EJ: A+">
-				</label>
-
-				<label class="cell large-6 medium-6 padding1ex">
-					Talla actual: <input type="text" ng-model="af.talla" placeholder="EJ: 14/16/S/M/L/XL">
-				</label>
-			</div>
-		</div>
-
+	<div class="grid-x" ng-if="af.idafiliado">
 		<div class="cell padding1ex">
 			<caption><strong style="color: #3E6F9E">Contactos / Referencia: </strong></caption>
-			<button class="button" type="button" data-open="form_contacto" ng-if="!af.idafiliado"> + </button>
+			<button class="button" type="button" data-open="form_contacto"> + </button>
 
 			<div class="reveal" id="form_contacto" data-reveal>
 				<button class="close-button" data-close aria-label="Close Accessible Modal" type="button">

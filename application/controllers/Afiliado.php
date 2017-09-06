@@ -47,7 +47,7 @@ class Afiliado extends CI_Controller {
 		$ret =  new stdClass();
 		$ret->return = $post;
 		$ret->success = TRUE;
-		$ret->msj = 'Datos registrados exitosamente.';
+		$ret->msj = 'Datos registrados exitosamente.'.date('Y-m-d H:i:s');
 		return json_encode( $ret );
 	}
 
