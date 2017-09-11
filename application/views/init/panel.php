@@ -20,10 +20,9 @@
 					</div>
 				</div>
 
-				<div id="pestana_view" class="cell" ng-repeat="tab in tabs" ng-if="tab.active">
-					<div ng-include="( site_url + tab.lnk )"></div>					
+				<div id="pestana_view" class="cell" ng-repeat="tab in tabs" ng-show="tab.active" ng-include="tab.lnk">
+					<img src="<?= base_url('assets/img/loader.gif') ?>">
 				</div>
-
 			</div>
 		</section>
 				

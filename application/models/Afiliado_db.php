@@ -7,7 +7,8 @@ class Afiliado_db extends CI_Model {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->database('afc');	
+		$this->load->database();
+		date_default_timezone_set('America/Bogota');
 	}
 
 	// Datos basicos
@@ -22,10 +23,11 @@ class Afiliado_db extends CI_Model {
 				'telefono' => $obj->telefono, 
 				'movil'=>$obj->movil,
 				'direccion' => $obj->direccion, 
-				'correo' => $obj->correo
-				'tipo_sanguineo' => $obj->tipo_sanguineo
+				'correo' => $obj->correo,
+				'tipo_sanguineo' => $obj->tipo_sanguineo,
 				'talla' => $obj->talla,
-				'tipo_sanguineo' =>$obj->tipo_sanguineo
+				'entidad_salud' => $obj->entidad_salud,
+				'tipo_registro' => $obj->tipo_registro
 			);
 		$this->db->insert('afiliado', $data);
 		return $this->db->insert_id();
@@ -41,10 +43,11 @@ class Afiliado_db extends CI_Model {
 				'telefono' => $obj->telefono, 
 				'movil'=>$obj->movil,
 				'direccion' => $obj->direccion, 
-				'correo' => $obj->correo
-				'tipo_sanguineo' => $obj->tipo_sanguineo
+				'correo' => $obj->correo,
+				'tipo_sanguineo' => $obj->tipo_sanguineo,
 				'talla' => $obj->talla,
-				'tipo_sanguineo' =>$obj->tipo_sanguineo
+				'entidad_salud' => $obj->entidad_salud,
+				'tipo_registro' => $obj->tipo_registro
 			);
 		return $this->db->update('afiliado', $data, 'idafiliado = '.$obj->idafiliado);
 	}
@@ -86,9 +89,18 @@ class Afiliado_db extends CI_Model {
 		# code...
 	}
 
-	public function getBy($field, $val)
+	public function getBy($field=NULL, $val=NULL, $start=NULL, $limit=NULL, $select=NULL)
 	{
-		# code...
+		$this->load->database('ot');
+		$this->db->select( isset($select)?$select:'*' )
+			->from('afiliado AS af');
+		if (isset($field) && isset($val)) {
+			$this->db->where($field, $val);
+		}
+		if (isset($start) && isset($limit)) {
+			$this->db->limit($limit, $start);
+		}
+		return $this->db->get();
 	}
 
 }

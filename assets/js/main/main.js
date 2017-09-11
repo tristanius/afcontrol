@@ -3,9 +3,7 @@ app.controller('main', function($scope, $http, $timeout, $templateCache){
 	$scope.site_url = undefined;
 	$scope.selected_tab = {active:false};
 	$scope.tab_counter = 0;
-	$scope.tabs = [
-		{ id:0, title:"Inicio", lnk:"welcome/entrada", active: true, rm: true }
-	]
+	$scope.tabs = [];
 	//---------------------------------//
 	// Click del menu lateral //
 	$scope.clickOpcionMenu = function(link, titulo){
@@ -14,6 +12,7 @@ app.controller('main', function($scope, $http, $timeout, $templateCache){
 	//---------------------------------//
 	// Manejo de pestañas
 	$scope.initTabs = function(){
+		$scope.tabs.push({ id:0, title:"Inicio", lnk: $scope.site_url+"welcome/entrada", active: true, rm: false });
 		$scope.selected_tab = $scope.tabs[0]; // apuntamos al validador de pestaña selecionada
 	}
 	$scope.selectedTab = function(tab){
@@ -26,7 +25,7 @@ app.controller('main', function($scope, $http, $timeout, $templateCache){
 	}
 	$scope.addNewTab = function(link, titulo){
 		var n = $scope.tabs.length;
-		$scope.tabs.push({id: (++$scope.tab_counter) , title: titulo, lnk:link, active: false, rm: true });
+		$scope.tabs.push({id: (++$scope.tab_counter) , title: titulo, lnk: $scope.site_url+link, active: false, rm: true });
 		$scope.selectedTab($scope.tabs[n]); // se auto selecciona la nueva pestaña
 		$templateCache.removeAll();
 	}
@@ -59,4 +58,7 @@ app.controller('main', function($scope, $http, $timeout, $templateCache){
 
 app.controller('form_afiliado', function($scope, $http, $timeout, $templateCache){
 	form_afiliado( $scope, $http, $timeout );
+} );
+app.controller('list_afiliados', function($scope, $http, $timeout, $templateCache){
+	list_afiliados( $scope, $http, $timeout );
 } );

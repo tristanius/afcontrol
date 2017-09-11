@@ -5,6 +5,7 @@ class Afiliado extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+		date_default_timezone_set('America/Bogota');
 	}
 
 	public function index()
@@ -35,7 +36,7 @@ class Afiliado extends CI_Controller {
 	public function save()
 	{
 		$post = json_decode(file_get_contents('php://input'));
-		$this->load->model('afiliad_db', 'myaf');
+		$this->load->model('afiliado_db', 'myaf');
 		if ( isset($post->idafiliado) ) {
 			$this->myaf->update($post);
 		}else{
@@ -43,14 +44,38 @@ class Afiliado extends CI_Controller {
 			$post->idafiliado = $idaf;			
 		}
 		//$this->guardarContactos($post->contactos);
-
 		$ret =  new stdClass();
 		$ret->return = $post;
 		$ret->success = TRUE;
 		$ret->msj = 'Datos registrados exitosamente.'.date('Y-m-d H:i:s');
-		return json_encode( $ret );
+		echo json_encode( $ret );
+	}
+	// listado de afiliado
+	public function lista()
+	{
+		$vw = $this->load->view('afiliado/list', array(), TRUE);
+		$this->load->view('util/plantilla', array('titulo'=>'Lista de afiliados', 'content'=>$vw) );
+	}
+	public function getList($start=NULL, $end=NULL)
+	{
+		$this->load->model('afiliado_db', 'myaf');
+		$rows = $this->myaf->getBy(NULL, NULL, $start, $end, 'af.idafiliado, af.identificacion, af.tipo_identificacion, af.nombres, af.apellidos');
+		echo json_encode( $rows->result() );
 	}
 
+	// ver un afiliado
+	public function ver($id=NULL)
+	{
+		# code...
+	}
+
+	// subir archivos
+	public function upload()
+	{
+		# code...
+	}
+
+	// ------------------------------------------------------------------------------------------
 	// Contactos de afiliado
 
 	public function addContact()
@@ -72,23 +97,6 @@ class Afiliado extends CI_Controller {
 		$this->myaf->delContacto($contact);
 	}
 
-	// listado de afiliado
-	public function lista()
-	{
-		# code...
-	}
-
-	// ver un afiliado
-	public function ver($id=NULL)
-	{
-		# code...
-	}
-
-	// subir archivos
-	public function upload()
-	{
-		# code...
-	}
 
 	// ---------------------------
 	// Utilidades generales

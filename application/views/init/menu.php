@@ -16,8 +16,8 @@
 	    	<a> <i class="fa fa-address-book-o"></i> Afiliados</a>
     		<ul class="menu vertical nested">
       			<li><a class="" ng-click="clickOpcionMenu('afiliado/add','Add afiliado')"> Add. Afiliado</a></li>
-      			<li><a class="" ng-click="clickOpcionMenu('afiliado/ver','Add afiliado')"> Ver Afiliado</a></li>
-      			<li><a class="" ng-click="clickOpcionMenu('afiliado/lis','Add afiliado')"> Listar Afiliado</a></li>
+      			<li><a class="" ng-click="clickOpcionMenu('afiliado/find','Buscar afiliado')"> buscar Afiliado</a></li>
+      			<li><a class="" ng-click="clickOpcionMenu('afiliado/list','Lista de afiliados')"> Lista de Afiliados</a></li>
     		</ul>
 	  	</li>
 	  	<li>

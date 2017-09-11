@@ -32,3 +32,6 @@ nav{
 select{
 	background-position: right 0.5ex center;
 }
+.nodisplay{
+	display: none;
+}
