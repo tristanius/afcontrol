@@ -1,4 +1,4 @@
-<section ng-controller="form_afiliado">
+<section ng-controller="form_afiliado" class="myform">
 	<div class="grid-x">
 		<div class="cell large-12 medium-12 text-right">			
 			<button ng-if="af.idafiliado" class="button alert margin-none padding1ex">

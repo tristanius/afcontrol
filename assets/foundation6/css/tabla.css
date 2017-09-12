@@ -1,0 +1,10 @@
+.mytabla{
+	font-size: 12px;
+}
+.mytabla tr th{
+	text-align: center;
+}
+.mytabla tr td, .mytabla tr th{
+	padding: 5px;
+	border:1px solid #777;
+}

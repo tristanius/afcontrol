@@ -12,6 +12,7 @@ nav{
 }
 .margin-none{ margin: 0px; }
 .padding1ex{ padding: 1ex; }
+.padding5px{ padding: 5px; }
 .text-white{ color: #FFF; }
 .font9{ font-size: 9px; }
 .font10{ font-size: 10px; }
@@ -21,11 +22,11 @@ nav{
 	display: inline-block;
 }
 
-[type="text"], [type="password"], [type="date"], [type="datetime"], 
-[type="datetime-local"], [type="month"], [type="week"], [type="email"], 
-[type="number"], [type="search"], [type="tel"], [type="time"], [type="url"], 
-[type="color"], textarea, select{
-	margin-bottom: 0.5ex;
+.myform [type="text"], .myform [type="password"], .myform [type="date"], .myform [type="datetime"], 
+.myform [type="datetime-local"], .myform [type="month"], .myform [type="week"], .myform [type="email"], 
+.myform [type="number"], .myform [type="search"], .myform [type="tel"], .myform [type="time"], .myform [type="url"], 
+.myform [type="color"], .myform textarea, .myform select{
+	margin-bottom: 0ex;
 	padding: 0.5ex;
 	height: auto;
 }
@@ -34,4 +35,10 @@ select{
 }
 .nodisplay{
 	display: none;
+}
+.button{
+	margin-bottom: 0px;
+}
+.myform label{
+	margin-bottom: 5px;
 }

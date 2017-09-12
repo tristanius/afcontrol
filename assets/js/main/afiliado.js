@@ -54,5 +54,20 @@ var form_afiliado = function($scope, $http, $timeout){
 // -------------------------------------------------------------------------------------------
 // Lista de afiliados
 var list_afiliados = function($scope, $http, $timeout){
-	$scope.afiliados=[];
+	$scope.afiliados=undefined;
+	$scope.list_ini = 0;
+	$scope.list_end = 25;
+
+	$scope.getListAfiliados = function(ini, end){
+		$http.get($scope.$parent.site_url+'afiliado/getList/'+ini+'/'+end)
+			.then(
+				function(response){
+					$scope.afiliados = response.data;
+					console.log(response.data);
+				},
+				function(response){
+					console.log(response.data);
+				}
+			);
+	}
 }
