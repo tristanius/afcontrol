@@ -57,11 +57,30 @@ var list_afiliados = function($scope, $http, $timeout){
 	$scope.afiliados=undefined;
 	$scope.list_ini = 0;
 	$scope.list_end = 25;
+	$scope.filterAfiliado = {};
+	$scope.myFilter = {};
+	$scope.filterStatus = {timer: new Date(), status: false, process: undefined};
+	$scope.showList = false;
+
+	$scope.filterChanges = function(){
+		if ($scope.filterStatus.status) {
+			clearTimeout($scope.filterStatus.process);
+		}
+		$scope.filterStatus.status = true;
+		$scope.filterStatus.process = setTimeout($scope.applyfilter( $scope.myFilter ), 1000);
+	}
+
+	$scope.applyfilter = function(filter){
+		$scope.showList = false;
+		$scope.filterAfiliado =  filter;
+		setTimeout(function(){$scope.showList = true;}, 100)
+	}
 
 	$scope.getListAfiliados = function(ini, end){
 		$http.get($scope.$parent.site_url+'afiliado/getList/'+ini+'/'+end)
 			.then(
 				function(response){
+					$scope.showList = true;
 					$scope.afiliados = response.data;
 					console.log(response.data);
 				},

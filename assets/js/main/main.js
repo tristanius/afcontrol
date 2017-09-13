@@ -4,6 +4,7 @@ app.controller('main', function($scope, $http, $timeout, $templateCache){
 	$scope.selected_tab = {active:false};
 	$scope.tab_counter = 0;
 	$scope.tabs = [];
+	$scope.filtered_list = [];
 	//---------------------------------//
 	// Click del menu lateral //
 	$scope.clickOpcionMenu = function(link, titulo){
@@ -52,6 +53,17 @@ app.controller('main', function($scope, $http, $timeout, $templateCache){
 	}
 	//---------------------------------//
 	$scope.viewVentanaModal = function(){}
+
+	$scope.findWords = function(list, field, valField){
+		returnList = [];
+		angular.forEach(list, function(v,k){
+			var myField = v[field].toLowerCase();
+			if (myField.includes(valField)) {
+				returnList.push(v);
+			}
+		});
+		return returnList;
+	}
 	//---------------------------------//
 	// Gestion de general de forms
 });

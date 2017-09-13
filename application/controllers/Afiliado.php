@@ -101,6 +101,28 @@ class Afiliado extends CI_Controller {
 	// ---------------------------
 	// Utilidades generales
 
+	public function rellenado_de_tabla($value)
+	{
+		$this->load->model('afiliado_db', 'af');
+		for($i=0; $i<=$value; $i++){
+			$obj = new stdClass();
+			$obj->identificacion = rand(100000, 10000000000);
+			$obj->tipo_identificacion = 'C.C.';
+			$obj->nombres = 'Pepe '.$obj->identificacion;
+			$obj->apellidos = 'nene '.$obj->identificacion;
+			$obj->fecha_nacimiento = '2017-09-13';
+			$obj->telefono = ''.$obj->identificacion;
+			$obj->movil = ''.$obj->identificacion;
+			$obj->direccion = ''.$obj->identificacion;
+			$obj->correo = '';
+			$obj->tipo_sanguineo = '';
+			$obj->talla = '';
+			$obj->entidad_salud = '';
+			$obj->tipo_registro = 'prueba';
+			$this->af->add($obj);
+		}
+	}
+
 }
 
 /* End of file Afiliado.php */

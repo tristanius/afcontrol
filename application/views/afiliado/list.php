@@ -7,7 +7,7 @@
 		
 		<div class="cell large-3 medium-4 input-group padding1ex" >
 			<span class="input-group-label">Identificación: </span>
-			<input class="input-group-field" type="text">
+			<input class="input-group-field" type="text" ng-model="myFilter.identificacion" ng-change="filterChanges()">
 		</div>
 
 		<div class="cell large-3 medium-4 input-group padding1ex" >
@@ -24,10 +24,11 @@
 	</fieldset>
 	<br>
 
-	<div ng-init="getListAfiliados(0,25)">
-		<table class="mytabla stack table-scroll">
+	<div ng-init="getListAfiliados(0,5000)" class="table-scroll">
+		<table class="mytabla" ng-if="showList" >
 			<thead>
 				<tr>
+					<th></th>
 					<th>Identificacion</th>
 					<th>Nombre</th>
 					<th>Apellidos</th>
@@ -35,7 +36,8 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="af in afiliados">
+				<tr ng-repeat="af in afiliados | filter: filterAfiliado">
+					<td ng-bind="af.idafiliado"></td>
 					<td ng-bind="af.identificacion"></td>
 					<td ng-bind="af.nombres"></td>
 					<td ng-bind="af.apellidos"></td>
@@ -44,7 +46,8 @@
 			</tbody>
 		</table>
 	</div>
-	<div ng-if="!afiliados">
+
+	<div ng-if="!afiliados || !showList">
 		<img src="<?= base_url('assets/img/loader.gif') ?>">		
 	</div>
 </section>
