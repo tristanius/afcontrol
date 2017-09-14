@@ -54,7 +54,8 @@ var form_afiliado = function($scope, $http, $timeout){
 // -------------------------------------------------------------------------------------------
 // Lista de afiliados
 var list_afiliados = function($scope, $http, $timeout){
-	$scope.afiliados=undefined;
+	$scope.afiliados = undefined;
+	$scope.listado_afiliados = undefined;
 	$scope.list_ini = 0;
 	$scope.list_end = 25;
 	$scope.filterAfiliado = {};
@@ -62,18 +63,36 @@ var list_afiliados = function($scope, $http, $timeout){
 	$scope.filterStatus = {timer: new Date(), status: false, process: undefined};
 	$scope.showList = false;
 
-	$scope.filterChanges = function(){
+	/*$scope.filterChanges = function(){
 		if ($scope.filterStatus.status) {
 			clearTimeout($scope.filterStatus.process);
 		}
 		$scope.filterStatus.status = true;
-		$scope.filterStatus.process = setTimeout($scope.applyfilter( $scope.myFilter ), 1000);
+		$scope.filterStatus.process = setTimeout($scope.applyfilter( $scope.myFilter ), 2000);
 	}
 
 	$scope.applyfilter = function(filter){
 		$scope.showList = false;
 		$scope.filterAfiliado =  filter;
-		setTimeout(function(){$scope.showList = true;}, 100)
+		$scope.filterStatus.status = false;
+		$scope.showList = true;
+	}*/
+
+	$scope.filterTimer = function(list, filtro){
+		if ($scope.filterStatus.status) {
+			clearTimeout($scope.filterStatus.process);
+		}
+		$scope.filterStatus.status = true;
+		$scope.showList = false;
+		$scope.filterStatus.process = setTimeout( function(){ $scope.applyMyFilter( list, filtro ) } , 600);
+	}
+
+	$scope.applyMyFilter = function(list, f){
+		$timeout(function() {
+			$scope.listado_afiliados = $scope.$parent.findWords(list, f);
+			$scope.filterStatus.status = false;
+			$scope.showList = true;	
+		});
 	}
 
 	$scope.getListAfiliados = function(ini, end){
@@ -82,6 +101,7 @@ var list_afiliados = function($scope, $http, $timeout){
 				function(response){
 					$scope.showList = true;
 					$scope.afiliados = response.data;
+					$scope.listado_afiliados = $scope.afiliados;
 					console.log(response.data);
 				},
 				function(response){

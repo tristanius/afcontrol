@@ -54,13 +54,28 @@ app.controller('main', function($scope, $http, $timeout, $templateCache){
 	//---------------------------------//
 	$scope.viewVentanaModal = function(){}
 
-	$scope.findWords = function(list, field, valField){
+	$scope.findWordsBy = function(list, field, valField){
 		returnList = [];
 		angular.forEach(list, function(v,k){
 			var myField = v[field].toLowerCase();
 			if (myField.includes(valField)) {
 				returnList.push(v);
 			}
+		});
+		return returnList;
+	}
+
+	$scope.findWords = function(list, fields){
+		returnList = [];
+		var keys =  Object.keys(fields);
+		angular.forEach(list, function(v,k){
+			var b = false;
+			angular.forEach(keys, function(f,i){
+				if(fields[f] && v[f] && ( v[f].includes(fields[f]) ))
+					b = true;
+			});
+			if (b)
+				returnList.push(v);
 		});
 		return returnList;
 	}

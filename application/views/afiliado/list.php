@@ -7,16 +7,16 @@
 		
 		<div class="cell large-3 medium-4 input-group padding1ex" >
 			<span class="input-group-label">Identificación: </span>
-			<input class="input-group-field" type="text" ng-model="myFilter.identificacion" ng-change="filterChanges()">
+			<input class="input-group-field" type="text" ng-model="myFilter.identificacion" ng-change="filterTimer(afiliados, myFilter)">
 		</div>
 
 		<div class="cell large-3 medium-4 input-group padding1ex" >
 			<span class="input-group-label">Nombres: </span>
-			<input class="input-group-field" type="text">
+			<input class="input-group-field" type="text" ng-model="myFilter.nombres" ng-change="filterTimer(afiliados, myFilter)">
 		</div>
 		<div class="cell large-3 medium-4 input-group padding1ex" >
 			<span class="input-group-label">Apellidos: </span>
-			<input class="input-group-field" type="text">
+			<input class="input-group-field" type="text" ng-model="myFilter.apellidos" ng-change="filterTimer(afiliados, myFilter)">
 		</div>
 		<div class="cell large-3 medium-4 padding1ex">
 			<button class="button padding1ex">Buscar</button>
@@ -24,7 +24,7 @@
 	</fieldset>
 	<br>
 
-	<div ng-init="getListAfiliados(0,5000)" class="table-scroll">
+	<div ng-init="getListAfiliados(0, 5000)" class="table-scroll">
 		<table class="mytabla" ng-if="showList" >
 			<thead>
 				<tr>
@@ -36,7 +36,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="af in afiliados | filter: filterAfiliado">
+				<tr ng-repeat="af in listado_afiliados">
 					<td ng-bind="af.idafiliado"></td>
 					<td ng-bind="af.identificacion"></td>
 					<td ng-bind="af.nombres"></td>
@@ -45,9 +45,12 @@
 				</tr>
 			</tbody>
 		</table>
+		<div>
+			<button class="button"> < </button> <button class="button"> > </button>
+		</div>
 	</div>
 
 	<div ng-if="!afiliados || !showList">
-		<img src="<?= base_url('assets/img/loader.gif') ?>">		
+		Cargando: <img src="<?= base_url('assets/img/loader.gif') ?>">		
 	</div>
 </section>
