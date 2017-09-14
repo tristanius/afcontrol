@@ -69,15 +69,23 @@ app.controller('main', function($scope, $http, $timeout, $templateCache){
 		returnList = [];
 		var keys =  Object.keys(fields);
 		angular.forEach(list, function(v,k){
-			var b = false;
-			angular.forEach(keys, function(f,i){
-				if(fields[f] && v[f] && ( v[f].includes(fields[f]) ))
-					b = true;
-			});
-			if (b)
+			if ( $scope.validFindWords(keys, fields, v) )
 				returnList.push(v);
 		});
 		return returnList;
+	}
+	$scope.validFindWords = function(keys, filter, comparator){ // medoto necesario para findWords()
+		var b = undefined;
+		angular.forEach(keys, function(f,i){
+			var x = comparator[f].toLowerCase();
+			var y = filter[f].toLowerCase();
+			if(filter[f] && comparator[f] && ( x.includes( y ) ) ){
+				b = true;
+			}else{
+				b = false;
+			}
+		});
+		return b;
 	}
 	//---------------------------------//
 	// Gestion de general de forms
