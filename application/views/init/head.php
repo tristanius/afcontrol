@@ -13,4 +13,6 @@
     <link rel="stylesheet" href="<?= base_url('assets/font-awesome/css/font-awesome.min.css?v='.rand()) ?>">
     <link rel="stylesheet" href="<?= base_url('assets/fontastic/styles.css?v='.rand()) ?>">
 
+    <link rel="stylesheet" type="text/css" href="<?= base_url('assets/js/datatables/datatables.min.css') ?>">
+
 </head>

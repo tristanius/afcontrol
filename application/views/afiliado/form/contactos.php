@@ -1,4 +1,4 @@
-	<div class="grid-x" ng-if="af.idafiliado">
+	<div class="grid-x" ng-show="af.idafiliado">
 		<div class="cell padding1ex">
 			<caption><strong style="color: #3E6F9E">Contactos / Referencia: </strong></caption>
 			<button class="button" type="button" data-open="form_contacto"> + </button>
@@ -16,25 +16,29 @@
 						Telefono: <input type="text" ng-model="newcontact.telefono_ref">
 					</label>
 					<label>
-						Parentesco: <input type="text" ng-model="newcontact.parentescoref">
+						Parentesco: <input type="text" ng-model="newcontact.parentesco_ref">
 					</label>
-					<button class="button"> + </button>
+					<button class="button" ng-click="addContact('afiliado/add_contact', newcontact)"> + </button>
 				</fieldset>
 			</div>
 
 			<table class="font11">
 				<thead>
 					<tr>
+						<th>No.</th>
 						<th>Nombre Contacto</th>
 						<th>Telefono</th>
 						<th>Tipo</th>
+						<th>Opción</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td></td>
-						<td></td>
-						<td></td>
+					<tr ng-repeat="c in af.contactos">
+						<td ng-bind="c.idafiliado_contacto"></td>
+						<td ng-bind="c.nombre_ref"></td>
+						<td ng-bind="c.telefono_ref"></td>
+						<td ng-bind="c.parentesco_ref"></td>
+						<td > <button ng-click="" class="button alert"></button> </td>
 					</tr>
 				</tbody>
 			</table>					

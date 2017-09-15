@@ -86,12 +86,11 @@ class Afiliado_db extends CI_Model {
 	// consultas
 	public function get($id)
 	{
-		# code...
+		return $this->db->select('*')->from('afiliado')->where('idafiliado',$id)->get();
 	}
 
 	public function getBy($field=NULL, $val=NULL, $start=NULL, $limit=NULL, $select=NULL)
 	{
-		$this->load->database('ot');
 		$this->db->select( isset($select)?$select:'*' )
 			->from('afiliado AS af');
 		if (isset($field) && isset($val)) {

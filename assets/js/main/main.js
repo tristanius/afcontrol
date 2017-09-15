@@ -88,6 +88,26 @@ app.controller('main', function($scope, $http, $timeout, $templateCache){
 		return b;
 	}
 	//---------------------------------//
+	$scope.datatable = function(id){
+		$timeout(function(){ 
+			$(id).DataTable(
+				{
+			        "language": {
+			            "paginate": {
+					        "first":      "Primera",
+					        "last":       "Ultima",
+					        "next":       "Siguiente",
+					        "previous":   "Anterior"
+					    },
+					    "zeroRecords": "Nothing found - sorry",
+			            "info": "Mostrando pag. _PAGE_ de _PAGES_",
+			            "lengthMenu": "Mostrando _MENU_ filas",
+			            "infoEmpty": "Mostrando 0 a 0 de 0 filas",
+			            "search": "Buscar:",
+			        }
+			    }); 
+		});
+	}
 	// Gestion de general de forms
 });
 

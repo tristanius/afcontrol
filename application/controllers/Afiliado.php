@@ -23,7 +23,8 @@ class Afiliado extends CI_Controller {
 	// modificar un afiliado
 	public function edit($id=NULL)
 	{
-		# code...
+		$vw = $this->load->view('afiliado/form', array('idafiliado'=>$id), TRUE);
+		$this->load->view('util/plantilla', array('titulo'=>'Detalles de afiliado', 'content'=>$vw) );
 	}
 	public function existeBy($field, $val)
 	{
@@ -31,7 +32,6 @@ class Afiliado extends CI_Controller {
 		$result = $this->myaf->getBy($field, $val);
 		return $result->num_rows()>0?TRUE:FALSE;
 	}
-
 	// guardar afiliado
 	public function save()
 	{
@@ -61,6 +61,16 @@ class Afiliado extends CI_Controller {
 		$this->load->model('afiliado_db', 'myaf');
 		$rows = $this->myaf->getBy(NULL, NULL, $start, $end, 'af.idafiliado, af.identificacion, af.tipo_identificacion, af.nombres, af.apellidos');
 		echo json_encode( $rows->result() );
+	}
+	public function get($id=NULL)
+	{
+		$this->load->model("afiliado_db", 'af');
+		$result = $this->af->get($id);
+		$ret =  new stdClass();
+		$ret->return = $result->row();
+		$ret->success = TRUE;
+		$ret->msj = 'Consulta realizada exitosamente'.date('Y-m-d H:i:s');
+		echo json_encode( $ret );
 	}
 
 	// ver un afiliado

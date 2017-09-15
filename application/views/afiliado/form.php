@@ -7,7 +7,7 @@
 		</div>
 		<div id="saved_msj" class="cell large-12 medium-12 callout {{saved?'success':'alert'}} nodisplay" ng-show="saved" ng-bind="saved_msj"></div>
 	</div>
-	<fieldset>
+	<fieldset ng-init="initAfiliado(<?= isset($idafiliado)?$idafiliado:NULL; ?>)">
 		<div class="grid-y">
 			<div class="grid-x cell">
 				<fieldset class="cell small-10 medium-2 large-2">

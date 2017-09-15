@@ -6,7 +6,7 @@ var form_afiliado = function($scope, $http, $timeout){
 	};
 
 	$scope.initAfiliado = function(id){
-		if(id == null){
+		if(id && id != null){
 			$scope.getAfiliado(id);
 		}
 	}
@@ -14,8 +14,11 @@ var form_afiliado = function($scope, $http, $timeout){
 	$scope.getAfiliado = function(id){
 		$http.get($scope.$parent.site_url+'afiliado/get/'+id)
 			.then(
-				function(response){},
-				function(response){}
+				function(response){
+					$scope.af = response.data.return;
+					console.log($scope.af);
+				},
+				function(response){ console.log(response.data)}
 			);
 	}
 
@@ -46,8 +49,20 @@ var form_afiliado = function($scope, $http, $timeout){
 		$http.post($scope.$parent.site_url+'afiliado/save',{});
 	}
 
-	$scope.validar_campos = function(){
+	$scope.validarCampos = function(){
 		alert('test');
+	}
+
+	// Contactos
+
+	$scope.newContact = function(lnk, obj){
+		$http.post(lnk, obj).then(
+			function(response){
+				$scope.af.contactos
+				console.log(response.data);
+			},
+			function(response){ alert("Error"); console.log(response.data); }
+			);
 	}
 }
 
@@ -61,22 +76,7 @@ var list_afiliados = function($scope, $http, $timeout){
 	$scope.filterAfiliado = {};
 	$scope.myFilter = {};
 	$scope.filterStatus = {timer: new Date(), status: false, process: undefined};
-	$scope.showList = false;
-
-	/*$scope.filterChanges = function(){
-		if ($scope.filterStatus.status) {
-			clearTimeout($scope.filterStatus.process);
-		}
-		$scope.filterStatus.status = true;
-		$scope.filterStatus.process = setTimeout($scope.applyfilter( $scope.myFilter ), 2000);
-	}
-
-	$scope.applyfilter = function(filter){
-		$scope.showList = false;
-		$scope.filterAfiliado =  filter;
-		$scope.filterStatus.status = false;
-		$scope.showList = true;
-	}*/
+	$scope.showList = true;
 
 	$scope.filterTimer = function(list, filtro){
 		if ($scope.filterStatus.status) {
@@ -93,6 +93,7 @@ var list_afiliados = function($scope, $http, $timeout){
 			$scope.filterStatus.status = false;
 			$scope.showList = true;	
 		});
+		$scope.$parent.datatable("#tabla_afiliado");
 	}
 
 	$scope.getListAfiliados = function(ini, end){
@@ -102,7 +103,7 @@ var list_afiliados = function($scope, $http, $timeout){
 					$scope.showList = true;
 					$scope.afiliados = response.data;
 					$scope.listado_afiliados = $scope.afiliados;
-					console.log(response.data);
+					$scope.$parent.datatable("#tabla_afiliado");
 				},
 				function(response){
 					console.log(response.data);

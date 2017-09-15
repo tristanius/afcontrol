@@ -1,31 +1,31 @@
 <section ng-controller="list_afiliados">
-
 	<fieldset class="myform grid-x font11">
-
-
-		<small class="cell large-12 medium-12 small-12">Puede usar los filtros que necesites y dejar los demás en blanco, estos ultimos seán ignorados.</small>
+		<small class="cell large-12 medium-12 small-12">Campos de busqueda, si necesitas un valor especifico usa los siguientes campos y presiona consultar; pero si deseas consultar el listado general dejalos vacios y dale click a consultar.</small>
 		
 		<div class="cell large-3 medium-4 input-group padding1ex" >
 			<span class="input-group-label">Identificación: </span>
-			<input class="input-group-field" type="text" ng-model="myFilter.identificacion" ng-change="filterTimer(afiliados, myFilter)">
+			<input class="input-group-field" type="text" ng-model="buscador.identificacion">
 		</div>
-
 		<div class="cell large-3 medium-4 input-group padding1ex" >
 			<span class="input-group-label">Nombres: </span>
-			<input class="input-group-field" type="text" ng-model="myFilter.nombres" ng-change="filterTimer(afiliados, myFilter)">
+			<input class="input-group-field" type="text" ng-model="buscador.nombres">
 		</div>
 		<div class="cell large-3 medium-4 input-group padding1ex" >
 			<span class="input-group-label">Apellidos: </span>
-			<input class="input-group-field" type="text" ng-model="myFilter.apellidos" ng-change="filterTimer(afiliados, myFilter)">
+			<input class="input-group-field" type="text" ng-model="buscador.apellidos">
 		</div>
 		<div class="cell large-3 medium-4 padding1ex">
-			<button class="button padding1ex">Buscar</button>
+			<button class="button padding1ex" ng-click="getListAfiliados('', '')">Consultar</button>
 		</div>
 	</fieldset>
 	<br>
 
-	<div ng-init="getListAfiliados(0, 5000)" class="table-scroll">
-		<table class="mytabla" ng-if="showList" >
+	<div ng-if="!showList">
+		Cargando: <img src="<?= base_url('assets/img/loader.gif') ?>">		
+	</div>
+
+	<div class="table-scroll">
+		<table id="tabla_afiliado" class="mytabla" ng-if="showList" style="width: 100%">
 			<thead>
 				<tr>
 					<th></th>
@@ -41,16 +41,16 @@
 					<td ng-bind="af.identificacion"></td>
 					<td ng-bind="af.nombres"></td>
 					<td ng-bind="af.apellidos"></td>
-					<td> <button class="button padding5px"><small>Detalles</small></button>	</td>
+					<td> 
+						<button class="button padding5px" 
+							ng-click="
+								addNewTab('afiliado/edit/'+af.idafiliado,
+								'Detalles: '+af.nombres+' '+af.identificacion)">
+							<small>Detalles</small>
+						</button>
+					</td>
 				</tr>
 			</tbody>
 		</table>
-		<div>
-			<button class="button"> < </button> <button class="button"> > </button>
-		</div>
-	</div>
-
-	<div ng-if="!afiliados || !showList">
-		Cargando: <img src="<?= base_url('assets/img/loader.gif') ?>">		
 	</div>
 </section>
