@@ -53,13 +53,17 @@ class Afiliado_db extends CI_Model {
 	}
 
 	// Datos de contacto
+	public function getContactsBy($id='')
+	{
+		return $this->db->get_where('afiliado_contacto', array('afiliado_idafiliado'=>$id) );
+	}
 	public function addContacto($obj)
 	{
 		$data = array(
 				'nombre_ref' => $obj->nombre_ref, 
 				'telefono_ref' => $obj->telefono_ref,
 				'parentesco_ref' => $obj->parentesco_ref,
-				'afiliado_idafiliado' =>$obj->afiliado_idafiliado
+				'afiliado_idafiliado' =>$obj->idafiliado
 			);
 		$this->db->insert('afiliado_contacto', $data);
 		return $this->db->insert_id();

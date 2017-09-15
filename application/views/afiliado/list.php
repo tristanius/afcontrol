@@ -43,9 +43,7 @@
 					<td ng-bind="af.apellidos"></td>
 					<td> 
 						<button class="button padding5px" 
-							ng-click="
-								addNewTab('afiliado/edit/'+af.idafiliado,
-								'Detalles: '+af.nombres+' '+af.identificacion)">
+							ng-click="addNewTab('afiliado/edit/'+af.idafiliado,'Detalles: '+af.nombres+' '+af.identificacion)">
 							<small>Detalles</small>
 						</button>
 					</td>

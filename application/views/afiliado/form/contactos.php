@@ -8,6 +8,7 @@
 			    	<span aria-hidden="true">&times;</span>
 			  	</button>
 				<fieldset>
+					<input type="hidden">
 					<legend>Agregar un nuevo contacto:</legend>
 					<label>
 						Nombre: <input type="text" ng-model="newcontact.nombre_ref">
@@ -18,7 +19,7 @@
 					<label>
 						Parentesco: <input type="text" ng-model="newcontact.parentesco_ref">
 					</label>
-					<button class="button" ng-click="addContact('afiliado/add_contact', newcontact)"> + </button>
+					<button class="button" ng-click="newContact('afiliado/add_contact/', newcontact, af.idafiliado)"> + </button>
 				</fieldset>
 			</div>
 
@@ -38,7 +39,7 @@
 						<td ng-bind="c.nombre_ref"></td>
 						<td ng-bind="c.telefono_ref"></td>
 						<td ng-bind="c.parentesco_ref"></td>
-						<td > <button ng-click="" class="button alert"></button> </td>
+						<td > <button ng-click="delContacto(c.idafiliado_contacto, af.idafiliado)" class="button alert"> X </button> </td>
 					</tr>
 				</tbody>
 			</table>					

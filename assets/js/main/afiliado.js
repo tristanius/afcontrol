@@ -16,9 +16,10 @@ var form_afiliado = function($scope, $http, $timeout){
 			.then(
 				function(response){
 					$scope.af = response.data.return;
+					$scope.getContacts(id);
 					console.log($scope.af);
 				},
-				function(response){ console.log(response.data)}
+				function(response){ alert('Error');console.log(response.data)}
 			);
 	}
 
@@ -54,14 +55,34 @@ var form_afiliado = function($scope, $http, $timeout){
 	}
 
 	// Contactos
-
-	$scope.newContact = function(lnk, obj){
-		$http.post(lnk, obj).then(
-			function(response){
-				$scope.af.contactos
-				console.log(response.data);
-			},
-			function(response){ alert("Error"); console.log(response.data); }
+	$scope.getContacts = function(idaf){
+		$http.get($scope.$parent.site_url+'afiliado/get_contacts/'+idaf).then(
+				function(response){
+					$scope.af.contactos = response.data.return;
+				},
+				function(response){ alert("Error"); console.log(response.data); }
+			);
+	}
+	$scope.newContact = function(lnk, obj,  idaf){
+		$http.post($scope.$parent.site_url+lnk+idaf, obj).then(
+				function(response){
+					if(response.data.success){
+						$scope.af.contactos.push( response.data.return );
+						$('#form_contacto').foundation('toggle');
+					}
+					console.log(response.data);
+				},
+				function(response){ alert("Error"); console.log(response.data); }
+			);
+	}
+	$scope.delContact= function(idc, idaf){
+		$http.post($scope.$parent.site_url+'afiliado/del_contacto/'+idc, {idafiliado: idaf}).then(
+				function(response){
+					if(response.data.success){
+						$scope.af.contactos =  response.data.return;
+					console.log(response.data);
+				},
+				function(response){ alert("Error"); console.log(response.data); }
 			);
 	}
 }
@@ -76,7 +97,7 @@ var list_afiliados = function($scope, $http, $timeout){
 	$scope.filterAfiliado = {};
 	$scope.myFilter = {};
 	$scope.filterStatus = {timer: new Date(), status: false, process: undefined};
-	$scope.showList = true;
+	$scope.showList = false;
 
 	$scope.filterTimer = function(list, filtro){
 		if ($scope.filterStatus.status) {
