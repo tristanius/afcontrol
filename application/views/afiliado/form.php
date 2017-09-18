@@ -7,11 +7,6 @@
 		</div>
 		<div id="saved_msj" class="cell large-12 medium-12 callout {{saved?'success':'alert'}} nodisplay" ng-show="saved" ng-bind="saved_msj"></div>
 	</div>
-
-	<form method="post" enctype="multipart/form-data" action="<?= site_url('afiliado/upload_doc/35')?>">
-		<input type='file' name='file' id='file'><br/>
-		<input type='submit' value='upload' id='upload'>
-	</form>
 	<fieldset ng-init="initAfiliado(<?= isset($idafiliado)?$idafiliado:NULL; ?>)">
 		<div class="grid-y">
 			<div class="grid-x cell">
@@ -19,14 +14,22 @@
 					<!-- foto del afiliado -->
 					<img ng-src="{{ af.foto?af.foto:'<?= base_url('assets/img/icon.png') ?>'; }}" 
 						class="thumbnail" 
-						alt="Photo of Uranus."
+						alt="Foto de afiliado."
 						style="width: 100%;" 
 					/>
-					<button class="button" ng-if="af.idafiliado">  Cargar foto</button>
-
-					<input type='file' name='file' id='file'><br/>
-					<input type='button' value='upload' id='upload' ng-click='upload("afiliado/upload_doc/"+af.idafiliado)' >
-
+					
+					<div>
+						<label id="btn-foto" for="foto" class="button padding1ex" style="display: inline;" ng-show="active_upload" >
+							Add. foto
+							<input type="file" id="foto" class="show-for-sr" onchange="angular.element(this).scope().activeUpload();" />
+						</label> 
+						&nbsp;
+						<button class="button success padding1ex" 
+							ng-click='upload("afiliado/upload_doc/"+af.idafiliado+"/1", "#foto")'  ng-show="!active_upload">
+							<i ng-show="!active_upload" class="primary" data-icon="&#xe030;"></i> Cargar
+						</button>
+						<img src="<?= base_url('assets/img/loader.gif') ?>" ng-show="uploading">
+					</div>
 					<br>
 					<br>
 					<p>

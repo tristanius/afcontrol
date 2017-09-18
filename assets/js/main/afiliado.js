@@ -4,6 +4,14 @@ var form_afiliado = function($scope, $http, $timeout){
 	$scope.af = {
 		tipo_identificacion: "T.I."
 	};
+	$scope.active_upload = true;
+	$scope.uploading= false;
+
+	$scope.activeUpload = function(){
+		$timeout(function(){
+			$scope.active_upload = !$scope.active_upload;
+		});
+	}
 
 	$scope.initAfiliado = function(id){
 		if(id && id != null){
@@ -87,11 +95,10 @@ var form_afiliado = function($scope, $http, $timeout){
 	}
 
 
-	$scope.upload = function(lnk){
+	$scope.upload = function(lnk, elem){
 		var fd = new FormData();
-		var files = $('#file');
-		fd.append('file',files[0].files[0]);
-		// AJAX request
+		var files = $(elem);
+		fd.append('file', files[0].files[0]);
 		$http({
 			method: 'post',
 			url: $scope.site_url+lnk,
@@ -100,9 +107,14 @@ var form_afiliado = function($scope, $http, $timeout){
 		}).then(
 			function(response) { 
 				console.log(response.data);
+				$scope.af.foto = response.data.return;
+				$scope.uploading = false;
+				$scope.active_upload = true;
 			},
 			function(response) { 
 				console.log(response.data);
+				$scope.uploading = false;
+				$scope.active_upload = true;
 			}
 		);
 	}
