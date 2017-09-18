@@ -79,12 +79,6 @@ class Afiliado extends CI_Controller {
 		# code...
 	}
 
-	// subir archivos
-	public function upload()
-	{
-		# code...
-	}
-
 	// ------------------------------------------------------------------------------------------
 	// Contactos de afiliado
 	public function get_contacts( $idafiliado )
@@ -119,6 +113,33 @@ class Afiliado extends CI_Controller {
 		$this->contactos($idafiliado);
 	}
 
+	// subir documentos
+	public function upload_doc($idaf=NULL, $foto=FALSE)
+	{
+		$this->crear_directorio('./uploads/afiliados/'.$idaf.'/');
+		$config['upload_path'] = './uploads/afiliados/'.$idaf.'/';
+        $config['allowed_types'] = 'gif|jpg|png|pdf|xlsx|xls|doc|docx|';
+        $this->load->library('upload', $config);
+		$ret =  new stdClass();
+		if ( $this->upload->do_upload('file') ) {
+			$data = $this->upload->data();
+			if ($foto) {
+				echo 'realizado';
+			}
+		}else{
+			$err  = $this->upload->display_errors();
+			echo 'Fallido: '.$err;
+		}
+	}
+
+
+
+	public function crear_directorio($carpeta)
+	{
+	    if (!file_exists($carpeta)) {
+	      mkdir($carpeta, 0777, true);
+	    }
+	}
 
 	// ---------------------------
 	// Utilidades generales

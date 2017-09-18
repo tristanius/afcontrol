@@ -7,6 +7,11 @@
 		</div>
 		<div id="saved_msj" class="cell large-12 medium-12 callout {{saved?'success':'alert'}} nodisplay" ng-show="saved" ng-bind="saved_msj"></div>
 	</div>
+
+	<form method="post" enctype="multipart/form-data" action="<?= site_url('afiliado/upload_doc/35')?>">
+		<input type='file' name='file' id='file'><br/>
+		<input type='submit' value='upload' id='upload'>
+	</form>
 	<fieldset ng-init="initAfiliado(<?= isset($idafiliado)?$idafiliado:NULL; ?>)">
 		<div class="grid-y">
 			<div class="grid-x cell">
@@ -18,6 +23,9 @@
 						style="width: 100%;" 
 					/>
 					<button class="button" ng-if="af.idafiliado">  Cargar foto</button>
+
+					<input type='file' name='file' id='file'><br/>
+					<input type='button' value='upload' id='upload' ng-click='upload("afiliado/upload_doc/"+af.idafiliado)' >
 
 					<br>
 					<br>

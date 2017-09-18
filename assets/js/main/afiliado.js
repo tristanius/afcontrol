@@ -78,12 +78,33 @@ var form_afiliado = function($scope, $http, $timeout){
 	$scope.delContact= function(idc, idaf){
 		$http.post($scope.$parent.site_url+'afiliado/del_contacto/'+idc, {idafiliado: idaf}).then(
 				function(response){
-					if(response.data.success){
+					if(response.data.success)
 						$scope.af.contactos =  response.data.return;
 					console.log(response.data);
 				},
 				function(response){ alert("Error"); console.log(response.data); }
 			);
+	}
+
+
+	$scope.upload = function(lnk){
+		var fd = new FormData();
+		var files = $('#file');
+		fd.append('file',files[0].files[0]);
+		// AJAX request
+		$http({
+			method: 'post',
+			url: $scope.site_url+lnk,
+			data: fd,
+			headers: {'Content-Type': undefined},
+		}).then(
+			function(response) { 
+				console.log(response.data);
+			},
+			function(response) { 
+				console.log(response.data);
+			}
+		);
 	}
 }
 
