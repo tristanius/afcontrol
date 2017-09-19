@@ -116,27 +116,39 @@ class Afiliado extends CI_Controller {
 	// subir documentos
 	public function upload_doc($idaf=NULL, $foto=FALSE)
 	{
-		$this->crear_directorio('./uploads/afiliados/'.$idaf.'/');
-		$config['upload_path'] = './uploads/afiliados/'.$idaf.'/';
-		$config['file_name'] = $idaf.($foto?'_imagen':'_document');
+		$path = './uploads/afiliados/'.$idaf.'/';
+		$id = $this->input->post('idafiliado');
+		$identificacion = $this->input->post('identificacion');
+		$ret =  new stdClass();
+		$ret = $this->upload($id.$identificacion.date('Ymd'), $path, 'file');
+		if($ret->success){
+			$this->load->model(array('documento_db'=> 'doc', 'afiliado_db'=>'af'));
+			$iddoc = $this->doc->add();
+			if ($foto) {
+				$this->af->add_img();
+			}
+			
+		}
+		echo json_encode($ret);
+	}
+
+
+	public function upload($name, $path, $post_name)
+	{
+		$this->crear_directorio($path);
+		$config['upload_path'] = $path;
+		$config['file_name'] = $name;
         $config['allowed_types'] = 'gif|jpg|png|pdf|xlsx|xls|doc|docx|';
         $this->load->library('upload', $config);
 		$ret =  new stdClass();
-		if ( $this->upload->do_upload('file') ) {
-			$data = $this->upload->data();
-			if ($foto) {
-				$ret->msj = 'Foto cargada';
-			}else{
-				$ret->msj = 'Archivo cargado';
-			}
-			$ret->return = base_url().'/uploads/afiliados/'.$idaf."/".$data['file_name'];
+        if ( $this->upload->do_upload($post_name) ) {
+			$ret->upload_msj = $this->upload->data();
 			$ret->success = TRUE;
 		}else{
+			$ret->upload_msj = $this->upload->display_errors();
 			$ret->success = FALSE;
-			$err  = $this->upload->display_errors();
-			$ret->msj = 'Fallido: '.$err;
 		}
-		echo json_encode($ret);
+		return $ret;
 	}
 
 

@@ -99,6 +99,8 @@ var form_afiliado = function($scope, $http, $timeout){
 		var fd = new FormData();
 		var files = $(elem);
 		fd.append('file', files[0].files[0]);
+		fd.append('idafiliado', $scope.af.idafiliado);
+		fd.append('identificacion', $scope.af.identificacion);
 		$http({
 			method: 'post',
 			url: $scope.site_url+lnk,
