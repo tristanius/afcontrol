@@ -113,21 +113,18 @@ class Afiliado extends CI_Controller {
 		$this->contactos($idafiliado);
 	}
 
-	// subir documentos
+	// ------------------------------------------------------------------------------------------
+	// Documentos de afiliado
 	public function upload_doc($idaf=NULL, $foto=FALSE)
 	{
 		$path = './uploads/afiliados/'.$idaf.'/';
 		$id = $this->input->post('idafiliado');
 		$identificacion = $this->input->post('identificacion');
+		$clasificacion = $this->input->post('clasificacion');
 		$ret =  new stdClass();
 		$ret = $this->upload($id.$identificacion.date('Ymd'), $path, 'file');
 		if($ret->success){
-			$this->load->model(array('documento_db'=> 'doc', 'afiliado_db'=>'af'));
-			$iddoc = $this->doc->add();
-			if ($foto) {
-				$this->af->add_img();
-			}
-			
+			$this->addDoc($ret->data, $id, $foto, $clasificacion);
 		}
 		echo json_encode($ret);
 	}
@@ -142,13 +139,31 @@ class Afiliado extends CI_Controller {
         $this->load->library('upload', $config);
 		$ret =  new stdClass();
         if ( $this->upload->do_upload($post_name) ) {
-			$ret->upload_msj = $this->upload->data();
+			$ret->data = $this->upload->data();
+			$ret->msj = "Documento cargado";
 			$ret->success = TRUE;
 		}else{
-			$ret->upload_msj = $this->upload->display_errors();
+			$ret->msj = $this->upload->display_errors();
 			$ret->success = FALSE;
 		}
 		return $ret;
+	}
+	public function addDoc($data, $idaf, $foto, $clasificacion)
+	{
+		$this->load->model(array('documento_db'=> 'doc' ));
+		$idDoc = $this->doc->add( $data['file_name'], $data['upload_path'], $data['file_type'] );
+		$clasificacion = $foto?'foto de perfil':$clasificacion;
+		$idDocAf = $this->doc->addDocAfiliado($iddoc, $idaf, $clasificacion);
+	}
+
+	public function getDocumentos($idaf)
+	{
+		# code...
+	}
+
+	public function delDocumento($value='')
+	{
+		# code...
 	}
 
 
