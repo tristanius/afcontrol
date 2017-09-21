@@ -39,7 +39,7 @@
 						<td ng-bind="c.nombre_ref"></td>
 						<td ng-bind="c.telefono_ref"></td>
 						<td ng-bind="c.parentesco_ref"></td>
-						<td > <button ng-click="delContacto(c.idafiliado_contacto, af.idafiliado)" class="button alert"> X </button> </td>
+						<td > <button ng-click="delContacto(c.idafiliado_contacto, af.idafiliado)" class="button alert padding5px"> X </button> </td>
 					</tr>
 				</tbody>
 			</table>					

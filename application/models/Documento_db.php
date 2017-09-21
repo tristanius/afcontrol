@@ -18,7 +18,7 @@ class Documento_db extends CI_Model {
 			'tipo' => $tipo,
 			'estado' => $estado
 		);
-		$this->db->insert('afiliado_documento', $data);
+		$this->db->insert('documento', $data);
 		return $this->db->insert_id();
 	}
 
@@ -28,21 +28,24 @@ class Documento_db extends CI_Model {
 	}
 
 	// documentos de afiliado
-	public function getDocsByAfiliado($idafiliado)
+	public function getDocsByAf($idaf)
 	{
-		return $this->db->select('fields')
-				->from()
-				->join()
-				->where()
+		return $this->db->select('d.iddocumento, 
+			d.documento, d.ruta, d.tipo, daf.idafiliado_documento, 
+			daf.clasificacion, daf.estado, d.fecha_registro')
+				->from('documento AS d')
+				->join('afiliado_documento AS daf','daf.documento_iddocumento = d.iddocumento')
+				->where('daf.afiliado_idafiliado',$idaf)
 				->get();
 	}
 
-	public function addDocAfiliado($iddoc, $idaf, $clasificacion, $estado=TRUE)
+	public function addDocAfiliado($iddoc, $idaf, $clasificacion, $foto = FALSE, $estado=TRUE)
 	{
 		$data = array(
 			'documento_iddocumento' => $iddoc, 
 			'afiliado_idafiliado' => $idaf,
 			'clasificacion' => $clasificacion,
+			'is_foto_perfil'=>$foto,
 			'estado'=>$estado
 		);
 		$this->db->insert('afiliado_documento', $data);

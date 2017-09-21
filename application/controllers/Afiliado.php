@@ -117,23 +117,22 @@ class Afiliado extends CI_Controller {
 	// Documentos de afiliado
 	public function upload_doc($idaf=NULL, $foto=FALSE)
 	{
-		$path = './uploads/afiliados/'.$idaf.'/';
-		$id = $this->input->post('idafiliado');
+		$path = '/uploads/afiliados/'.$idaf.'/';
+		$idaf = $this->input->post('idafiliado');
 		$identificacion = $this->input->post('identificacion');
 		$clasificacion = $this->input->post('clasificacion');
 		$ret =  new stdClass();
-		$ret = $this->upload($id.$identificacion.date('Ymd'), $path, 'file');
+		$ret = $this->upload($idaf.$identificacion.date('Ymd'), $path, 'file');
 		if($ret->success){
-			$this->addDoc($ret->data, $id, $foto, $clasificacion);
+			$ret->return = $this->addDoc($ret->data, $idaf, $foto, $clasificacion, $path);
 		}
 		echo json_encode($ret);
 	}
-
-
-	public function upload($name, $path, $post_name)
+	// subido
+	private function upload($name, $path, $post_name)
 	{
 		$this->crear_directorio($path);
-		$config['upload_path'] = $path;
+		$config['upload_path'] = '.'.$path;
 		$config['file_name'] = $name;
         $config['allowed_types'] = 'gif|jpg|png|pdf|xlsx|xls|doc|docx|';
         $this->load->library('upload', $config);
@@ -148,20 +147,27 @@ class Afiliado extends CI_Controller {
 		}
 		return $ret;
 	}
-	public function addDoc($data, $idaf, $foto, $clasificacion)
+	// privado para add documento despues de subido
+	private function addDoc($data, $idaf, $foto, $clasificacion, $path)
 	{
 		$this->load->model(array('documento_db'=> 'doc' ));
-		$idDoc = $this->doc->add( $data['file_name'], $data['upload_path'], $data['file_type'] );
+		$iddoc = $this->doc->add( $data['file_name'], $path.'/', $data['file_type'] );
 		$clasificacion = $foto?'foto de perfil':$clasificacion;
-		$idDocAf = $this->doc->addDocAfiliado($iddoc, $idaf, $clasificacion);
+		$idDocAf = $this->doc->addDocAfiliado($iddoc, $idaf, $clasificacion, $foto);
+		return base_url().$path.'/'.$data['file_name'];
 	}
 
-	public function getDocumentos($idaf)
+	public function get_documentos( $idaf )
 	{
-		# code...
+		$this->load->model('documento_db', 'doc');
+		$ret =  new stdClass();
+		$ret->return = $this->doc->getDocsByAf( $idaf )->result();
+		$ret->msj = 'consulta realziada';
+		$ret->success = TRUE;
+		echo json_encode($ret);
 	}
 
-	public function delDocumento($value='')
+	public function del_documento(  )
 	{
 		# code...
 	}

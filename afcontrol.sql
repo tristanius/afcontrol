@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 06-09-2017 a las 22:57:31
+-- Tiempo de generación: 21-09-2017 a las 22:49:24
 -- Versión del servidor: 5.6.31
 -- Versión de PHP: 5.6.17
 
@@ -37,19 +37,26 @@ CREATE TABLE `afiliado` (
   `tipo_sanguineo` varchar(25) DEFAULT NULL,
   `telefono` varchar(25) DEFAULT NULL,
   `movil` int(45) DEFAULT NULL,
+  `talla` varchar(45) DEFAULT NULL,
   `direccion` varchar(100) DEFAULT NULL,
   `entidad_salud` varchar(60) DEFAULT NULL,
   `tipo_registro` varchar(45) NOT NULL,
   `estado` tinyint(1) DEFAULT '1',
-  `morageneral` tinyint(1) DEFAULT '0'
+  `morageneral` tinyint(1) DEFAULT '0',
+  `fecha_registro` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `afiliado`
 --
 
-INSERT INTO `afiliado` (`idafiliado`, `identificacion`, `tipo_identificacion`, `nombres`, `apellidos`, `correo`, `fecha_nacimiento`, `tipo_sanguineo`, `telefono`, `movil`, `direccion`, `entidad_salud`, `tipo_registro`, `estado`, `morageneral`) VALUES
-(10, '1093592516', 'Registro Civil', 'SANTIAGO', 'CHITIVA CONTRERAS', 'omarchitiva@hotmail.com', '2006-02-08', 'A+', '3214453073', NULL, 'CALLE 5N 3E-102 CEIBA 2', 'FUNDACION MEDICO PREVENTIVA', 'Deportista', 1, 0);
+INSERT INTO `afiliado` (`idafiliado`, `identificacion`, `tipo_identificacion`, `nombres`, `apellidos`, `correo`, `fecha_nacimiento`, `tipo_sanguineo`, `telefono`, `movil`, `talla`, `direccion`, `entidad_salud`, `tipo_registro`, `estado`, `morageneral`, `fecha_registro`) VALUES
+(34, '1090422853', 'T.I.', 'Yeison', 'Torrado López', 'Yeison@termo.com', '1990-07-07', 'A+', '5745630', 2147483647, 'M', 'AV 11E', 'COOMEVA', 'Deportista', 1, 0, '2017-09-20 20:23:22'),
+(35, '900586015', 'C.C.', 'Tristan', 'Von Hendrith', 'tristan.herth@gmail.com', '1990-07-24', 'A+', '5745630', 2147483647, 'M', 'Distric 11G 78A-124', 'Coomeva', 'Deportista', 1, 0, '2017-09-20 20:23:22'),
+(36, '345362525', 'C.C.', 'Pepe 345362525', 'nene 345362525', '', '2017-09-13', '', '345362525', 345362525, '', '345362525', '', 'prueba', 1, 0, '2017-09-20 20:23:22'),
+(37, '977067303', 'C.C.', 'Pepe 977067303', 'nene 977067303', '', '2017-09-13', '', '977067303', 977067303, '', '977067303', '', 'prueba', 1, 0, '2017-09-20 20:23:22'),
+(38, '1075043720', 'C.C.', 'Pepe 1075043720', 'nene 1075043720', '', '2017-09-13', '', '1075043720', 1075043720, '', '1075043720', '', 'prueba', 1, 0, '2017-09-20 20:23:22'),
+(39, '1245824748', 'C.C.', 'Pepe 1245824748', 'nene 1245824748', '', '2017-09-13', '', '1245824748', 1245824748, '', '1245824748', '', 'prueba', 1, 0, '2017-09-20 20:23:22');
 
 -- --------------------------------------------------------
 
@@ -62,6 +69,7 @@ CREATE TABLE `afiliado_contacto` (
   `nombre_ref` varchar(60) DEFAULT NULL,
   `telefono_ref` varchar(25) DEFAULT NULL,
   `parentesco_ref` varchar(45) DEFAULT NULL,
+  `fecha_registro` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `afiliado_idafiliado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -69,8 +77,35 @@ CREATE TABLE `afiliado_contacto` (
 -- Volcado de datos para la tabla `afiliado_contacto`
 --
 
-INSERT INTO `afiliado_contacto` (`idafiliado_contacto`, `nombre_ref`, `telefono_ref`, `parentesco_ref`, `afiliado_idafiliado`) VALUES
-(5, 'MAGDA CELENA CONTRERAS PRADO', NULL, NULL, 10);
+INSERT INTO `afiliado_contacto` (`idafiliado_contacto`, `nombre_ref`, `telefono_ref`, `parentesco_ref`, `fecha_registro`, `afiliado_idafiliado`) VALUES
+(1, 'Amellie', '5745600', 'Madre', '2017-09-19 21:04:46', 35),
+(2, 'Cadmo Dardano', '7552862', 'Padre', '2017-09-19 21:04:46', 35),
+(3, 'Nancy', '55555', 'Madre', '2017-09-19 21:04:46', 34),
+(4, 'Adrian', '55555', 'Hermano', '2017-09-19 21:04:46', 34);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `afiliado_documento`
+--
+
+CREATE TABLE `afiliado_documento` (
+  `idafiliado_documento` int(11) NOT NULL,
+  `clasificacion` varchar(50) DEFAULT NULL,
+  `estado` tinyint(1) NOT NULL DEFAULT '1',
+  `is_foto_perfil` int(11) DEFAULT '0',
+  `fecha_registro` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `afiliado_idafiliado` int(11) DEFAULT NULL,
+  `documento_iddocumento` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `afiliado_documento`
+--
+
+INSERT INTO `afiliado_documento` (`idafiliado_documento`, `clasificacion`, `estado`, `is_foto_perfil`, `fecha_registro`, `afiliado_idafiliado`, `documento_iddocumento`) VALUES
+(8, 'foto de perfil', 1, 0, '2017-09-21 17:27:53', 35, 8),
+(9, 'foto de perfil', 1, 1, '2017-09-21 21:03:56', 35, 9);
 
 -- --------------------------------------------------------
 
@@ -118,6 +153,29 @@ CREATE TABLE `categoria` (
 
 INSERT INTO `categoria` (`idcategoria`, `descripcion`) VALUES
 (15, '2006');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `documento`
+--
+
+CREATE TABLE `documento` (
+  `iddocumento` int(11) NOT NULL,
+  `documento` varchar(100) DEFAULT NULL,
+  `ruta` varchar(120) DEFAULT NULL,
+  `tipo` tinyint(1) DEFAULT NULL,
+  `estado` tinyint(1) DEFAULT '1',
+  `fecha_registro` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `documento`
+--
+
+INSERT INTO `documento` (`iddocumento`, `documento`, `ruta`, `tipo`, `estado`, `fecha_registro`) VALUES
+(8, '35900586015201709211.jpg', '/uploads/afiliados/35/', 0, 1, '2017-09-21 17:27:53'),
+(9, '35900586015201709215.png', '/uploads/afiliados/35//', 0, 1, '2017-09-21 21:03:56');
 
 -- --------------------------------------------------------
 
@@ -172,26 +230,6 @@ CREATE TABLE `grupo` (
 
 INSERT INTO `grupo` (`idgrupo`, `nombre_grupo`, `categoria_idcategoria`) VALUES
 (16, 'EQUIPO A', 15);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `img`
---
-
-CREATE TABLE `img` (
-  `idimg` int(11) NOT NULL,
-  `nombre_img` varchar(45) NOT NULL,
-  `ruta` varchar(45) NOT NULL,
-  `afiliado_idafiliado` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `img`
---
-
-INSERT INTO `img` (`idimg`, `nombre_img`, `ruta`, `afiliado_idafiliado`) VALUES
-(5, '10.jpg', './uploads/afiliados/', 10);
 
 -- --------------------------------------------------------
 
@@ -272,6 +310,16 @@ ALTER TABLE `afiliado_contacto`
   ADD KEY `fk_contacto_afiliado1_idx` (`afiliado_idafiliado`);
 
 --
+-- Indices de la tabla `afiliado_documento`
+--
+ALTER TABLE `afiliado_documento`
+  ADD PRIMARY KEY (`idafiliado_documento`),
+  ADD KEY `afiliado_idafiliado` (`afiliado_idafiliado`),
+  ADD KEY `documento_iddocumento` (`documento_iddocumento`),
+  ADD KEY `documento_iddocumento_2` (`documento_iddocumento`),
+  ADD KEY `afiliado_idafiliado_2` (`afiliado_idafiliado`);
+
+--
 -- Indices de la tabla `afiliado_grupo`
 --
 ALTER TABLE `afiliado_grupo`
@@ -294,6 +342,12 @@ ALTER TABLE `categoria`
   ADD PRIMARY KEY (`idcategoria`);
 
 --
+-- Indices de la tabla `documento`
+--
+ALTER TABLE `documento`
+  ADD PRIMARY KEY (`iddocumento`);
+
+--
 -- Indices de la tabla `entidad`
 --
 ALTER TABLE `entidad`
@@ -312,13 +366,6 @@ ALTER TABLE `examen_medico`
 ALTER TABLE `grupo`
   ADD PRIMARY KEY (`idgrupo`),
   ADD KEY `fk_grupo_categoria1_idx` (`categoria_idcategoria`);
-
---
--- Indices de la tabla `img`
---
-ALTER TABLE `img`
-  ADD PRIMARY KEY (`idimg`),
-  ADD KEY `fk_img_afiliado1_idx` (`afiliado_idafiliado`);
 
 --
 -- Indices de la tabla `mensualidad`
@@ -350,12 +397,17 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `afiliado`
 --
 ALTER TABLE `afiliado`
-  MODIFY `idafiliado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idafiliado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 --
 -- AUTO_INCREMENT de la tabla `afiliado_contacto`
 --
 ALTER TABLE `afiliado_contacto`
-  MODIFY `idafiliado_contacto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idafiliado_contacto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT de la tabla `afiliado_documento`
+--
+ALTER TABLE `afiliado_documento`
+  MODIFY `idafiliado_documento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT de la tabla `afiliado_grupo`
 --
@@ -372,6 +424,11 @@ ALTER TABLE `afiliado_has_entidad`
 ALTER TABLE `categoria`
   MODIFY `idcategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
+-- AUTO_INCREMENT de la tabla `documento`
+--
+ALTER TABLE `documento`
+  MODIFY `iddocumento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
 -- AUTO_INCREMENT de la tabla `entidad`
 --
 ALTER TABLE `entidad`
@@ -386,11 +443,6 @@ ALTER TABLE `examen_medico`
 --
 ALTER TABLE `grupo`
   MODIFY `idgrupo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
---
--- AUTO_INCREMENT de la tabla `img`
---
-ALTER TABLE `img`
-  MODIFY `idimg` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `mensualidad`
 --
@@ -417,6 +469,13 @@ ALTER TABLE `afiliado_contacto`
   ADD CONSTRAINT `fk_contacto_afiliado1` FOREIGN KEY (`afiliado_idafiliado`) REFERENCES `afiliado` (`idafiliado`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
+-- Filtros para la tabla `afiliado_documento`
+--
+ALTER TABLE `afiliado_documento`
+  ADD CONSTRAINT `afiliado_documento_ibfk_1` FOREIGN KEY (`documento_iddocumento`) REFERENCES `documento` (`iddocumento`),
+  ADD CONSTRAINT `afiliado_documento_ibfk_2` FOREIGN KEY (`afiliado_idafiliado`) REFERENCES `afiliado` (`idafiliado`);
+
+--
 -- Filtros para la tabla `afiliado_grupo`
 --
 ALTER TABLE `afiliado_grupo`
@@ -441,12 +500,6 @@ ALTER TABLE `examen_medico`
 --
 ALTER TABLE `grupo`
   ADD CONSTRAINT `fk_grupo_categoria1` FOREIGN KEY (`categoria_idcategoria`) REFERENCES `categoria` (`idcategoria`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Filtros para la tabla `img`
---
-ALTER TABLE `img`
-  ADD CONSTRAINT `fk_img_afiliado1` FOREIGN KEY (`afiliado_idafiliado`) REFERENCES `afiliado` (`idafiliado`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `mensualidad`

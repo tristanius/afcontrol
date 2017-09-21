@@ -25,6 +25,7 @@ var form_afiliado = function($scope, $http, $timeout){
 				function(response){
 					$scope.af = response.data.return;
 					$scope.getContacts(id);
+					$scope.getDocumentos(id);
 					console.log($scope.af);
 				},
 				function(response){ alert('Error');console.log(response.data)}
@@ -94,7 +95,7 @@ var form_afiliado = function($scope, $http, $timeout){
 			);
 	}
 
-
+	// Documentos
 	$scope.upload = function(lnk, elem){
 		var fd = new FormData();
 		var files = $(elem);
@@ -109,7 +110,10 @@ var form_afiliado = function($scope, $http, $timeout){
 		}).then(
 			function(response) { 
 				console.log(response.data);
-				$scope.af.foto = response.data.return;
+				if (response.data.success) {
+					$scope.af.foto = response.data.return;
+					$scope.getDocumentos($scope.af.idafiliado);
+				}
 				$scope.uploading = false;
 				$scope.active_upload = true;
 			},
@@ -119,6 +123,20 @@ var form_afiliado = function($scope, $http, $timeout){
 				$scope.active_upload = true;
 			}
 		);
+	}
+
+	$scope.getDocumentos = function(id){
+		console.log($scope.$parent.site_url+'afiliado/get_documentos/'+id)
+		$http.post($scope.$parent.site_url+'afiliado/get_documentos/'+id, {idafiliado: $scope.af.idafiliado})
+			.then(
+				function(response){
+					if ( response.data.success ) {$scope.af.documentos = response.data.return;}
+					console.log(response.data);
+				},
+				function(response){
+					console.log(response.data);
+				}
+			);
 	}
 }
 
