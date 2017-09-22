@@ -68,6 +68,7 @@ class Afiliado extends CI_Controller {
 		$result = $this->af->get($id);
 		$ret =  new stdClass();
 		$ret->return = $result->row();
+		$ret->return->foto = $this->getFotoPerfil($id);
 		$ret->success = TRUE;
 		$ret->msj = 'Consulta realizada exitosamente'.date('Y-m-d H:i:s');
 		echo json_encode( $ret );
@@ -131,7 +132,7 @@ class Afiliado extends CI_Controller {
 	// subido
 	private function upload($name, $path, $post_name)
 	{
-		$this->crear_directorio($path);
+		$this->crear_directorio('.'.$path);
 		$config['upload_path'] = '.'.$path;
 		$config['file_name'] = $name;
         $config['allowed_types'] = 'gif|jpg|png|pdf|xlsx|xls|doc|docx|';
@@ -151,8 +152,10 @@ class Afiliado extends CI_Controller {
 	private function addDoc($data, $idaf, $foto, $clasificacion, $path)
 	{
 		$this->load->model(array('documento_db'=> 'doc' ));
-		$iddoc = $this->doc->add( $data['file_name'], $path.'/', $data['file_type'] );
-		$clasificacion = $foto?'foto de perfil':$clasificacion;
+		$iddoc = $this->doc->add( $data['file_name'], $path, $data['file_type'] );
+		if ($foto) {
+			$this->doc->inactivateFotosPerfil($idaf);
+		}
 		$idDocAf = $this->doc->addDocAfiliado($iddoc, $idaf, $clasificacion, $foto);
 		return base_url().$path.'/'.$data['file_name'];
 	}
@@ -170,6 +173,18 @@ class Afiliado extends CI_Controller {
 	public function del_documento(  )
 	{
 		# code...
+	}
+
+	private function getFotoPerfil($idaf)
+	{
+		$this->load->model('documento_db', 'doc');
+		$rows = $this->doc->getFotoPerfil($idaf);
+		if( $rows->num_rows() > 0 ){
+			$r = $rows->row();
+			return base_url().$r->ruta.'/'.$r->documento;
+		}else{
+			return '';
+		}
 	}
 
 

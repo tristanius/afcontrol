@@ -25,7 +25,7 @@
 						</label> 
 						&nbsp;
 						<button class="button success padding1ex" 
-							ng-click='upload("afiliado/upload_doc/"+af.idafiliado+"/1", "#foto")'  ng-show="!active_upload">
+							ng-click='upload("afiliado/upload_doc/"+af.idafiliado+"/1", "img", "#foto")'  ng-show="!active_upload">
 							<i ng-show="!active_upload" class="primary" data-icon="&#xe030;"></i> Cargar
 						</button>
 						<img src="<?= base_url('assets/img/loader.gif') ?>" ng-show="uploading">
@@ -134,8 +134,5 @@
 
 	</fieldset>
 </section>
-<script type="text/javascript">
-	$(document).ready(function(){
-		$(document).foundation();
-	});
-</script>
+
+<?php $this->load->view('afiliado/form/jquery_script'); ?>

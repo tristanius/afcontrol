@@ -6,6 +6,7 @@ var form_afiliado = function($scope, $http, $timeout){
 	};
 	$scope.active_upload = true;
 	$scope.uploading= false;
+	$scope.doc ={clasificacion:'Documento estandar'};
 
 	$scope.activeUpload = function(){
 		$timeout(function(){
@@ -23,10 +24,10 @@ var form_afiliado = function($scope, $http, $timeout){
 		$http.get($scope.$parent.site_url+'afiliado/get/'+id)
 			.then(
 				function(response){
+					console.log(response.data);
 					$scope.af = response.data.return;
 					$scope.getContacts(id);
 					$scope.getDocumentos(id);
-					console.log($scope.af);
 				},
 				function(response){ alert('Error');console.log(response.data)}
 			);
@@ -79,7 +80,7 @@ var form_afiliado = function($scope, $http, $timeout){
 						$scope.af.contactos.push( response.data.return );
 						$('#form_contacto').foundation('toggle');
 					}
-					console.log(response.data);
+					$scope.newcontact = {};
 				},
 				function(response){ alert("Error"); console.log(response.data); }
 			);
@@ -96,24 +97,28 @@ var form_afiliado = function($scope, $http, $timeout){
 	}
 
 	// Documentos
-	$scope.upload = function(lnk, elem){
+	$scope.upload = function(lnk, type, elem){
 		var fd = new FormData();
 		var files = $(elem);
 		fd.append('file', files[0].files[0]);
 		fd.append('idafiliado', $scope.af.idafiliado);
 		fd.append('identificacion', $scope.af.identificacion);
+		console.log($scope.doc.clasificacion)
+		fd.append('clasificacion', ( (type != 'img')?$scope.doc.clasificacion:'Foto de perfil' ) );
 		$http({
 			method: 'post',
 			url: $scope.site_url+lnk,
 			data: fd,
 			headers: {'Content-Type': undefined},
 		}).then(
-			function(response) { 
-				console.log(response.data);
+			function(response) {
 				if (response.data.success) {
-					$scope.af.foto = response.data.return;
+					if (type == 'img') {
+						$scope.af.foto = response.data.return;
+					}
 					$scope.getDocumentos($scope.af.idafiliado);
 				}
+				$scope.doc_clasificacion='Documento estandar';
 				$scope.uploading = false;
 				$scope.active_upload = true;
 			},

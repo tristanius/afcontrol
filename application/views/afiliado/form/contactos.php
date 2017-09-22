@@ -1,6 +1,7 @@
 	<div class="grid-x" ng-show="af.idafiliado">
 		<div class="cell padding1ex">
 			<caption><strong style="color: #3E6F9E">Contactos / Referencia: </strong></caption>
+
 			<button class="button" type="button" data-open="form_contacto"> + </button>
 
 			<div class="reveal" id="form_contacto" data-reveal>
@@ -39,7 +40,7 @@
 						<td ng-bind="c.nombre_ref"></td>
 						<td ng-bind="c.telefono_ref"></td>
 						<td ng-bind="c.parentesco_ref"></td>
-						<td > <button ng-click="delContacto(c.idafiliado_contacto, af.idafiliado)" class="button alert padding5px"> X </button> </td>
+						<td > <button ng-click="delContacto(c.idafiliado_contacto)" class="button alert padding5px"> X </button> </td>
 					</tr>
 				</tbody>
 			</table>					

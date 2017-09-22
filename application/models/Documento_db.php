@@ -66,6 +66,22 @@ class Documento_db extends CI_Model {
 		}
 		$this->db->delete('afiliado_documento', $data);
 	}
+
+
+	// foto de perfil de afiliado
+	public function inactivateFotosPerfil($idaf)
+	{
+		$this->db->update('afiliado_documento', array('is_foto_perfil'=>FALSE), 'afiliado_idafiliado = '.$idaf );
+	}
+	public function getFotoPerfil( $idaf )
+	{
+		return $this->db->select('daf.idafiliado_documento, d.iddocumento, d.ruta, d.documento, d.estado, daf.is_foto_perfil')
+	 					->from("afiliado_documento AS daf")
+						->join('documento AS d', 'd.iddocumento = daf.documento_iddocumento')
+						->where('daf.afiliado_idafiliado', $idaf)
+						->where('daf.is_foto_perfil',TRUE)
+						->get();
+	}
 }
 
 /* End of file Documento_db.php */
