@@ -186,14 +186,27 @@ class Afiliado extends CI_Controller {
 			return '';
 		}
 	}
-
-
-
 	public function crear_directorio($carpeta)
 	{
 	    if (!file_exists($carpeta)) {
 	      mkdir($carpeta, 0777, true);
 	    }
+	}
+
+	// Examenes medicos
+
+	public function add_examen($value='')
+	{
+		# code...
+	}
+
+	public function get_examenes_by($value='')
+	{
+		# code...
+	}
+	public function del_examen($value='')
+	{
+		# code...
 	}
 
 	// ---------------------------
