@@ -13,11 +13,19 @@ var form_afiliado = function($scope, $http, $timeout){
 			$scope.active_upload = !$scope.active_upload;
 		});
 	}
-
 	$scope.initAfiliado = function(id){
 		if(id && id != null){
 			$scope.getAfiliado(id);
 		}
+	}
+
+	$scope.closeAndClean = function(tag, obj){
+		$(tag).foundation('close');
+		$scope.$parent.cleanObj(obj);
+	}
+	$scope.closeAndCleanUpload = function(tag, obj) {
+		$scope.closeAndClean(tag, obj);
+		$('.upload-form1').toggleClass('nodisplay');
 	}
 
 	$scope.getAfiliado = function(id){
@@ -28,6 +36,7 @@ var form_afiliado = function($scope, $http, $timeout){
 					$scope.af = response.data.return;
 					$scope.getContacts(id);
 					$scope.getDocumentos(id);
+					$scope.getExamenes(id);
 				},
 				function(response){ alert('Error');console.log(response.data)}
 			);
@@ -78,9 +87,10 @@ var form_afiliado = function($scope, $http, $timeout){
 				function(response){
 					if(response.data.success){
 						$scope.af.contactos.push( response.data.return );
-						$('#form_contacto').foundation('toggle');
+						$scope.closeAndClean();
 					}
-					$scope.newcontact = {};
+					$scope.newContact = {};
+					//$scope.$parent.cleanObj($scope.newContact);
 				},
 				function(response){ alert("Error"); console.log(response.data); }
 			);
@@ -97,13 +107,12 @@ var form_afiliado = function($scope, $http, $timeout){
 	}
 
 	// Documentos
-	$scope.upload = function(lnk, type, elem){
+	$scope.upload = function(lnk, type, elem, form=null){
 		var fd = new FormData();
 		var files = $(elem);
 		fd.append('file', files[0].files[0]);
 		fd.append('idafiliado', $scope.af.idafiliado);
 		fd.append('identificacion', $scope.af.identificacion);
-		console.log($scope.doc.clasificacion)
 		fd.append('clasificacion', ( (type != 'img')?$scope.doc.clasificacion:'Foto de perfil' ) );
 		$http({
 			method: 'post',
@@ -117,6 +126,7 @@ var form_afiliado = function($scope, $http, $timeout){
 						$scope.af.foto = response.data.return;
 					}
 					$scope.getDocumentos($scope.af.idafiliado);
+					$scope.closeAndCleanUpload(form, null);
 				}
 				$scope.doc_clasificacion='Documento estandar';
 				$scope.uploading = false;
@@ -136,9 +146,40 @@ var form_afiliado = function($scope, $http, $timeout){
 			.then(
 				function(response){
 					if ( response.data.success ) {$scope.af.documentos = response.data.return;}
-					console.log(response.data);
+					//console.log(response.data);
 				},
 				function(response){
+					console.log(response.data);
+				}
+			);
+	}
+
+	// Examen medico
+	$scope.addExamen = function(lnk, obj, tag){
+		$http.post($scope.site_url+lnk, obj ).then(
+				function (response) {
+					if (response.data.success) {
+						$scope.af.examenes.push(response.data.return);
+						$scope.closeAndClean(tag, obj);
+					}
+					console.log(response.data);
+				},
+				function (response) {
+					console.log(response.data);
+				}
+			);
+	}
+
+	$scope.getExamenes = function(id){
+		$http.post($scope.site_url+'/afiliado/get_examenes_medicos/'+id, {} )
+			.then(
+				function (response) {
+					if (response.data.success) {
+						$scope.af.examenes  = response.data.return;
+					}
+					//console.log(response.data);
+				},
+				function (response) {
 					console.log(response.data);
 				}
 			);

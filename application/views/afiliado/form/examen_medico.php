@@ -42,14 +42,14 @@
 						Alergias: <textarea ng-model="examen.alergias" rows="2"></textarea>
 					</label>
 					<label>
-						Vacunas: <textarea ng-model="examen.vacunaas" rows="2"></textarea>
+						Vacunas: <textarea ng-model="examen.vacunas" rows="2"></textarea>
 					</label>
 					<label>
 						Medicamentos: <textarea ng-model="examen.Medicamentos" rows="2"></textarea>
 					</label>
 				</div>
 			</div>
-			<button class="button" ng-click="addExamen('afiliado/add_contact/', examen, af.idafiliado)"> + </button>
+			<button class="button" ng-click="addExamen('afiliado/add_examen_medico/'+af.idafiliado, examen, '#form_examen')"> + </button>
 		</fieldset>
 	</div>
 
@@ -59,18 +59,18 @@
 			<tr>
 				<th>No.</th>
 				<th>Fecha de examen</th>
-				<th>Tipo</th>
+				<th>apto</th>
 				<th>Fecha registro</th>
 				<th>Detalle</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
+			<tr ng-repeat="e in af.examenes">
+				<td ng-bind="e.idexamen_medico"></td>
+				<td ng-bind="e.fecha_examen"></td>
+				<td ng-bind="e.apto_actividad?'SI':'NO'"></td>
+				<td ng-bind="e.fecha_registro"></td>
+				<td > <button class="button padding5px"> Detalles </button> </td>
 			</tr>
 		</tbody>
 	</table>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 21-09-2017 a las 22:49:24
+-- Tiempo de generación: 26-09-2017 a las 20:36:42
 -- Versión del servidor: 5.6.31
 -- Versión de PHP: 5.6.17
 
@@ -81,7 +81,12 @@ INSERT INTO `afiliado_contacto` (`idafiliado_contacto`, `nombre_ref`, `telefono_
 (1, 'Amellie', '5745600', 'Madre', '2017-09-19 21:04:46', 35),
 (2, 'Cadmo Dardano', '7552862', 'Padre', '2017-09-19 21:04:46', 35),
 (3, 'Nancy', '55555', 'Madre', '2017-09-19 21:04:46', 34),
-(4, 'Adrian', '55555', 'Hermano', '2017-09-19 21:04:46', 34);
+(4, 'Adrian', '55555', 'Hermano', '2017-09-19 21:04:46', 34),
+(6, 'Yeison', '54856151', 'Amigo', '2017-09-22 16:48:43', 35),
+(7, 'Yeison Torrado', '74511', 'amigo', '2017-09-22 16:57:56', 35),
+(8, 'Anonimo', '451488', 'hasd', '2017-09-22 17:00:18', 35),
+(9, 'otro', '5', '4', '2017-09-22 17:01:02', 35),
+(10, 'Yeison', '555555', 'Gemelo malvado', '2017-09-22 17:11:48', 34);
 
 -- --------------------------------------------------------
 
@@ -104,8 +109,14 @@ CREATE TABLE `afiliado_documento` (
 --
 
 INSERT INTO `afiliado_documento` (`idafiliado_documento`, `clasificacion`, `estado`, `is_foto_perfil`, `fecha_registro`, `afiliado_idafiliado`, `documento_iddocumento`) VALUES
-(8, 'foto de perfil', 1, 0, '2017-09-21 17:27:53', 35, 8),
-(9, 'foto de perfil', 1, 1, '2017-09-21 21:03:56', 35, 9);
+(27, 'Documento estandar', 1, 0, '2017-09-22 17:19:43', 35, 27),
+(28, 'Documento estandar', 1, 0, '2017-09-22 17:29:51', 34, 28),
+(29, 'undefined', 1, 0, '2017-09-22 17:31:04', 34, 29),
+(30, 'undefined', 1, 0, '2017-09-22 17:31:46', 35, 30),
+(31, 'Documento estandar12', 1, 0, '2017-09-22 20:52:50', 35, 31),
+(32, 'Foto de perfil', 1, 0, '2017-09-22 20:53:00', 35, 32),
+(33, 'Foto de perfil', 1, 0, '2017-09-26 20:01:14', 35, 33),
+(34, 'Foto de perfil', 1, 1, '2017-09-26 20:01:29', 35, 34);
 
 -- --------------------------------------------------------
 
@@ -174,8 +185,21 @@ CREATE TABLE `documento` (
 --
 
 INSERT INTO `documento` (`iddocumento`, `documento`, `ruta`, `tipo`, `estado`, `fecha_registro`) VALUES
-(8, '35900586015201709211.jpg', '/uploads/afiliados/35/', 0, 1, '2017-09-21 17:27:53'),
-(9, '35900586015201709215.png', '/uploads/afiliados/35//', 0, 1, '2017-09-21 21:03:56');
+(20, '34109042285320170922.png', '/uploads/afiliados/34/', 0, 1, '2017-09-22 17:14:52'),
+(21, '34109042285320170922.jpg', '/uploads/afiliados/34/', 0, 1, '2017-09-22 17:15:02'),
+(22, '34109042285320170922.xlsx', '/uploads/afiliados/34/', 0, 1, '2017-09-22 17:15:18'),
+(23, '341090422853201709221.png', '/uploads/afiliados/34/', 0, 1, '2017-09-22 17:16:36'),
+(24, '341090422853201709222.png', '/uploads/afiliados/34/', 0, 1, '2017-09-22 17:16:47'),
+(25, '341090422853201709223.png', '/uploads/afiliados/34/', 0, 1, '2017-09-22 17:17:00'),
+(26, '341090422853201709221.jpg', '/uploads/afiliados/34/', 0, 1, '2017-09-22 17:17:50'),
+(27, '3590058601520170922.xlsx', '/uploads/afiliados/35/', 0, 1, '2017-09-22 17:19:43'),
+(28, '34109042285320170922.xlsx', '/uploads/afiliados/34/', 0, 1, '2017-09-22 17:29:51'),
+(29, '341090422853201709221.xlsx', '/uploads/afiliados/34/', 0, 1, '2017-09-22 17:31:04'),
+(30, '35900586015201709221.xlsx', '/uploads/afiliados/35/', 0, 1, '2017-09-22 17:31:46'),
+(31, '35900586015201709222.xlsx', '/uploads/afiliados/35/', 0, 1, '2017-09-22 20:52:50'),
+(32, '3590058601520170922.png', '/uploads/afiliados/35/', 0, 1, '2017-09-22 20:53:00'),
+(33, '3590058601520170926.xlsx', '/uploads/afiliados/35/', 0, 1, '2017-09-26 20:01:14'),
+(34, '3590058601520170926.jpg', '/uploads/afiliados/35/', 0, 1, '2017-09-26 20:01:29');
 
 -- --------------------------------------------------------
 
@@ -200,17 +224,29 @@ CREATE TABLE `examen_medico` (
   `idexamen_medico` int(11) NOT NULL,
   `afiliado_idafiliado` int(11) NOT NULL,
   `fecha_examen` date NOT NULL,
-  `peso` varchar(10) NOT NULL,
-  `estatura` varchar(10) NOT NULL,
-  `presion_arterial` varchar(25) NOT NULL,
-  `rh` varchar(5) NOT NULL,
-  `enfermedades` text NOT NULL,
-  `alergias` text NOT NULL,
-  `vacunas` text NOT NULL,
-  `medicamentos` varchar(250) NOT NULL,
-  `apto_actividad` tinyint(1) NOT NULL DEFAULT '1',
-  `observaciones` text NOT NULL
+  `peso` varchar(10) DEFAULT NULL,
+  `estatura` varchar(10) DEFAULT NULL,
+  `presion_arterial` varchar(25) DEFAULT NULL,
+  `rh` varchar(5) DEFAULT NULL,
+  `enfermedades` text,
+  `alergias` text,
+  `vacunas` text,
+  `medicamentos` varchar(250) DEFAULT NULL,
+  `apto_actividad` tinyint(1) DEFAULT '1',
+  `observaciones` text,
+  `fecha_registro` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `examen_medico`
+--
+
+INSERT INTO `examen_medico` (`idexamen_medico`, `afiliado_idafiliado`, `fecha_examen`, `peso`, `estatura`, `presion_arterial`, `rh`, `enfermedades`, `alergias`, `vacunas`, `medicamentos`, `apto_actividad`, `observaciones`, `fecha_registro`) VALUES
+(1, 34, '2017-07-24', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, '2017-09-26 19:28:25'),
+(2, 35, '2017-09-26', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, '2017-09-26 19:28:25'),
+(3, 35, '2017-07-04', '74kg', '176', '186/76', 'A+', NULL, NULL, NULL, NULL, 1, 'asdasd', '2017-09-26 19:52:44'),
+(4, 35, '1990-02-02', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, '2017-09-26 19:54:32'),
+(5, 35, '1992-07-07', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, '2017-09-26 19:54:47');
 
 -- --------------------------------------------------------
 
@@ -402,12 +438,12 @@ ALTER TABLE `afiliado`
 -- AUTO_INCREMENT de la tabla `afiliado_contacto`
 --
 ALTER TABLE `afiliado_contacto`
-  MODIFY `idafiliado_contacto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idafiliado_contacto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT de la tabla `afiliado_documento`
 --
 ALTER TABLE `afiliado_documento`
-  MODIFY `idafiliado_documento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `idafiliado_documento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 --
 -- AUTO_INCREMENT de la tabla `afiliado_grupo`
 --
@@ -427,7 +463,7 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT de la tabla `documento`
 --
 ALTER TABLE `documento`
-  MODIFY `iddocumento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `iddocumento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 --
 -- AUTO_INCREMENT de la tabla `entidad`
 --
@@ -437,7 +473,7 @@ ALTER TABLE `entidad`
 -- AUTO_INCREMENT de la tabla `examen_medico`
 --
 ALTER TABLE `examen_medico`
-  MODIFY `idexamen_medico` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idexamen_medico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `grupo`
 --

@@ -1,0 +1,6 @@
+RewriteEngine On
+RewriteBase /afcontrol
+
+RewriteRule ^uploads/afiliados/?$ - [F,L,NC]
+RewriteRule ^uploads/afiliados/([0-9]*)/?$ - [F,L,NC]
+RewriteRule ^assets/img/?$ - [F,L,NC]

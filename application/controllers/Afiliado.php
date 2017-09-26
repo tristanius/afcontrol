@@ -195,18 +195,35 @@ class Afiliado extends CI_Controller {
 
 	// Examenes medicos
 
-	public function add_examen($value='')
+	public function add_examen_medico($idaf=NULL)
 	{
-		# code...
+		$examen = json_decode(file_get_contents('php://input'));
+		$this->load->model('afiliado_db', 'af');
+		$examen->idexamen_medico = $this->af->addExamenMedico($idaf, $examen);
+		$ret =  new stdClass();
+		$ret->return = $examen;
+		$ret->msj = "Examen medico agregado exitosamente";
+		$ret->success = TRUE;
+		echo json_encode($ret);
 	}
 
-	public function get_examenes_by($value='')
+	public function get_examenes_medicos($idaf=NULL)
 	{
-		# code...
+		$this->load->model('afiliado_db', 'af');
+		$ret =  new stdClass();
+		$ret->return = $this->af->getExamenesMedicos( $idaf )->result();
+		$ret->msj = "Listado de examenes medicos de un afiliado";
+		$ret->success = TRUE;
+		echo json_encode($ret);
 	}
-	public function del_examen($value='')
+	public function del_examen_medico($value='')
 	{
-		# code...
+		
+	}
+
+	public function mod_examen_medico($idaf='', $idex=NULL)
+	{
+		
 	}
 
 	// ---------------------------

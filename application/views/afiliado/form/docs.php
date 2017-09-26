@@ -5,23 +5,23 @@
 		<button class="button" type="button" data-open="uploadDocumentos"> + </button>
 
 		<div class="reveal" id="uploadDocumentos" data-reveal>
-			<button class="close-button" data-close aria-label="Close Accessible Modal" type="button">
+			<button class="close-button" ng-click="closeAndCleanUpload('#uploadDocumentos', null)" type="button">
 		    	<span aria-hidden="true">&times;</span>
 		  	</button>
+
 			<fieldset>
 				<legend>Agregar un nuevo documento:</legend>
-				<label id="btn-foto" for="foto" class="button padding1ex" style="display: inline;" ng-show="active_upload" >
+				<label id="btn-file" for="file" class="upload-form1 button padding1ex">
 					Add. doc
-					<input type="file" id="foto" class="show-for-sr" onchange="angular.element(this).scope().activeUpload();" />
+					<input type="file" id="file" class="show-for-sr" onchange="$('.upload-form1').toggleClass('nodisplay');"/>
 				</label>
-
-				<div id="upload-confirmation">
-					<label ng-show="!active_upload">
-						Clasificacion / Tipo : <input type="text" ng-model="doc.clasificacion"> {{ doc.clasificacion }}
+				<div id="upload-confirmation" class="upload-form1 nodisplay">
+					<label>
+						Clasificacion / Tipo : <input type="text" ng-model="doc.clasificacion"> 
 					</label>
 					&nbsp;
 					<button class="button success padding1ex" 
-						ng-click='upload("afiliado/upload_doc/"+af.idafiliado, "file", "#foto")'  ng-show="!active_upload">
+						ng-click='upload("afiliado/upload_doc/"+af.idafiliado, "file", "#file", "#uploadDocumentos")'>
 						<i class="primary" data-icon="&#xe030;"></i> Cargar
 					</button>
 				</div>

@@ -20,7 +20,7 @@
 	</fieldset>
 	<br>
 
-	<div ng-if="!showList">
+	<div ng-if="0">
 		Cargando: <img src="<?= base_url('assets/img/loader.gif') ?>">		
 	</div>
 
@@ -36,7 +36,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="af in listado_afiliados">
+				<tr ng-repeat="af in listado_afiliados track by $index">
 					<td ng-bind="af.idafiliado"></td>
 					<td ng-bind="af.identificacion"></td>
 					<td ng-bind="af.nombres"></td>

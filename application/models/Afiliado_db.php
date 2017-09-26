@@ -74,17 +74,54 @@ class Afiliado_db extends CI_Model {
 	}
 
 	// Datos de examen medico
-	public function addExamenMedico($value='')
+	public function addExamenMedico($idaf, $examen=NULL)
 	{
-		# code...
+		$data = array( 
+			'afiliado_idafiliado' => $idaf, 
+			'fecha_examen' =>  isset($examen->fecha_examen)?$examen->fecha_examen:NULL,
+			'peso'=>  isset($examen->peso)?$examen->peso:NULL,
+			'rh' => isset($examen->rh)?$examen->rh:NULL,
+			'estatura' => isset($examen->estatura)?$examen->estatura:NULL,
+			'presion_arterial' =>  isset($examen->presion_arterial)?$examen->presion_arterial:NULL,
+			'enfermedades'=> isset($examen->enfermedades)?$examen->enfermedades:NULL,
+			'alergias'=> isset($examen->alergias)?$examen->alergias:NULL,
+			'vacunas'=> isset($examen->vacunas)?$examen->vacunas:NULL,
+			'medicamentos'=> isset($examen->medicamentos)?$examen->medicamentos:NULL,
+			'observaciones'=> isset($examen->observaciones)?$examen->observaciones:NULL,
+			'apto_actividad'=> isset($examen->apto_actividad)?$examen->apto_actividad:NULL
+		);
+		$this->db->insert('examen_medico', $data);
+		return $this->db->insert_id();
 	}
-	public function updateExamenMedico($value='')
+	public function updateExamenMedico($idaf='', $examen=NULL)
 	{
-		# code...
+		$data = array( 
+			'fecha_examen' =>  isset( $examen->fecha_examen )? $examen->fecha_examen : NULL,
+			'peso'=>  isset( $examen->peso )? $examen->peso : NULL,
+			'rh' => isset( $examen->rh )? $examen->rh : NULL,
+			'estatura' => isset( $examen->estatura )? $examen->estatura : NULL,
+			'presion_arterial' =>  isset( $examen->presion_arterial )? $examen->presion_arterial : NULL,
+			'enfermedades'=> isset( $examen->enfermedades )? $examen->enfermedades : NULL,
+			'alergias'=> isset( $examen->alergias )? $examen->alergias : NULL,
+			'vacunas'=> isset( $examen->vacunas )? $examen->vacunas : NULL,
+			'medicamentos'=> isset( $examen->medicamentos )? $examen->medicamentos : NULL,
+			'observaciones'=> isset( $examen->observaciones )? $examen->observaciones : NULL,
+			'apto_actividad'=> isset( $examen->apto_actividad )? $examen->apto_actividad : NULL
+		);
+		return $this->db->update('examen_medico', $data, 'afiliado_idafiliado = '.$idaf);
 	}
-	public function delExamenMedico($value='')
+	public function delExamenMedico($idexamen='')
 	{
-		# code...
+		return $this->db->delete('examen_medico', array('idexamen_medico'=>$idexamen));
+	}
+	public function getExamenesMedicos($idaf='', $idexamen=NULL)
+	{
+		$this->db->from('examen_medico');
+		$this->db->where('afiliado_idafiliado', $idaf);
+		if (isset($idexamen)) {
+			$this->db->where('idexamen_medico', $idexamen);
+		}
+		return $this->db->get();
 	}
 
 	// consultas
