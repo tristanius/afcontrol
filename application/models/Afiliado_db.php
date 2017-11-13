@@ -11,48 +11,56 @@ class Afiliado_db extends CI_Model {
 		date_default_timezone_set('America/Bogota');
 	}
 
-	// Datos basicos
+	#================================================================================================================
+	# agregar datos de afiliado
+	#================================================================================================================
 	public function add($obj)
 	{
 		$data = array(
-				'tipo_identificacion' => $obj->tipo_identificacion, 
-				'identificacion' => $obj->identificacion, 
-				'nombres' => $obj->nombres, 
-				'apellidos' => $obj->apellidos, 
-				'fecha_nacimiento' => $obj->fecha_nacimiento, 
-				'telefono' => $obj->telefono, 
-				'movil'=>$obj->movil,
-				'direccion' => $obj->direccion, 
-				'correo' => $obj->correo,
-				'tipo_sanguineo' => $obj->tipo_sanguineo,
-				'talla' => $obj->talla,
-				'entidad_salud' => $obj->entidad_salud,
-				'tipo_registro' => $obj->tipo_registro
+				'tipo_identificacion' => 	$obj->tipo_identificacion, 
+				'identificacion' =>			$obj->identificacion, 
+				'nombres' => 				$obj->nombres, 
+				'apellidos' => 				$obj->apellidos, 
+				'fecha_nacimiento' => 		isset($obj->fecha_nacimiento)? $obj->fecha_nacimiento : NULL, 
+				'telefono' => 				isset($obj->telefono)? $obj->telefono : NULL, 
+				'movil'=>					isset($obj->movil)? $obj->movil : NULL,
+				'direccion' => 				isset($obj->direccion)? $obj->direccion : NULL, 
+				'correo' => 				isset($obj->correo)? $obj->correo : NULL,
+				'tipo_sanguineo' => 		isset($obj->tipo_sanguineo)? $obj->tipo_sanguineo : NULL,
+				'talla' => 					isset($obj->talla)? $obj->talla : NULL,
+				'entidad_salud' => 			isset($obj->entidad_salud)? $obj->entidad_salud : NULL,
+				'tipo_registro' => 			isset($obj->tipo_registro)? $obj->tipo_registro : NULL
 			);
 		$this->db->insert('afiliado', $data);
 		return $this->db->insert_id();
 	}
+
+	#================================================================================================================
+	# Actualizar datos de afiliado
+	#================================================================================================================
 	public function update($obj)
 	{
 		$data = array(
-				'tipo_identificacion' => $obj->tipo_identificacion, 
-				'identificacion' => $obj->identificacion, 
-				'nombres' => $obj->nombres, 
-				'apellidos' => $obj->apellidos, 
-				'fecha_nacimiento' => $obj->fecha_nacimiento, 
-				'telefono' => $obj->telefono, 
-				'movil'=>$obj->movil,
-				'direccion' => $obj->direccion, 
-				'correo' => $obj->correo,
-				'tipo_sanguineo' => $obj->tipo_sanguineo,
-				'talla' => $obj->talla,
-				'entidad_salud' => $obj->entidad_salud,
-				'tipo_registro' => $obj->tipo_registro
+				'tipo_identificacion' => 	$obj->tipo_identificacion, 
+				'identificacion' => 		$obj->identificacion, 
+				'nombres' => 				isset($obj->nombres)? $obj->nombres: NULL, 
+				'apellidos' => 				isset($obj->apellidos)? $obj->apellidos: NULL, 
+				'fecha_nacimiento' => 		isset($obj->fecha_nacimiento)? $obj->fecha_nacimiento: NULL, 
+				'telefono' => 				isset($obj->telefono)? $obj->telefono: NULL, 
+				'movil'	=> 					isset($obj->movil)? $obj->movil: NULL,
+				'direccion' => 				isset($obj->direccion)? $obj->direccion: NULL, 
+				'correo' => 				isset($obj->correo)? $obj->correo: NULL,
+				'tipo_sanguineo' => 		isset($obj->tipo_sanguineo)? $obj->tipo_sanguineo: NULL,
+				'talla' => 					isset($obj->talla)? $obj->talla: NULL,
+				'entidad_salud' => 			isset($obj->entidad_salud)? $obj->entidad_salud: NULL,
+				'tipo_registro' => 			isset($obj->tipo_registro)? $obj->tipo_registro: NULL
 			);
 		return $this->db->update('afiliado', $data, 'idafiliado = '.$obj->idafiliado);
 	}
 
-	// Datos de contacto
+	#================================================================================================================
+	# datos de contactos
+	#================================================================================================================
 	public function getContactsBy($id='')
 	{
 		return $this->db->get_where('afiliado_contacto', array('afiliado_idafiliado'=>$id) );
@@ -73,7 +81,9 @@ class Afiliado_db extends CI_Model {
 		$this->db->delete('afiliado', $data, 'idafiliado_contacto = '.$obj->idafiliado_contacto);
 	}
 
-	// Datos de examen medico
+	#================================================================================================================
+	# Datos de examen medico
+	#================================================================================================================
 	public function addExamenMedico($idaf, $examen=NULL)
 	{
 		$data = array( 
@@ -124,7 +134,9 @@ class Afiliado_db extends CI_Model {
 		return $this->db->get();
 	}
 
-	// consultas
+	#================================================================================================================
+	# Consultas
+	#================================================================================================================
 	public function get($id)
 	{
 		return $this->db->select('*')->from('afiliado')->where('idafiliado',$id)->get();
@@ -141,6 +153,39 @@ class Afiliado_db extends CI_Model {
 			$this->db->limit($limit, $start);
 		}
 		return $this->db->get();
+	}
+
+	// Obtener un afiliado por consulta de un array de campos
+	public function getByFields($fields, $start=NULL, $limit=NULL, $select=NULL)
+	{
+		$this->db->select( isset($select)?$select:'*' )->from('afiliado AS af');
+		// Adjuntamos en un ciclo todas las validaciones a buscar
+		foreach ($fields as $key => $val) {
+			if( isset($key) && isset($val) )
+				$this->db->like($key, $val);
+		}
+		// Adjuntamos los limites derango de resultados
+		if (isset($start) && isset($limit)) {
+			$this->db->limit($limit, $start);
+		}
+		return $this->db->get();
+	}
+
+	// Comprobar existencia de un afiliado por medio de un array de parametros de busqueda
+	public function getByArray($data)
+	{
+		$this->load->database();
+		$this->db->from('afiliado');
+		foreach ($data as $key => $val) {
+			$this->db->where($key, $val);
+		}
+		return $this->db->get();
+	}
+
+	// Desactivar un afiliado por ID
+	public function inactivate($id='')
+	{
+		return $this->db->update('afiliado', array('estado_activo'), 'idafiliado = '.$id);
 	}
 
 }

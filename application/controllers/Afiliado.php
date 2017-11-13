@@ -13,6 +13,7 @@ class Afiliado extends CI_Controller {
 		
 	}
 
+	// ------------------------------------------------------------------------------------------
 	// Agregar un nuevo afiliado
 	public function add()
 	{
@@ -20,36 +21,72 @@ class Afiliado extends CI_Controller {
 		$this->load->view('util/plantilla', array('titulo'=>'Agregar nuevo afiliado', 'content'=>$vw) );
 	}
 
-	// modificar un afiliado
+	// ------------------------------------------------------------------------------------------
+	// Modificar un afiliado
 	public function edit($id=NULL)
 	{
 		$vw = $this->load->view('afiliado/form', array('idafiliado'=>$id), TRUE);
 		$this->load->view('util/plantilla', array('titulo'=>'Detalles de afiliado', 'content'=>$vw) );
 	}
-	public function existeBy($field, $val)
+
+	// ------------------------------------------------------------------------------------------
+	private function existeBy($field, $val)
 	{
 		$this->load->model('afiliado_db', 'myaf');
 		$result = $this->myaf->getBy($field, $val);
 		return $result->num_rows()>0?TRUE:FALSE;
 	}
-	// guardar afiliado
-	public function save()
+
+	// ------------------------------------------------------------------------------------------
+	// Desactivar un afiliado
+	public function inactivate($id)
 	{
-		$post = json_decode(file_get_contents('php://input'));
-		$this->load->model('afiliado_db', 'myaf');
-		if ( isset($post->idafiliado) ) {
-			$this->myaf->update($post);
-		}else{
-			$idaf = $this->myaf->add($post);
-			$post->idafiliado = $idaf;			
-		}
-		//$this->guardarContactos($post->contactos);
+		$this->load->model('afiliado_db', 'af');
+		$this->af->inactivate($id);
 		$ret =  new stdClass();
 		$ret->return = $post;
 		$ret->success = TRUE;
 		$ret->msj = 'Datos registrados exitosamente.'.date('Y-m-d H:i:s');
 		echo json_encode( $ret );
 	}
+
+	// ------------------------------------------------------------------------------------------
+	// Guardar afiliado
+	public function save()
+	{
+		$post = json_decode(file_get_contents('php://input'));
+		$this->load->model('afiliado_db', 'myaf');
+		$ret =  new stdClass();
+		if ( isset($post->idafiliado) ) {
+			$this->myaf->update($post);
+			$ret->success = TRUE;
+			$ret->msj = 'Datos actualizado exitosamente.  '.date('Y-m-d H:i:s');
+		}else{
+			if ( $this->validarExistencia($post) ) {
+				$ret->success = FALSE;
+				$ret->msj = 'Ya existe un registro con los datos de identificacion ingresados.  '.date('Y-m-d H:i:s');
+			}else{
+				$post->idafiliado = $this->myaf->add($post);
+				$ret->success = TRUE;
+				$ret->msj = 'Datos registrados exitosamente.  '.date('Y-m-d H:i:s');
+			}
+		}
+		$ret->return = $post;
+		echo json_encode( $ret );
+	}
+
+	// Validar si un afiliado ya existe (TRUE si existe, FALSE si no.)
+	public function validarExistencia($post)
+	{
+		$this->load->model('afiliado_db', 'myaf');
+		$param = array( 'identificacion'=>$post->identificacion, 'tipo_identificacion'=>$post->tipo_identificacion );
+		if ( $this->myaf->getByArray( $param )->num_rows() > 0 ) {
+			return FALSE;
+		}
+		return TRUE;
+	}
+
+	// ------------------------------------------------------------------------------------------
 	// listado de afiliado
 	public function lista()
 	{
@@ -58,10 +95,14 @@ class Afiliado extends CI_Controller {
 	}
 	public function getList($start=NULL, $end=NULL)
 	{
+		$obj = json_decode(file_get_contents('php://input'));
 		$this->load->model('afiliado_db', 'myaf');
-		$rows = $this->myaf->getBy(NULL, NULL, $start, $end, 'af.idafiliado, af.identificacion, af.tipo_identificacion, af.nombres, af.apellidos');
+		$rows = $this->myaf->getByFields( $obj->filters , $start, $end, 'af.idafiliado, af.identificacion, af.tipo_identificacion, af.nombres, af.apellidos, af.estado_activo');
 		echo json_encode( $rows->result() );
 	}
+
+	// ------------------------------------------------------------------------------------------
+	// Obtener un afiliado por su ID
 	public function get($id=NULL)
 	{
 		$this->load->model("afiliado_db", 'af');
@@ -74,6 +115,7 @@ class Afiliado extends CI_Controller {
 		echo json_encode( $ret );
 	}
 
+	// ------------------------------------------------------------------------------------------
 	// ver un afiliado
 	public function ver($id=NULL)
 	{
@@ -175,6 +217,8 @@ class Afiliado extends CI_Controller {
 		# code...
 	}
 
+	// ------------------------------------------------------------------------------------------
+	// Foto de perfil
 	private function getFotoPerfil($idaf)
 	{
 		$this->load->model('documento_db', 'doc');
@@ -193,8 +237,8 @@ class Afiliado extends CI_Controller {
 	    }
 	}
 
+	// ------------------------------------------------------------------------------------------
 	// Examenes medicos
-
 	public function add_examen_medico($idaf=NULL)
 	{
 		$examen = json_decode(file_get_contents('php://input'));

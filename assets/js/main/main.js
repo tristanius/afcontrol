@@ -117,6 +117,15 @@ app.controller('main', function($scope, $http, $timeout, $templateCache){
 		}
 	}
 
+	// datepicker
+
+	$scope.datepicker = function(selector){
+		$( selector ).datepicker({
+			changeMonth: true,
+			changeYear: true
+		});
+	}
+
 });
 
 app.controller('form_afiliado', function($scope, $http, $timeout, $templateCache){

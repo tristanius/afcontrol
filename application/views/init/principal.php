@@ -4,6 +4,8 @@
 <body>
 	<?= $html ?>
 	<script src="<?= base_url('assets/foundation6/js/vendor/jquery.js') ?>"></script>
+	<script src="<?= base_url('assets/js/jquery-ui/jquery-ui.min.js') ?>"></script>
+
     <script src="<?= base_url('assets/foundation6/js/vendor/what-input.js') ?>"></script>
     <script src="<?= base_url('assets/foundation6/js/vendor/foundation.js') ?>"></script>
     <script src="<?= base_url('assets/js/datatables/datatables.min.js') ?>"></script>

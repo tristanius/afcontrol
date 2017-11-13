@@ -43,7 +43,6 @@ var form_afiliado = function($scope, $http, $timeout){
 	}
 
 	$scope.guardar = function(){
-		console.log($scope.$parent.site_url+'afiliado/save')
 		$http.post($scope.$parent.site_url+'afiliado/save', $scope.af )
 			.then(
 				function(response){
@@ -54,7 +53,7 @@ var form_afiliado = function($scope, $http, $timeout){
 						$('#saved_msj').toggle('.nodisplay');
 						setTimeout(function(){ $('#saved_msj').toggle('.nodisplay'); }, 3000);
 					}else{
-						alert('Algo no ha salido bien');
+						alert(response.data.msj);
 					}
 					console.log(response.data);
 				},
@@ -184,6 +183,23 @@ var form_afiliado = function($scope, $http, $timeout){
 				}
 			);
 	}
+
+	// --- borrado e inactivaciones ---
+
+	$scope.inactivate = function(lnk, id){
+		$http.get($scope.$parent.site_url+lnk+id)
+			.then(
+				function(resp){
+					if(resp.success){
+						alert()
+					}else{
+						alert("Error al registrar");
+					}
+					console.log(resp.data)
+				},
+				function(resp){console.log(resp.data); alert("Un error ha ocurrido")}
+			);
+	}
 }
 
 // -------------------------------------------------------------------------------------------
@@ -197,6 +213,11 @@ var list_afiliados = function($scope, $http, $timeout){
 	$scope.myFilter = {};
 	$scope.filterStatus = {timer: new Date(), status: false, process: undefined};
 	$scope.showList = false;
+
+	$scope.setDatatable = function(selector){
+		if( $.fn.dataTable.isDataTable( selector ) )
+			$scope.$parent.datatable(selector);
+	}
 
 	$scope.filterTimer = function(list, filtro){
 		if ($scope.filterStatus.status) {
@@ -216,14 +237,16 @@ var list_afiliados = function($scope, $http, $timeout){
 		$scope.$parent.datatable("#tabla_afiliado");
 	}
 
-	$scope.getListAfiliados = function(ini, end){
-		$http.get($scope.$parent.site_url+'afiliado/getList/'+ini+'/'+end)
-			.then(
+	$scope.getListAfiliados = function( filter, ini, end ){
+		$http.post(
+				$scope.$parent.site_url+'afiliado/getList/'+ini+'/'+end,
+				{filters: filter}
+			).then(
 				function(response){
 					$scope.showList = true;
 					$scope.afiliados = response.data;
 					$scope.listado_afiliados = $scope.afiliados;
-					$scope.$parent.datatable("#tabla_afiliado");
+					$scope.setDatatable('#tabla_afiliado');
 				},
 				function(response){
 					console.log(response.data);

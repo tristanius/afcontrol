@@ -1,7 +1,7 @@
 <section ng-controller="form_afiliado" class="myform">
 	<div class="grid-x">
-		<div class="cell large-12 medium-12 text-right">			
-			<button ng-if="af.idafiliado" class="button alert margin-none padding1ex">
+		<div class="cell large-12 medium-12 text-right" ng-if="af.idafiliado">			
+			<button  class="button alert margin-none padding1ex" ng-click="inactivate('/afiliado/inactivate/', af.idafiliado)">
 				<i class="fa fa-trash" aria-hidden="true"></i>
 			</button>
 		</div>
@@ -11,6 +11,7 @@
 		<div class="grid-y">
 			<div class="grid-x cell">
 				<fieldset class="cell small-10 medium-2 large-2">
+					<h6 ng-if="af.idafiliado">Estado: <span ng-bind="af.estado_activo?'Activo':'Inactivo'"></span></h6>
 					<!-- foto del afiliado -->
 					<img ng-src="{{ af.foto?af.foto:'<?= base_url('assets/img/icon.png') ?>'; }}" 
 						class="thumbnail" 
@@ -77,7 +78,7 @@
 									Talla actual: <input type="text" ng-model="af.talla" placeholder="EJ: 14/16/S/M/L/XL">
 								</label>
 
-								<label>
+								<label ng-init="datepicker('.datepicker')">
 									fecha nacimiento:
 									<input type="text" class="datepicker" ng-model="af.fecha_nacimiento" placeholder="ingrese una fecha">
 								</label>
