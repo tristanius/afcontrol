@@ -48,6 +48,7 @@ Temporary Items
 
 # mydirs
 sess
+uploads/afiliados/*
 application/config/config.php
 application/config/database.php
 application/config/config.php
