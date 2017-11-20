@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="<?= base_url() ?>icon.ico">
 
-	<title><?= "AFControl - ".$titulo ?></title>
+	<title><?= $titulo." - AFControl" ?></title>
 
     <link rel="stylesheet" href="<?= base_url('assets/js/jquery-ui/jquery-ui.min.css?v='.rand()) ?>">
 

@@ -11,10 +11,7 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
-		//$this->load->view('test/form', array() );
-		$v = $this->load->view('init/entrada', array(), TRUE);
-		$html = $this->plantilla1('Panel entrada App Control de afiliados', $v);
-		$this->vw('Panel Principal', $html);
+		$this->welcome();
 	}
 
 	public function login($fail='')
@@ -25,6 +22,19 @@ class Welcome extends CI_Controller {
 		$vista = $this->load->view('login/login', array('fail'=>$fail), TRUE);
 		$this->vw('Inicio de sesión', $vista);
 	}
+
+	public function welcome($portal=FALSE)
+	{
+		if (!$portal) {
+			if ( $this->isSesion() ) {
+				redirSesion( TRUE, 'panel/');
+			}else{
+				redirSesion( TRUE, 'sesion/login' );
+			}
+		}else{
+			$this->load->view('portal/principal');
+		}
+	}	
 
 	public function entrada()
 	{
@@ -46,29 +56,18 @@ class Welcome extends CI_Controller {
 		return $this->load->view('init/panel', array('view'=>$test), TRUE);
 	}
 
+	private function isSesion()
+	{
+		$sesion = $this->session->userdata('activeSesion');
+		if ( isset( $sesion ) ) 
+			return TRUE;
+		return FALSE;
+	}
+
+
 	public function vw($titulo='', $html='')
 	{
 		$this->load->view('init/principal', array('titulo'=>$titulo, 'html'=>$html));
-	}
-
-	public function welcome($portal=FALSE)
-	{
-		if (!$portal) {
-			if ( $this->isSesion() ) {
-				redirSesion( TRUE, 'panel/');
-			}else{
-				redirSesion( TRUE );
-			}
-		}else{
-			$this->load->view('portal/principal');
-		}
-	}
-
-	private function isSesion()
-	{
-		if ( isset( $this->session->userdata('activeSesion') ) ) 
-			return TRUE;
-		return FALSE;
 	}
 
 }

@@ -32,7 +32,7 @@ class Sesion extends CI_Controller {
 		if ( $users->num_rows() > 0 ) {
 			
 		}else{
-			$this->login('failed')
+			$this->login('failed');
 		}		
 	}
 
@@ -48,12 +48,13 @@ class Sesion extends CI_Controller {
 	public function end_sesion($value='')
 	{
 		$this->session->sess_destroy();
-		redirect( base_url('sesion/login') ,'refresh')
+		redirect( base_url('sesion/login') ,'refresh');
 	}
 
 	private function isSesion()
 	{
-		if ( isset( $this->session->userdata('activeSesion') ) ) 
+		$sesion = $this->session->userdata('activeSesion');
+		if ( isset( $sesion ) ) 
 			return TRUE;
 		return FALSE;
 	}
