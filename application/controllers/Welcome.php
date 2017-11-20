@@ -6,6 +6,15 @@ class Welcome extends CI_Controller {
 	{
 		parent::__construct();
 		date_default_timezone_set("America/Bogota");
+
+	}
+
+	public function index()
+	{
+		//$this->load->view('test/form', array() );
+		$v = $this->load->view('init/entrada', array(), TRUE);
+		$html = $this->plantilla1('Panel entrada App Control de afiliados', $v);
+		$this->vw('Panel Principal', $html);
 	}
 
 	public function login($fail='')
@@ -15,14 +24,6 @@ class Welcome extends CI_Controller {
 		}
 		$vista = $this->load->view('login/login', array('fail'=>$fail), TRUE);
 		$this->vw('Inicio de sesión', $vista);
-	}
-
-	public function index()
-	{
-		//$this->load->view('test/form', array() );
-		$v = $this->load->view('init/entrada', array(), TRUE);
-		$html = $this->plantilla1('Panel entrada App Control de afiliados', $v);
-		$this->vw('Panel Principal', $html);
 	}
 
 	public function entrada()
@@ -48,6 +49,26 @@ class Welcome extends CI_Controller {
 	public function vw($titulo='', $html='')
 	{
 		$this->load->view('init/principal', array('titulo'=>$titulo, 'html'=>$html));
+	}
+
+	public function welcome($portal=FALSE)
+	{
+		if (!$portal) {
+			if ( $this->isSesion() ) {
+				redirSesion( TRUE, 'panel/');
+			}else{
+				redirSesion( TRUE );
+			}
+		}else{
+			$this->load->view('portal/principal');
+		}
+	}
+
+	private function isSesion()
+	{
+		if ( isset( $this->session->userdata('activeSesion') ) ) 
+			return TRUE;
+		return FALSE;
 	}
 
 }

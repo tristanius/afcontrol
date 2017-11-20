@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.4
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
--- Servidor: localhost
--- Tiempo de generación: 26-09-2017 a las 20:36:42
--- Versión del servidor: 5.6.31
--- Versión de PHP: 5.6.17
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 20-11-2017 a las 06:54:37
+-- Versión del servidor: 10.1.13-MariaDB
+-- Versión de PHP: 5.6.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -41,22 +41,10 @@ CREATE TABLE `afiliado` (
   `direccion` varchar(100) DEFAULT NULL,
   `entidad_salud` varchar(60) DEFAULT NULL,
   `tipo_registro` varchar(45) NOT NULL,
-  `estado` tinyint(1) DEFAULT '1',
+  `estado_activo` tinyint(1) DEFAULT '1',
   `morageneral` tinyint(1) DEFAULT '0',
   `fecha_registro` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `afiliado`
---
-
-INSERT INTO `afiliado` (`idafiliado`, `identificacion`, `tipo_identificacion`, `nombres`, `apellidos`, `correo`, `fecha_nacimiento`, `tipo_sanguineo`, `telefono`, `movil`, `talla`, `direccion`, `entidad_salud`, `tipo_registro`, `estado`, `morageneral`, `fecha_registro`) VALUES
-(34, '1090422853', 'T.I.', 'Yeison', 'Torrado López', 'Yeison@termo.com', '1990-07-07', 'A+', '5745630', 2147483647, 'M', 'AV 11E', 'COOMEVA', 'Deportista', 1, 0, '2017-09-20 20:23:22'),
-(35, '900586015', 'C.C.', 'Tristan', 'Von Hendrith', 'tristan.herth@gmail.com', '1990-07-24', 'A+', '5745630', 2147483647, 'M', 'Distric 11G 78A-124', 'Coomeva', 'Deportista', 1, 0, '2017-09-20 20:23:22'),
-(36, '345362525', 'C.C.', 'Pepe 345362525', 'nene 345362525', '', '2017-09-13', '', '345362525', 345362525, '', '345362525', '', 'prueba', 1, 0, '2017-09-20 20:23:22'),
-(37, '977067303', 'C.C.', 'Pepe 977067303', 'nene 977067303', '', '2017-09-13', '', '977067303', 977067303, '', '977067303', '', 'prueba', 1, 0, '2017-09-20 20:23:22'),
-(38, '1075043720', 'C.C.', 'Pepe 1075043720', 'nene 1075043720', '', '2017-09-13', '', '1075043720', 1075043720, '', '1075043720', '', 'prueba', 1, 0, '2017-09-20 20:23:22'),
-(39, '1245824748', 'C.C.', 'Pepe 1245824748', 'nene 1245824748', '', '2017-09-13', '', '1245824748', 1245824748, '', '1245824748', '', 'prueba', 1, 0, '2017-09-20 20:23:22');
 
 -- --------------------------------------------------------
 
@@ -73,21 +61,6 @@ CREATE TABLE `afiliado_contacto` (
   `afiliado_idafiliado` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Volcado de datos para la tabla `afiliado_contacto`
---
-
-INSERT INTO `afiliado_contacto` (`idafiliado_contacto`, `nombre_ref`, `telefono_ref`, `parentesco_ref`, `fecha_registro`, `afiliado_idafiliado`) VALUES
-(1, 'Amellie', '5745600', 'Madre', '2017-09-19 21:04:46', 35),
-(2, 'Cadmo Dardano', '7552862', 'Padre', '2017-09-19 21:04:46', 35),
-(3, 'Nancy', '55555', 'Madre', '2017-09-19 21:04:46', 34),
-(4, 'Adrian', '55555', 'Hermano', '2017-09-19 21:04:46', 34),
-(6, 'Yeison', '54856151', 'Amigo', '2017-09-22 16:48:43', 35),
-(7, 'Yeison Torrado', '74511', 'amigo', '2017-09-22 16:57:56', 35),
-(8, 'Anonimo', '451488', 'hasd', '2017-09-22 17:00:18', 35),
-(9, 'otro', '5', '4', '2017-09-22 17:01:02', 35),
-(10, 'Yeison', '555555', 'Gemelo malvado', '2017-09-22 17:11:48', 34);
-
 -- --------------------------------------------------------
 
 --
@@ -103,20 +76,6 @@ CREATE TABLE `afiliado_documento` (
   `afiliado_idafiliado` int(11) DEFAULT NULL,
   `documento_iddocumento` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `afiliado_documento`
---
-
-INSERT INTO `afiliado_documento` (`idafiliado_documento`, `clasificacion`, `estado`, `is_foto_perfil`, `fecha_registro`, `afiliado_idafiliado`, `documento_iddocumento`) VALUES
-(27, 'Documento estandar', 1, 0, '2017-09-22 17:19:43', 35, 27),
-(28, 'Documento estandar', 1, 0, '2017-09-22 17:29:51', 34, 28),
-(29, 'undefined', 1, 0, '2017-09-22 17:31:04', 34, 29),
-(30, 'undefined', 1, 0, '2017-09-22 17:31:46', 35, 30),
-(31, 'Documento estandar12', 1, 0, '2017-09-22 20:52:50', 35, 31),
-(32, 'Foto de perfil', 1, 0, '2017-09-22 20:53:00', 35, 32),
-(33, 'Foto de perfil', 1, 0, '2017-09-26 20:01:14', 35, 33),
-(34, 'Foto de perfil', 1, 1, '2017-09-26 20:01:29', 35, 34);
 
 -- --------------------------------------------------------
 
@@ -138,13 +97,14 @@ CREATE TABLE `afiliado_grupo` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `afiliado_has_entidad`
+-- Estructura de tabla para la tabla `afiliado_has_usuario`
 --
 
-CREATE TABLE `afiliado_has_entidad` (
-  `idafiliado_has_entidad` int(11) NOT NULL,
-  `entidad_identidad` int(11) NOT NULL,
-  `afiliado_idafiliado` int(11) NOT NULL
+CREATE TABLE `afiliado_has_usuario` (
+  `idafiliado_has_usuario` int(11) NOT NULL,
+  `afiliado_idafiliado` int(11) NOT NULL,
+  `usuario_idusuario` int(11) NOT NULL,
+  `tipo_relacion` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -158,12 +118,17 @@ CREATE TABLE `categoria` (
   `descripcion` varchar(120) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
--- Volcado de datos para la tabla `categoria`
+-- Estructura de tabla para la tabla `concepto_financiero`
 --
 
-INSERT INTO `categoria` (`idcategoria`, `descripcion`) VALUES
-(15, '2006');
+CREATE TABLE `concepto_financiero` (
+  `idconcepto_financiero` int(11) NOT NULL,
+  `nombre_concepto` varchar(75) DEFAULT NULL,
+  `tipo` varchar(45) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -180,38 +145,16 @@ CREATE TABLE `documento` (
   `fecha_registro` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Volcado de datos para la tabla `documento`
---
-
-INSERT INTO `documento` (`iddocumento`, `documento`, `ruta`, `tipo`, `estado`, `fecha_registro`) VALUES
-(20, '34109042285320170922.png', '/uploads/afiliados/34/', 0, 1, '2017-09-22 17:14:52'),
-(21, '34109042285320170922.jpg', '/uploads/afiliados/34/', 0, 1, '2017-09-22 17:15:02'),
-(22, '34109042285320170922.xlsx', '/uploads/afiliados/34/', 0, 1, '2017-09-22 17:15:18'),
-(23, '341090422853201709221.png', '/uploads/afiliados/34/', 0, 1, '2017-09-22 17:16:36'),
-(24, '341090422853201709222.png', '/uploads/afiliados/34/', 0, 1, '2017-09-22 17:16:47'),
-(25, '341090422853201709223.png', '/uploads/afiliados/34/', 0, 1, '2017-09-22 17:17:00'),
-(26, '341090422853201709221.jpg', '/uploads/afiliados/34/', 0, 1, '2017-09-22 17:17:50'),
-(27, '3590058601520170922.xlsx', '/uploads/afiliados/35/', 0, 1, '2017-09-22 17:19:43'),
-(28, '34109042285320170922.xlsx', '/uploads/afiliados/34/', 0, 1, '2017-09-22 17:29:51'),
-(29, '341090422853201709221.xlsx', '/uploads/afiliados/34/', 0, 1, '2017-09-22 17:31:04'),
-(30, '35900586015201709221.xlsx', '/uploads/afiliados/35/', 0, 1, '2017-09-22 17:31:46'),
-(31, '35900586015201709222.xlsx', '/uploads/afiliados/35/', 0, 1, '2017-09-22 20:52:50'),
-(32, '3590058601520170922.png', '/uploads/afiliados/35/', 0, 1, '2017-09-22 20:53:00'),
-(33, '3590058601520170926.xlsx', '/uploads/afiliados/35/', 0, 1, '2017-09-26 20:01:14'),
-(34, '3590058601520170926.jpg', '/uploads/afiliados/35/', 0, 1, '2017-09-26 20:01:29');
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `entidad`
+-- Estructura de tabla para la tabla `documento_has_recibo`
 --
 
-CREATE TABLE `entidad` (
-  `identidad` int(11) NOT NULL,
-  `nombre` varchar(50) DEFAULT NULL,
-  `nit` varchar(20) DEFAULT NULL,
-  `fecha_creacion` date DEFAULT NULL
+CREATE TABLE `documento_has_recibo` (
+  `iddocumento_has_recibo` int(11) NOT NULL,
+  `documento_iddocumento` int(11) NOT NULL,
+  `recibo_idrecibo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -237,17 +180,6 @@ CREATE TABLE `examen_medico` (
   `fecha_registro` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `examen_medico`
---
-
-INSERT INTO `examen_medico` (`idexamen_medico`, `afiliado_idafiliado`, `fecha_examen`, `peso`, `estatura`, `presion_arterial`, `rh`, `enfermedades`, `alergias`, `vacunas`, `medicamentos`, `apto_actividad`, `observaciones`, `fecha_registro`) VALUES
-(1, 34, '2017-07-24', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, '2017-09-26 19:28:25'),
-(2, 35, '2017-09-26', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, '2017-09-26 19:28:25'),
-(3, 35, '2017-07-04', '74kg', '176', '186/76', 'A+', NULL, NULL, NULL, NULL, 1, 'asdasd', '2017-09-26 19:52:44'),
-(4, 35, '1990-02-02', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, '2017-09-26 19:54:32'),
-(5, 35, '1992-07-07', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL, '2017-09-26 19:54:47');
-
 -- --------------------------------------------------------
 
 --
@@ -260,13 +192,6 @@ CREATE TABLE `grupo` (
   `categoria_idcategoria` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Volcado de datos para la tabla `grupo`
---
-
-INSERT INTO `grupo` (`idgrupo`, `nombre_grupo`, `categoria_idcategoria`) VALUES
-(16, 'EQUIPO A', 15);
-
 -- --------------------------------------------------------
 
 --
@@ -276,13 +201,49 @@ INSERT INTO `grupo` (`idgrupo`, `nombre_grupo`, `categoria_idcategoria`) VALUES
 CREATE TABLE `mensualidad` (
   `idmensualidad` int(11) NOT NULL,
   `valor_mensualidad` double DEFAULT NULL,
-  `fecha_pago` date DEFAULT NULL,
   `mes` int(11) DEFAULT NULL,
   `year` int(11) DEFAULT NULL,
   `observacion` varchar(2000) NOT NULL,
-  `recibo_idrecibo` int(11) NOT NULL,
-  `afiliado_grupo_idafiliado_grupo` int(11) NOT NULL
+  `fecha_registro` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `afiliado_grupo_idafiliado_grupo` int(11) NOT NULL,
+  `pago_idpago` int(11) NOT NULL,
+  `recibo_idrecibo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pago`
+--
+
+CREATE TABLE `pago` (
+  `idpago` int(11) NOT NULL,
+  `codigo` varchar(45) DEFAULT NULL,
+  `fecha_referencia_pago` date DEFAULT NULL,
+  `valor` double DEFAULT NULL,
+  `fecha_registro` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `observacion` varchar(500) DEFAULT NULL,
+  `concepto_financiero_idconcepto_financiero` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `permiso`
+--
+
+CREATE TABLE `permiso` (
+  `idpermiso` int(11) NOT NULL,
+  `codigo` varchar(45) DEFAULT NULL,
+  `nombre_permiso` varchar(75) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `permiso`
+--
+
+INSERT INTO `permiso` (`idpermiso`, `codigo`, `nombre_permiso`) VALUES
+(1, 'USER01', 'Sesion de usuario');
 
 -- --------------------------------------------------------
 
@@ -295,15 +256,47 @@ CREATE TABLE `recibo` (
   `fecha_creacion` date NOT NULL,
   `total_recibo` double NOT NULL,
   `idafiliado` int(11) NOT NULL,
-  `idusuario` int(11) NOT NULL
+  `idusuario` int(11) NOT NULL,
+  `pago_idpago` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `rol`
+--
+
+CREATE TABLE `rol` (
+  `idrol` int(11) NOT NULL,
+  `nombre` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `recibo`
+-- Volcado de datos para la tabla `rol`
 --
 
-INSERT INTO `recibo` (`idrecibo`, `fecha_creacion`, `total_recibo`, `idafiliado`, `idusuario`) VALUES
-(10006, '2016-10-01', 3, 9, 1);
+INSERT INTO `rol` (`idrol`, `nombre`) VALUES
+(1, 'superadmin');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `rol_has_permiso`
+--
+
+CREATE TABLE `rol_has_permiso` (
+  `idrol_has_permiso` int(11) NOT NULL,
+  `rol_idrol` int(11) NOT NULL,
+  `permiso_idpermiso` int(11) NOT NULL,
+  `fecha_registro` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `rol_has_permiso`
+--
+
+INSERT INTO `rol_has_permiso` (`idrol_has_permiso`, `rol_idrol`, `permiso_idpermiso`, `fecha_registro`) VALUES
+(1, 1, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -316,16 +309,9 @@ CREATE TABLE `usuario` (
   `usuario` varchar(45) NOT NULL,
   `password` varchar(150) DEFAULT NULL,
   `mail` varchar(100) DEFAULT NULL,
-  `tipo` varchar(45) DEFAULT NULL
+  `estado` tinyint(1) DEFAULT NULL,
+  `rol_idrol` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `usuario`
---
-
-INSERT INTO `usuario` (`idusuario`, `usuario`, `password`, `mail`, `tipo`) VALUES
-(1, '00000', 'dFzyNlbJTDKit2N80KPhL6/pWr5jNGVg0M4w+cmQnamh+Nwn0jS2IxXElF2lcr+SsuHceS3E7fp6/nSdfCyuZw==', 'correo@hotmail.com', 'Presidente'),
-(3, '1090422853', 'pNyXfiJ17dlQ5JjTg31Yeg1DanJiYYfreqwaOy4quZEx2CK2aHrJg7K0F8sI0qxbIjqsEtNQVC920hITJfckNQ==', 'test@test.com', 'Gestor de afiliados');
 
 --
 -- Índices para tablas volcadas
@@ -364,12 +350,12 @@ ALTER TABLE `afiliado_grupo`
   ADD KEY `fk_afiliado_grupo_grupo1_idx` (`grupo_idgrupo`);
 
 --
--- Indices de la tabla `afiliado_has_entidad`
+-- Indices de la tabla `afiliado_has_usuario`
 --
-ALTER TABLE `afiliado_has_entidad`
-  ADD PRIMARY KEY (`idafiliado_has_entidad`),
-  ADD KEY `fk_afiliado_has_entidad_entidad1_idx` (`entidad_identidad`),
-  ADD KEY `fk_afiliado_has_entidad_afiliado_idx` (`afiliado_idafiliado`);
+ALTER TABLE `afiliado_has_usuario`
+  ADD PRIMARY KEY (`idafiliado_has_usuario`),
+  ADD KEY `fk_afiliado_has_usuario_usuario1_idx` (`usuario_idusuario`),
+  ADD KEY `fk_afiliado_has_usuario_afiliado1_idx` (`afiliado_idafiliado`);
 
 --
 -- Indices de la tabla `categoria`
@@ -378,16 +364,24 @@ ALTER TABLE `categoria`
   ADD PRIMARY KEY (`idcategoria`);
 
 --
+-- Indices de la tabla `concepto_financiero`
+--
+ALTER TABLE `concepto_financiero`
+  ADD PRIMARY KEY (`idconcepto_financiero`);
+
+--
 -- Indices de la tabla `documento`
 --
 ALTER TABLE `documento`
   ADD PRIMARY KEY (`iddocumento`);
 
 --
--- Indices de la tabla `entidad`
+-- Indices de la tabla `documento_has_recibo`
 --
-ALTER TABLE `entidad`
-  ADD PRIMARY KEY (`identidad`);
+ALTER TABLE `documento_has_recibo`
+  ADD PRIMARY KEY (`iddocumento_has_recibo`),
+  ADD KEY `fk_documento_has_recibo_recibo1_idx` (`recibo_idrecibo`),
+  ADD KEY `fk_documento_has_recibo_documento1_idx` (`documento_iddocumento`);
 
 --
 -- Indices de la tabla `examen_medico`
@@ -409,7 +403,22 @@ ALTER TABLE `grupo`
 ALTER TABLE `mensualidad`
   ADD PRIMARY KEY (`idmensualidad`),
   ADD KEY `fk_mensualidad_afiliado_grupo1_idx` (`afiliado_grupo_idafiliado_grupo`),
-  ADD KEY `recibo_idrecibo` (`recibo_idrecibo`);
+  ADD KEY `fk_mensualidad_pago1_idx` (`pago_idpago`),
+  ADD KEY `fk_mensualidad_recibo1_idx` (`recibo_idrecibo`);
+
+--
+-- Indices de la tabla `pago`
+--
+ALTER TABLE `pago`
+  ADD PRIMARY KEY (`idpago`),
+  ADD KEY `fk_pago_concepto_financiero1_idx` (`concepto_financiero_idconcepto_financiero`);
+
+--
+-- Indices de la tabla `permiso`
+--
+ALTER TABLE `permiso`
+  ADD PRIMARY KEY (`idpermiso`),
+  ADD UNIQUE KEY `codigo_UNIQUE` (`codigo`);
 
 --
 -- Indices de la tabla `recibo`
@@ -417,83 +426,69 @@ ALTER TABLE `mensualidad`
 ALTER TABLE `recibo`
   ADD PRIMARY KEY (`idrecibo`),
   ADD KEY `idusuario` (`idusuario`),
-  ADD KEY `idafiliado` (`idafiliado`);
+  ADD KEY `idafiliado` (`idafiliado`),
+  ADD KEY `fk_recibo_pago1_idx` (`pago_idpago`);
+
+--
+-- Indices de la tabla `rol`
+--
+ALTER TABLE `rol`
+  ADD PRIMARY KEY (`idrol`);
+
+--
+-- Indices de la tabla `rol_has_permiso`
+--
+ALTER TABLE `rol_has_permiso`
+  ADD PRIMARY KEY (`idrol_has_permiso`),
+  ADD KEY `fk_rol_has_permiso_permiso1_idx` (`permiso_idpermiso`),
+  ADD KEY `fk_rol_has_permiso_rol1_idx` (`rol_idrol`);
 
 --
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`idusuario`);
+  ADD PRIMARY KEY (`idusuario`),
+  ADD KEY `fk_usuario_rol1_idx` (`rol_idrol`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT de la tabla `afiliado`
+-- AUTO_INCREMENT de la tabla `afiliado_has_usuario`
 --
-ALTER TABLE `afiliado`
-  MODIFY `idafiliado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+ALTER TABLE `afiliado_has_usuario`
+  MODIFY `idafiliado_has_usuario` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT de la tabla `afiliado_contacto`
+-- AUTO_INCREMENT de la tabla `concepto_financiero`
 --
-ALTER TABLE `afiliado_contacto`
-  MODIFY `idafiliado_contacto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+ALTER TABLE `concepto_financiero`
+  MODIFY `idconcepto_financiero` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT de la tabla `afiliado_documento`
+-- AUTO_INCREMENT de la tabla `documento_has_recibo`
 --
-ALTER TABLE `afiliado_documento`
-  MODIFY `idafiliado_documento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+ALTER TABLE `documento_has_recibo`
+  MODIFY `iddocumento_has_recibo` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT de la tabla `afiliado_grupo`
+-- AUTO_INCREMENT de la tabla `pago`
 --
-ALTER TABLE `afiliado_grupo`
-  MODIFY `idafiliado_grupo` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `pago`
+  MODIFY `idpago` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT de la tabla `afiliado_has_entidad`
+-- AUTO_INCREMENT de la tabla `rol`
 --
-ALTER TABLE `afiliado_has_entidad`
-  MODIFY `idafiliado_has_entidad` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `rol`
+  MODIFY `idrol` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT de la tabla `categoria`
+-- AUTO_INCREMENT de la tabla `rol_has_permiso`
 --
-ALTER TABLE `categoria`
-  MODIFY `idcategoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
---
--- AUTO_INCREMENT de la tabla `documento`
---
-ALTER TABLE `documento`
-  MODIFY `iddocumento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
---
--- AUTO_INCREMENT de la tabla `entidad`
---
-ALTER TABLE `entidad`
-  MODIFY `identidad` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT de la tabla `examen_medico`
---
-ALTER TABLE `examen_medico`
-  MODIFY `idexamen_medico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT de la tabla `grupo`
---
-ALTER TABLE `grupo`
-  MODIFY `idgrupo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
---
--- AUTO_INCREMENT de la tabla `mensualidad`
---
-ALTER TABLE `mensualidad`
-  MODIFY `idmensualidad` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT de la tabla `recibo`
---
-ALTER TABLE `recibo`
-  MODIFY `idrecibo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10007;
+ALTER TABLE `rol_has_permiso`
+  MODIFY `idrol_has_permiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Restricciones para tablas volcadas
 --
@@ -519,11 +514,18 @@ ALTER TABLE `afiliado_grupo`
   ADD CONSTRAINT `fk_afiliado_grupo_grupo1` FOREIGN KEY (`grupo_idgrupo`) REFERENCES `grupo` (`idgrupo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Filtros para la tabla `afiliado_has_entidad`
+-- Filtros para la tabla `afiliado_has_usuario`
 --
-ALTER TABLE `afiliado_has_entidad`
-  ADD CONSTRAINT `fk_afiliado_has_entidad_afiliado` FOREIGN KEY (`afiliado_idafiliado`) REFERENCES `afiliado` (`idafiliado`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_afiliado_has_entidad_entidad1` FOREIGN KEY (`entidad_identidad`) REFERENCES `entidad` (`identidad`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE `afiliado_has_usuario`
+  ADD CONSTRAINT `afiliado_has_usuario_ibfk_1` FOREIGN KEY (`usuario_idusuario`) REFERENCES `usuario` (`idusuario`),
+  ADD CONSTRAINT `fk_afiliado_has_usuario_afiliado1` FOREIGN KEY (`afiliado_idafiliado`) REFERENCES `afiliado` (`idafiliado`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `documento_has_recibo`
+--
+ALTER TABLE `documento_has_recibo`
+  ADD CONSTRAINT `fk_documento_has_recibo_documento1` FOREIGN KEY (`documento_iddocumento`) REFERENCES `documento` (`iddocumento`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_documento_has_recibo_recibo1` FOREIGN KEY (`recibo_idrecibo`) REFERENCES `recibo` (`idrecibo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `examen_medico`
@@ -541,7 +543,34 @@ ALTER TABLE `grupo`
 -- Filtros para la tabla `mensualidad`
 --
 ALTER TABLE `mensualidad`
-  ADD CONSTRAINT `fk_mensualidad_afiliado_grupo1` FOREIGN KEY (`afiliado_grupo_idafiliado_grupo`) REFERENCES `afiliado_grupo` (`idafiliado_grupo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_mensualidad_afiliado_grupo1` FOREIGN KEY (`afiliado_grupo_idafiliado_grupo`) REFERENCES `afiliado_grupo` (`idafiliado_grupo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_mensualidad_pago1` FOREIGN KEY (`pago_idpago`) REFERENCES `pago` (`idpago`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_mensualidad_recibo1` FOREIGN KEY (`recibo_idrecibo`) REFERENCES `recibo` (`idrecibo`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `pago`
+--
+ALTER TABLE `pago`
+  ADD CONSTRAINT `fk_pago_concepto_financiero1` FOREIGN KEY (`concepto_financiero_idconcepto_financiero`) REFERENCES `concepto_financiero` (`idconcepto_financiero`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `recibo`
+--
+ALTER TABLE `recibo`
+  ADD CONSTRAINT `fk_recibo_pago1` FOREIGN KEY (`pago_idpago`) REFERENCES `pago` (`idpago`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `rol_has_permiso`
+--
+ALTER TABLE `rol_has_permiso`
+  ADD CONSTRAINT `fk_rol_has_permiso_permiso1` FOREIGN KEY (`permiso_idpermiso`) REFERENCES `permiso` (`idpermiso`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_rol_has_permiso_rol1` FOREIGN KEY (`rol_idrol`) REFERENCES `rol` (`idrol`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Filtros para la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD CONSTRAINT `fk_usuario_rol1` FOREIGN KEY (`rol_idrol`) REFERENCES `rol` (`idrol`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
