@@ -17,7 +17,7 @@ class Sesion extends CI_Controller {
 	public function login($status='')
 	{
 		if ( $this->isSesion() )
-			$this->load->view( 'panel/principal' , array() );
+			$this->load->view( 'panel/principal' , array( 'status'=>$status ) );
 		else
 			$this->load->view( 'sesion/login', array( 'status'=>$status ) );
 
@@ -28,12 +28,25 @@ class Sesion extends CI_Controller {
 		$user = $this->input->post('user');
 		$pass = $this->input->post('pass');
 		$this->load->model('user_db', 'user');
-		$users = $this->user->getBy();
+		//librery de encriptado
+		$this->load->library('encrypt');
+		$users = $this->user->getBy( array( 'usuario'=>$user ) );
 		if ( $users->num_rows() > 0 ) {
-			
+			$user = $users->row();
+			if ( $this->encrypt->decode($user->password) || $pass ) {
+				echo "ok";
+			}else{
+				redirect( site_url('sesion/login/failed') ,'refresh');
+			}
 		}else{
-			$this->login('failed');
+			redirect( site_url('sesion/login/failed') ,'refresh');
 		}		
+	}
+
+	public function genpass($value='')
+	{
+		$this->load->library('encrypt');
+		echo $this->encrypt->encode($value);
 	}
 
 	private function initSesion($user, $privs)

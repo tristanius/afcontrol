@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-11-2017 a las 06:54:37
+-- Tiempo de generación: 21-11-2017 a las 06:23:35
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 5.6.23
 
@@ -268,14 +268,14 @@ CREATE TABLE `recibo` (
 
 CREATE TABLE `rol` (
   `idrol` int(11) NOT NULL,
-  `nombre` varchar(45) DEFAULT NULL
+  `nombre_rol` varchar(45) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `rol`
 --
 
-INSERT INTO `rol` (`idrol`, `nombre`) VALUES
+INSERT INTO `rol` (`idrol`, `nombre_rol`) VALUES
 (1, 'superadmin');
 
 -- --------------------------------------------------------
@@ -307,11 +307,18 @@ INSERT INTO `rol_has_permiso` (`idrol_has_permiso`, `rol_idrol`, `permiso_idperm
 CREATE TABLE `usuario` (
   `idusuario` int(11) NOT NULL,
   `usuario` varchar(45) NOT NULL,
-  `password` varchar(150) DEFAULT NULL,
+  `password` varchar(256) DEFAULT NULL,
   `mail` varchar(100) DEFAULT NULL,
   `estado` tinyint(1) DEFAULT NULL,
   `rol_idrol` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`idusuario`, `usuario`, `password`, `mail`, `estado`, `rol_idrol`) VALUES
+(1, 'superadmin', 'd9sHZERhj0FOEM5qcOTiP26KJhYysxMZ0~IZZjV1PQEWo5fKlOGlC2Fti.YRqp9Fd1AjFlbgar~OLl5NIo4v9A--', 'yeison@mail.com', 1, 1);
 
 --
 -- Índices para tablas volcadas
@@ -488,7 +495,7 @@ ALTER TABLE `rol_has_permiso`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idusuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- Restricciones para tablas volcadas
 --
