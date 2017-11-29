@@ -7,10 +7,10 @@
 		</div>
 		<div id="saved_msj" class="cell large-12 medium-12 callout {{saved?'success':'alert'}} nodisplay" ng-show="saved" ng-bind="saved_msj"></div>
 	</div>
-	<fieldset ng-init="initAfiliado(<?= isset($idafiliado)?$idafiliado:NULL; ?>)">
+	<section ng-init="initAfiliado(<?= isset($idafiliado)?$idafiliado:NULL; ?>)">
 		<div class="grid-y">
 			<div class="grid-x cell">
-				<fieldset class="cell small-10 medium-2 large-2">
+				<fieldset class="cell small-12 medium-2 large-2">
 					<h6 ng-if="af.idafiliado">Estado: <span ng-bind="af.estado_activo?'Activo':'Inactivo'"></span></h6>
 					<!-- foto del afiliado -->
 					<img ng-src="{{ af.foto?af.foto:'<?= base_url('assets/img/icon.png') ?>'; }}" 
@@ -41,7 +41,7 @@
 					</p>
 				</fieldset>
 
-				<fieldset class="cell medium-10 large-10">					
+				<fieldset class="cell small-12 medium-10 large-10">					
 					<div class="grid-x">
 						<div class="cell medium-4 large-4 padding1ex">
 							<caption><strong style="color: #3E6F9E">Datos personales: </strong></caption>
@@ -114,26 +114,27 @@
 						</div>
 					</div>
 				</fieldset>
-
-				<fieldset class="cell  medium-12 large-6">					
+			</div>
+			<div class="grid-x">				
+				<fieldset class="cell small-12 medium-12 large-6">					
 					<?php $this->load->view('afiliado/form/contactos', array()); ?>
 				</fieldset>	
 
-				<fieldset class="cell medium-6 large-6" ng-if="af.idafiliado">				
+				<fieldset class="cell small-12 medium-6 large-6" ng-if="af.idafiliado">				
 					<?php $this->load->view('afiliado/form/docs', array()); ?>
 				</fieldset>
 
-				<fieldset class="cell medium-5 large-6"  ng-if="af.idafiliado">
+				<fieldset class="cell small-12 medium-5 large-6"  ng-if="af.idafiliado">
 					<?php $this->load->view('afiliado/form/examen_medico', array()); ?>
 				</fieldset>
 
-				<fieldset class="cell medium-7 large-6"  ng-if="af.idafiliado">
+				<fieldset class="cell small-12 medium-7 large-6"  ng-if="af.idafiliado">
 					<?php $this->load->view('afiliado/form/afiliacion_grupo', array()); ?>
 				</fieldset>
 			</div>
 		</div>
 
-	</fieldset>
+	</section>
 </section>
 
 <?php $this->load->view('afiliado/form/jquery_script'); ?>

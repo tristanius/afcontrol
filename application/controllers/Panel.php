@@ -12,12 +12,15 @@ class Panel extends CI_Controller {
 
 	public function index()
 	{
-		
+		$titulo = 'Panel principal de control de afiliado App.';
+		$v = $this->load->view('init/panel', array(), TRUE);
+		$this->load->view('init/principal', array( 'titulo'=>$titulo,'html'=>$v ));
 	}
 
 	private function isSesion()
 	{
-		if ( isset( $this->session->userdata('activeSesion') ) ) 
+		$sesion = $this->session->userdata('activeSesion');
+		if ( isset( $sesion ) && $sesion ) 
 			return TRUE;
 		return FALSE;
 	}

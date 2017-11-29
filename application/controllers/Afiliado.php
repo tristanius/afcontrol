@@ -62,7 +62,7 @@ class Afiliado extends CI_Controller {
 			$ret->success = TRUE;
 			$ret->msj = 'Datos actualizado exitosamente.  '.date('Y-m-d H:i:s');
 		}else{
-			if ( $this->validarExistencia($post) ) {
+			if ( $this->existeAfiliado($post) ) {
 				$ret->success = FALSE;
 				$ret->msj = 'Ya existe un registro con los datos de identificacion ingresados.  '.date('Y-m-d H:i:s');
 			}else{
@@ -76,14 +76,15 @@ class Afiliado extends CI_Controller {
 	}
 
 	// Validar si un afiliado ya existe (TRUE si existe, FALSE si no.)
-	public function validarExistencia($post)
+	public function existeAfiliado($post)
 	{
 		$this->load->model('afiliado_db', 'myaf');
 		$param = array( 'identificacion'=>$post->identificacion, 'tipo_identificacion'=>$post->tipo_identificacion );
-		if ( $this->myaf->getByArray( $param )->num_rows() > 0 ) {
-			return FALSE;
+		$rows = $this->myaf->getByArray( $param );
+		if ( $rows->num_rows() > 0 ) {
+			return TRUE;
 		}
-		return TRUE;
+		return FALSE;
 	}
 
 	// ------------------------------------------------------------------------------------------
@@ -111,7 +112,7 @@ class Afiliado extends CI_Controller {
 		$ret->return = $result->row();
 		$ret->return->foto = $this->getFotoPerfil($id);
 		$ret->success = TRUE;
-		$ret->msj = 'Consulta realizada exitosamente'.date('Y-m-d H:i:s');
+		$ret->msj = 'Consulta realizada exitosamente. '.date('Y-m-d H:i:s');
 		echo json_encode( $ret );
 	}
 

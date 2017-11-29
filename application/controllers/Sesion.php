@@ -20,7 +20,6 @@ class Sesion extends CI_Controller {
 			$this->load->view( 'panel/principal' , array( 'status'=>$status ) );
 		else
 			$this->load->view( 'sesion/login', array( 'status'=>$status ) );
-
 	}
 
 	public function validate()
@@ -34,7 +33,8 @@ class Sesion extends CI_Controller {
 		if ( $users->num_rows() > 0 ) {
 			$user = $users->row();
 			if ( $this->encrypt->decode($user->password) || $pass ) {
-				echo "ok";
+				$privs = $this->user->getPrivilegios( $user->rol_idrol );
+				$this->initSesion($user, $privs);
 			}else{
 				redirect( site_url('sesion/login/failed') ,'refresh');
 			}
@@ -52,8 +52,9 @@ class Sesion extends CI_Controller {
 	private function initSesion($user, $privs)
 	{
 		$data = array(
-			'user' => (array) $user->row(), 
-			'privilegios' => (array) $privs->row()
+			'user' => (array) $user, 
+			'privilegios' => (array) $privs->result(),
+			'activeSesion' => TRUE
 		);
 		$this->session->set_userdata( $data );
 	}
@@ -67,7 +68,7 @@ class Sesion extends CI_Controller {
 	private function isSesion()
 	{
 		$sesion = $this->session->userdata('activeSesion');
-		if ( isset( $sesion ) ) 
+		if ( isset( $sesion ) && $sesion ) 
 			return TRUE;
 		return FALSE;
 	}

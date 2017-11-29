@@ -29,25 +29,27 @@
 			</fieldset>
 		</div>
 
-		<table class="font11">
-			<thead>
-				<tr>
-					<th>No.</th>
-					<th>Clasificación</th>
-					<th>Fecha de registro</th>
-					<th>Ver/descarga</th>
-					<th>Eliminar</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr ng-repeat="d in af.documentos" ng-if="af.documentos">
-					<td ng-bind="d.iddocumento"></td>
-					<td ng-bind="d.clasificacion"></td>
-					<td ng-bind="d.fecha_registro"></td>
-					<td> <a ng-href="{{ '<?= base_url() ?>'+d.ruta+d.documento }}" class="button padding5px">Descarga</a> </td>
-					<td> <a ng-click="delDoc(d.iddocumento)" class="button alert padding5px">x</a> </td>
-				</tr>
-			</tbody>
-		</table>
+		<div class="scroll">
+			<table class="font11">
+				<thead>
+					<tr>
+						<th>No.</th>
+						<th>Clasificación</th>
+						<th>Fecha de registro</th>
+						<th>Archivo</th>
+						<th>Eliminar</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="d in af.documentos" ng-if="af.documentos">
+						<td ng-bind="d.iddocumento"></td>
+						<td ng-bind="d.clasificacion"></td>
+						<td ng-bind="d.fecha_registro"></td>
+						<td> <a ng-href="{{ '<?= base_url() ?>'+d.ruta+d.documento }}" class="button padding5px">Descarga</a> </td>
+						<td> <a ng-click="delDoc(d.iddocumento)" class="button alert padding5px">x</a> </td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>	
 </section>

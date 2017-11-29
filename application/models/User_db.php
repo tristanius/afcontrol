@@ -26,7 +26,7 @@ class User_db extends CI_Model {
 				->from( 'rol AS r' )
 				->join( 'rol_has_permiso AS rper', 'r.idrol = rper.rol_idrol' )
 				->join('permiso AS pr', 'pr.idpermiso = rper.permiso_idpermiso' )
-				->where( 'r.idrol'=>$idrol )
+				->where( 'r.idrol', $idrol )
 				->get();
 	}
 }

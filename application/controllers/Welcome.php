@@ -59,7 +59,7 @@ class Welcome extends CI_Controller {
 	private function isSesion()
 	{
 		$sesion = $this->session->userdata('activeSesion');
-		if ( isset( $sesion ) ) 
+		if ( isset( $sesion ) && $sesion ) 
 			return TRUE;
 		return FALSE;
 	}

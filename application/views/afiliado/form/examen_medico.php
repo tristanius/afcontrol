@@ -54,23 +54,25 @@
 	</div>
 
 
-	<table class="font11">
-		<thead>
-			<tr>
-				<th>No.</th>
-				<th>Fecha de examen</th>
-				<th>apto</th>
-				<th>Fecha registro</th>
-				<th>Detalle</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr ng-repeat="e in af.examenes">
-				<td ng-bind="e.idexamen_medico"></td>
-				<td ng-bind="e.fecha_examen"></td>
-				<td ng-bind="e.apto_actividad?'SI':'NO'"></td>
-				<td ng-bind="e.fecha_registro"></td>
-				<td > <button class="button padding5px"> Detalles </button> </td>
-			</tr>
-		</tbody>
-	</table>
+	<div class="scroll">
+		<table class="font11">
+			<thead>
+				<tr>
+					<th>No.</th>
+					<th>Fecha de examen</th>
+					<th>apto</th>
+					<th>Fecha registro</th>
+					<th>Detalle</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="e in af.examenes">
+					<td ng-bind="e.idexamen_medico"></td>
+					<td ng-bind="e.fecha_examen"></td>
+					<td ng-bind="e.apto_actividad?'SI':'NO'"></td>
+					<td ng-bind="e.fecha_registro"></td>
+					<td > <button class="button padding5px"> Detalles </button> </td>
+				</tr>
+			</tbody>
+		</table>
+	</div>

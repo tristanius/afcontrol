@@ -24,7 +24,8 @@
 				</fieldset>
 			</div>
 
-			<table class="font11">
+			<div class="scroll">
+				<table class="font11">
 				<thead>
 					<tr>
 						<th>No.</th>
@@ -43,6 +44,7 @@
 						<td > <button ng-click="delContacto(c.idafiliado_contacto)" class="button alert padding5px"> X </button> </td>
 					</tr>
 				</tbody>
-			</table>					
+			</table>	
+			</div>				
 		</div>
 	</div>

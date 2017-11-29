@@ -30,6 +30,7 @@ nav{
 	padding: 0.5ex;
 	height: auto;
 }
+
 select{
 	background-position: right 0.5ex center;
 }
@@ -41,4 +42,8 @@ select{
 }
 .myform label{
 	margin-bottom: 5px;
+}
+.scroll, .scroll table{
+	width: 100%;
+	overflow: auto;
 }

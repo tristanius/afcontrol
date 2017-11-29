@@ -55,6 +55,7 @@
 
   				<div class="button-group">
   					<button class="success button" style="color: #FFF; font-weight: bold">Iniciar sesion</button>
+            <a href="#" class="button" style="color: #FFF; font-weight: bold">Registro</a>
   				</div>
   			</div>
 
