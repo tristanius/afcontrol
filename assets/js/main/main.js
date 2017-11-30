@@ -108,6 +108,29 @@ app.controller('main', function($scope, $http, $timeout, $templateCache){
 			    }); 
 		});
 	}
+
+	$scope.datatableObj = function(that){
+		console.log(that);
+		$timeout(function(){
+			$(that).children("table").DataTable(
+				{
+			        "language": {
+			            "paginate": {
+					        "first":      "Primera",
+					        "last":       "Ultima",
+					        "next":       "Siguiente",
+					        "previous":   "Anterior"
+					    },
+					    "zeroRecords": "Nothing found - sorry",
+			            "info": "Mostrando pag. _PAGE_ de _PAGES_",
+			            "lengthMenu": "Mostrando _MENU_ filas",
+			            "infoEmpty": "Mostrando 0 a 0 de 0 filas",
+			            "search": "Buscar:",
+			        }
+			    }				       
+			);
+		});
+	}
 	// Gestion de general de forms
 
 
@@ -134,3 +157,9 @@ app.controller('form_afiliado', function($scope, $http, $timeout, $templateCache
 app.controller('list_afiliados', function($scope, $http, $timeout, $templateCache){
 	list_afiliados( $scope, $http, $timeout );
 } );
+
+app.directive('myDatatable', function($compile) {
+  return function(scope, element, attrs) {
+    scope.datatableObj(element);
+  };
+});

@@ -26,25 +26,25 @@
 
 			<div class="scroll">
 				<table class="font11">
-				<thead>
-					<tr>
-						<th>No.</th>
-						<th>Nombre Contacto</th>
-						<th>Telefono</th>
-						<th>Tipo</th>
-						<th>Opción</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr ng-repeat="c in af.contactos">
-						<td ng-bind="c.idafiliado_contacto"></td>
-						<td ng-bind="c.nombre_ref"></td>
-						<td ng-bind="c.telefono_ref"></td>
-						<td ng-bind="c.parentesco_ref"></td>
-						<td > <button ng-click="delContacto(c.idafiliado_contacto)" class="button alert padding5px"> X </button> </td>
-					</tr>
-				</tbody>
-			</table>	
+					<thead>
+						<tr>
+							<th>No.</th>
+							<th>Nombre Contacto</th>
+							<th>Telefono</th>
+							<th>Tipo</th>
+							<th>Opción</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="c in af.contactos">
+							<td ng-bind="c.idafiliado_contacto"></td>
+							<td ng-bind="c.nombre_ref"></td>
+							<td ng-bind="c.telefono_ref"></td>
+							<td ng-bind="c.parentesco_ref"></td>
+							<td > <button ng-click="delContacto(c.idafiliado_contacto)" class="button alert padding5px"> X </button> </td>
+						</tr>
+					</tbody>
+				</table>	
 			</div>				
 		</div>
 	</div>

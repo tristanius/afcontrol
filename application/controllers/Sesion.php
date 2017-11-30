@@ -34,7 +34,8 @@ class Sesion extends CI_Controller {
 			$user = $users->row();
 			if ( $this->encrypt->decode($user->password) || $pass ) {
 				$privs = $this->user->getPrivilegios( $user->rol_idrol );
-				$this->initSesion($user, $privs);
+				$this->start($user, $privs);
+				redirect( site_url() );
 			}else{
 				redirect( site_url('sesion/login/failed') ,'refresh');
 			}
@@ -49,7 +50,7 @@ class Sesion extends CI_Controller {
 		echo $this->encrypt->encode($value);
 	}
 
-	private function initSesion($user, $privs)
+	private function start($user, $privs)
 	{
 		$data = array(
 			'user' => (array) $user, 
@@ -59,10 +60,10 @@ class Sesion extends CI_Controller {
 		$this->session->set_userdata( $data );
 	}
 
-	public function end_sesion($value='')
+	public function end()
 	{
 		$this->session->sess_destroy();
-		redirect( base_url('sesion/login') ,'refresh');
+		redirect( site_url('sesion/login') ,'refresh');
 	}
 
 	private function isSesion()

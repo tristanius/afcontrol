@@ -15,8 +15,8 @@
 	  	<li>
 	    	<a> <i class="fa fa-address-book-o"></i> Afiliados</a>
     		<ul class="menu vertical nested">
-      			<li><a class="" ng-click="clickOpcionMenu('afiliado/add','Add afiliado')"> Add. Afiliado</a></li>
-      			<li><a class="" ng-click="clickOpcionMenu('afiliado/lista','Lista de afiliados')"> Lista de Afiliados</a></li>
+      			<li><a class="" ng-click="clickOpcionMenu('afiliado/add','Add afiliado');" data-toggle="offCanvas"> Add. Afiliado</a></li>
+      			<li><a class="" ng-click="clickOpcionMenu('afiliado/lista','Lista de afiliados')" data-toggle="offCanvas"> Lista de Afiliados</a></li>
     		</ul>
 	  	</li>
 	  	<li>
@@ -39,7 +39,7 @@
 	  		<a> <i class="fa fa-wrench"></i> Configuración</a>
 	  	</li>
 	  	<li>
-	  		<a href="#"> 
+	  		<a href="<?=  site_url('sesion/end') ?>"> 
 	  			<i class="fa fa-user-circle"></i> 
 	  			Cerrar sesión
 	  		</a>
