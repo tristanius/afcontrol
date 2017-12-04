@@ -11,7 +11,10 @@ class Sesion extends CI_Controller {
 
 	public function index()
 	{
-		
+		if ( !$this->isSesion() )
+			redirect( site_url("sesion/login") );
+		else
+			redirect( site_url("panel") );
 	}
 
 	public function login($status='')
@@ -44,11 +47,26 @@ class Sesion extends CI_Controller {
 		}		
 	}
 
+	# ------------------------------------------------------
+	# Contraseñas
+
 	public function genpass($value='')
 	{
 		$this->load->library('encrypt');
 		echo $this->encrypt->encode($value);
 	}
+
+	public function form_changa_pass($value='')
+	{
+		$this->load->view('sesion/change_password', array());
+	}
+
+	public function change_pass($value='')
+	{
+		# code...
+	}
+
+	#--------------------------------------------------------
 
 	private function start($user, $privs)
 	{

@@ -150,12 +150,16 @@ app.controller('main', function($scope, $http, $timeout, $templateCache){
 	}
 
 });
-
+// afiliado
 app.controller('form_afiliado', function($scope, $http, $timeout, $templateCache){
 	form_afiliado( $scope, $http, $timeout );
 } );
 app.controller('list_afiliados', function($scope, $http, $timeout, $templateCache){
 	list_afiliados( $scope, $http, $timeout );
+} );
+// sesion
+app.controller('cambiar_password', function($scope, $http, $timeout, $templateCache){
+	cambiar_password( $scope, $http, $timeout );
 } );
 
 app.directive('myDatatable', function($compile) {

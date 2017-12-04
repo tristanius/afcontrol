@@ -1,5 +1,5 @@
 <div id="menu" class="">
-	<ul class="vertical menu" data-accordion-menu>
+	<ul id="menu_lateral" class="vertical menu" data-accordion-menu>
 		<li>
 			<h4>
 				<a>
@@ -16,18 +16,19 @@
 	    	<a> <i class="fa fa-address-book-o"></i> Afiliados</a>
     		<ul class="menu vertical nested">
       			<li><a class="" ng-click="clickOpcionMenu('afiliado/add','Add afiliado');" data-toggle="offCanvas"> Add. Afiliado</a></li>
+      			<li><a class="" ng-click="clickOpcionMenu('afiliado/lista','Lista de afiliados')" data-toggle="offCanvas"> Ver mis Afiliados</a></li>
       			<li><a class="" ng-click="clickOpcionMenu('afiliado/lista','Lista de afiliados')" data-toggle="offCanvas"> Lista de Afiliados</a></li>
     		</ul>
 	  	</li>
 	  	<li>
-	  		<a> <i class="fa fa-credit-card"></i> Pagos</a>
+	  		<a> <i class="fa fa-usd"></i> Pagos</a>
     		<ul class="menu vertical nested">
       			<li><a class="" href="#"> Add. pago</a></li>
       			<li><a class="" href="#"> Ver pagos</a></li>
     		</ul>
 	  	</li>
 	  	<li>
-	  		<a> <i class="fa fa-table"></i> Consultas</a>
+	  		<a> <i class="fa fa-file-text-o"></i> Consultas</a>
     		<ul class="menu vertical nested">
       			<li><a class="" href="#"> Estados de cuenta</a></li>
       			<li><a class="" href="#"> Afiliados</a></li>
@@ -39,6 +40,13 @@
 	  		<a> <i class="fa fa-wrench"></i> Configuración</a>
 	  	</li>
 	  	<li>
+	  		<a> <i class="fa fa-address-card-o"></i> Mis datos</a>
+	  		<ul class="menu vertical nested">
+	  			<li><a class="" ng-click="clickOpcionMenu('sesion/form_changa_pass','Cambiar contraseña')" data-toggle="offCanvas"> Actualizar datos</a></li>
+	  			<li><a class="" ng-click="clickOpcionMenu('sesion/form_changa_pass','Cambiar contraseña')" data-toggle="offCanvas"> Cambiar contraseña</a></li>
+	  		</ul>
+	  	</li>
+	  	<li>
 	  		<a href="<?=  site_url('sesion/end') ?>"> 
 	  			<i class="fa fa-user-circle"></i> 
 	  			Cerrar sesión
@@ -46,3 +54,10 @@
 	  	</li>
 	</ul>
 </div>
+
+<style type="text/css">
+	#menu_lateral.vertical.menu > li{
+		border-bottom: 1px solid #aaa;
+		min-height: 6ex;
+	}	
+</style>
