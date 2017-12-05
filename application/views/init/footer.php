@@ -1,6 +1,6 @@
 <br>
 
-<footer class="expanded row" style="padding: 1ex;">
+<footer class="expanded row" style="padding: 1ex;" ng-init="getSesion('<?= site_url('sesion/prt') ?>', {})">
 	<div class="medium-4 columns"></div>
 	<div class="medium-4 columns"></div>
 	<div class="medium-4 columns"></div>
@@ -11,7 +11,7 @@
 			Todos los derechos reservados AFControl WebApp.
 		</p>
 		<p class="text-center">
-			<small><?= "Desarrollador: Yeison Torrado L. - Creative Commons 2017" ?></small> 
+			<small><?= "By Yeison Torrado L. - Creative Commons ".date('Y') ?></small> 
 		</p>
 	</div>
 </footer>

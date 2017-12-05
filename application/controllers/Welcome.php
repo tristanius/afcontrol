@@ -6,7 +6,6 @@ class Welcome extends CI_Controller {
 	{
 		parent::__construct();
 		date_default_timezone_set("America/Bogota");
-
 	}
 
 	public function index()

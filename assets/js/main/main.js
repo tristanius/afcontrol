@@ -5,6 +5,7 @@ app.controller('main', function($scope, $http, $timeout, $templateCache){
 	$scope.tab_counter = 0;
 	$scope.tabs = [];
 	$scope.filtered_list = [];
+	$scope.sesion = {};
 	//---------------------------------//
 	// Click del menu lateral //
 	$scope.clickOpcionMenu = function(link, titulo){
@@ -148,15 +149,29 @@ app.controller('main', function($scope, $http, $timeout, $templateCache){
 			changeYear: true
 		});
 	}
+	
+
+	$scope.getSesion = function(lnk, postData){
+		$http.post(lnk, postData).then(
+				function(resp){
+					$scope.sesion = resp.data;
+				},
+				function(resp){
+					console.log(resp.data)
+				}
+			);
+	}
 
 });
 // afiliado
 app.controller('form_afiliado', function($scope, $http, $timeout, $templateCache){
 	form_afiliado( $scope, $http, $timeout );
 } );
+
 app.controller('list_afiliados', function($scope, $http, $timeout, $templateCache){
 	list_afiliados( $scope, $http, $timeout );
 } );
+
 // sesion
 app.controller('cambiar_password', function($scope, $http, $timeout, $templateCache){
 	cambiar_password( $scope, $http, $timeout );

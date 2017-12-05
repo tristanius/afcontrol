@@ -26,6 +26,6 @@
 			</div>
 		</section>
 				
-		<?php $this->load->view('init/footer'); ?>
+		<?php $this->load->view('init/footer', array('user'=>$user) ); ?>
 
 	</div>

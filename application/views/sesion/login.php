@@ -19,73 +19,70 @@
   </nav>
 
 	<section class="grid-x" >
-		<div class="large-3 medium-2"></div>
 
-		<form method="post" action="<?= site_url('sesion/validate') ?>" class="grid-x large-6 medium-8 padding1ex" style="background: #FFF; margin-top: 1ex; margin-bottom: 1ex;">
- 
- 			<h4 class="callout small-12 large-12 medium-12 cell">Inicio de sesión para AFControl_site</h4>
+    <div class="grid-x large-6 medium-8 float-center">
 
-      <?php if (isset($status) && $status=='failed'): ?>
-        <p class="callout alert small-12 large-12 medium-12">Por favor, verifica tus datos. Usuario o Contraseña Incorrectos.</p>
-      <?php endif ?>
+      <form method="post" action="<?= site_url('sesion/validate') ?>" class="grid-x large-12 small-12 medium-12 callout shadow bordered ">
+   
+        <h4 class="callout small-12 large-12 medium-12 cell">Inicio de sesión para AFControl_site</h4>
 
-			<div class="small-2 medium-4 large-4 cell">
+        <?php if (isset($status) && $status=='failed'): ?>
+          <p class="callout alert small-12 large-12 medium-12">Por favor, verifica tus datos. Usuario o Contraseña Incorrectos.</p>
+        <?php endif ?>
 
-				<img src="<?= base_url('assets/img/icon.png') ?>" style="width:100%;">
-				
-			</div>
+        <div class="small-2 medium-4 large-4 cell">
 
-  			<div class="small-10 medium-8 large-8 cell">
-
+          <img src="<?= base_url('assets/img/icon.png') ?>" style="width:100%;">
           
-  				<p>Por favor llena los siguiente campos para ingresar:</p>
+        </div>
 
-  				<label>
-  					<strong>Usuario:</strong>
-  					<input type="text" name="user" placeholder="ingresa tu nombre de usuario">
-  				</label>
-  				
-  				<label>
-  					<strong>Contraseña:</strong>
-  					<input type="password" name="pass" placeholder="ingresa tu contraseña de acceso">
-  				</label>
-          <p>
-            <a href="" class="">Perdi mi password</a href="">
-          </p>
+          <div class="small-10 medium-8 large-8 cell">
 
-  				<div class="button-group">
-  					<button class="success button" style="color: #FFF; font-weight: bold">Iniciar sesion</button>
-            <a href="#" class="button" style="color: #FFF; font-weight: bold">Registro</a>
-  				</div>
-  			</div>
+            
+            <p>Por favor llena los siguiente campos para ingresar:</p>
 
+            <label>
+              <strong>Usuario:</strong>
+              <input type="text" name="user" placeholder="ingresa tu nombre de usuario">
+            </label>
+            
+            <label>
+              <strong>Contraseña:</strong>
+              <input type="password" name="pass" placeholder="ingresa tu contraseña de acceso">
+            </label>
+            <p>
+              <a href="" class="">Perdi mi password</a href="">
+            </p>
 
-  			<div class="callout large-12 medium-12 small-12">
-  				
-  				<ul class="menu">
-  					<li class="align-self-middle">AFControl_site</li>
-  					<li><a href="">Contacto</a></li>
-  					<li><a href="">Twitter</a></li>
-  					<li><a href="">Facebook</a></li>
-  				</ul>
+            <div class="button-group">
+              <button class="success button" style="color: #FFF; font-weight: bold">Iniciar sesion</button>
+              <a href="#" class="button" style="color: #FFF; font-weight: bold">Registro</a>
+            </div>
+          </div>
+      </form>
 
-  			</div>
-			
-		</form>
+      <div class="callout large-12 medium-12 small-12 bordered shadow">
+        
+        <ul class="menu">
+          <li class="align-self-middle">AFControl_site</li>
+          <li><a href="">Contacto</a></li>
+          <li><a href="">Twitter</a></li>
+          <li><a href="">Facebook</a></li>
+        </ul>
 
+      </div>
 
-		<div class="large-3 medium-2"></div>
+      <footer class="callout large-12 small-12 medium-12 bordered shadow" style="background: #333; color: #FFF">
+          
+          <p class="text-center">AFControl es una aplicación para el manejo de afiliaciones y control de membresias.</p>
+          <p class="text-center"><small>Creado por Yeison Torrado López.</small></p>
+
+          <div class="text-center"><small>Derechos reservados. <?= date('Y') ?></small></div>
+
+      </footer>
+    </div>
 		
 	</section>
-
-  <footer style="background: #333; color: #FFF">
-      
-      <p class="text-center">AFControl es una aplicación para el manejo de afiliaciones y control de membresias.</p>
-      <p class="text-center"><small>Creado por Yeison Torrado López.</small></p>
-
-      <div class="text-center"><small>Derechos reservados. <?= date('Y') ?></small></div>
-
-  </footer>
 
 </body>
 </html>
