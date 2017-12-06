@@ -12,7 +12,7 @@ var cambiar_password = function($scope, $http, $timeout){
 			.then(
 				function(resp){
 					if(resp.data.success){
-						$sscope.respuesta = resp.data;
+						$scope.respuesta = resp.data;
 						$scope.$parent.cleanObj(datos);
 					}else{
 						$scope.respuesta.success = false;

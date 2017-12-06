@@ -1,6 +1,6 @@
 /* Generales */
 html, body{
-	min-height: 100%;
+	/*font-size: 14px;*/
 }
 .columns, .column{
 	padding: 0px;
