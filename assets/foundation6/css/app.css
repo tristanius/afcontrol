@@ -29,6 +29,10 @@ nav{
 	margin-bottom: 0ex;
 	padding: 0.5ex;
 	height: auto;
+	border-radius: 5px;
+}
+.myform span.input-group-label{
+	border-radius: 5px;
 }
 
 select{
@@ -42,6 +46,7 @@ select{
 }
 .myform label{
 	margin-bottom: 5px;
+	border-radius: 5px;
 }
 .scroll, .scroll table{
 	width: 100%;

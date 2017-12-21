@@ -1,5 +1,5 @@
 <section ng-controller="list_afiliados">
-	<fieldset class="myform grid-x font11">
+	<div class="myform grid-x font11">
 		<small class="cell large-12 medium-12 small-12">Campos de busqueda, si necesitas un valor especifico usa los siguientes campos y presiona consultar; pero si deseas consultar el listado general dejalos vacios y dale click a consultar.</small>
 		
 		<div class="cell large-3 medium-4 input-group padding1ex" >
@@ -25,7 +25,7 @@
 			<button class="button padding1ex" ng-click="getListAfiliados(buscador,'', '')">Consultar</button>
 		</div>
 
-	</fieldset>
+	</div>
 	<br ng-init="setDatatable('#tabla_afiliado')">
 
 	<div ng-if="0">
