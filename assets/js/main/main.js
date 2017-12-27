@@ -145,6 +145,7 @@ app.controller('main', function($scope, $http, $timeout, $templateCache){
 
 	$scope.datepicker = function(selector){
 		$( selector ).datepicker({
+			dateFormat: 'yy-mm-dd',
 			changeMonth: true,
 			changeYear: true
 		});

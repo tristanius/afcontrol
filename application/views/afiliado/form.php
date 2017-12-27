@@ -20,14 +20,14 @@
 					/>
 					
 					<div>
-						<label id="btn-foto" for="foto" class="button padding1ex" style="display: inline;" ng-show="active_upload" >
+						<label id="btn-foto" for="foto" class="button padding1ex" style="display: inline;" >
 							Add. foto
-							<input type="file" id="foto" class="show-for-sr" onchange="angular.element(this).scope().activeUpload();" />
+							<input type="file" id="foto" class="show-for-sr" />
 						</label> 
 						&nbsp;
 						<button class="button success padding1ex" 
-							ng-click='upload("afiliado/upload_doc/"+af.idafiliado+"/1", "img", "#foto")'  ng-show="!active_upload">
-							<i ng-show="!active_upload" class="primary" data-icon="&#xe030;"></i> Cargar
+							ng-click='upload("afiliado/upload_doc/"+af.idafiliado+"/1", "img", "#foto")'>
+							<i class="primary" data-icon="&#xe030;"></i> Cargar
 						</button>
 						<img src="<?= base_url('assets/img/loader.gif') ?>" ng-show="uploading">
 					</div>
@@ -120,12 +120,12 @@
 					<?php $this->load->view('afiliado/form/contactos', array()); ?>
 				</fieldset>	
 
-				<fieldset class="cell small-12 medium-6 large-6" ng-if="af.idafiliado">				
-					<?php $this->load->view('afiliado/form/docs', array()); ?>
-				</fieldset>
-
 				<fieldset class="cell small-12 medium-5 large-6"  ng-if="af.idafiliado">
 					<?php $this->load->view('afiliado/form/examen_medico', array()); ?>
+				</fieldset>
+
+				<fieldset class="cell small-12 medium-6 large-6" ng-if="af.idafiliado">				
+					<?php $this->load->view('afiliado/form/docs', array()); ?>
 				</fieldset>
 
 				<fieldset class="cell small-12 medium-7 large-6"  ng-if="af.idafiliado">

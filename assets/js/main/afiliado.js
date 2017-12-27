@@ -109,6 +109,14 @@ var form_afiliado = function($scope, $http, $timeout){
 	$scope.upload = function(lnk, type, elem, form=null){
 		var fd = new FormData();
 		var files = $(elem);
+		console.log( files[0].files );
+		if( files[0].files.length <= 0 ){
+			alert("No has seleccionado ningún archivo.")
+			return;
+		}
+
+		$scope.uploading = true;
+
 		fd.append('file', files[0].files[0]);
 		fd.append('idafiliado', $scope.af.idafiliado);
 		fd.append('identificacion', $scope.af.identificacion);
@@ -129,12 +137,10 @@ var form_afiliado = function($scope, $http, $timeout){
 				}
 				$scope.doc_clasificacion='Documento estandar';
 				$scope.uploading = false;
-				$scope.active_upload = true;
 			},
 			function(response) { 
 				console.log(response.data);
 				$scope.uploading = false;
-				$scope.active_upload = true;
 			}
 		);
 	}
@@ -151,6 +157,17 @@ var form_afiliado = function($scope, $http, $timeout){
 					console.log(response.data);
 				}
 			);
+	}
+
+	$scope.delDoc = function(id){
+		$http.get($scope.$parent.site_url+'afiliado/des_doc'+id).then(
+			function(resp){
+				console.log(resp.data);
+			},
+			function(resp){
+				console.log(resp.data);
+			}
+		);
 	}
 
 	// Examen medico

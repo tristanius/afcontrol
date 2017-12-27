@@ -17,7 +17,7 @@
 	border: 1px solid #999;
 }
 #pestanas .pestana.active{
-	z-index: 2;
+	z-index: 1;
 	top: 1px;
 	line-height: 11px;
 	background: #FFF;
