@@ -12,12 +12,26 @@ class Grupo extends CI_Controller {
 		
 	}
 
+	# Agregar / insertar
 	public function add($value='')
+	{
+		$vw = $this->load->view('agrupaciones/grupo/grupos.php', array(), TRUE);
+		$this->load->view('util/plantilla', array('titulo'=>'Manejo de grupos', 'content'=>$vw) );
+	}
+
+	public function insert($value='')
 	{
 		# code...
 	}
 
+	# Actualizar / Modificar
+
 	public function edit($value='')
+	{
+		# code...
+	}
+
+	public function update($value='')
 	{
 		# code...
 	}
@@ -28,16 +42,6 @@ class Grupo extends CI_Controller {
 	}
 	
 	public function del($value='')
-	{
-		# code...
-	}
-
-	public function insert($value='')
-	{
-		# code...
-	}
-
-	public function update($value='')
 	{
 		# code...
 	}

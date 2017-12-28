@@ -48,6 +48,12 @@ select{
 	margin-bottom: 5px;
 	border-radius: 5px;
 }
+
+.regularForm label, .regularForm input, .regularForm select{
+	display: inline;
+	width: auto;
+}
+
 .scroll, .scroll table{
 	width: 100%;
 	overflow: auto;

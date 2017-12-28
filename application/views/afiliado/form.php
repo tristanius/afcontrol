@@ -79,7 +79,7 @@
 								</label>
 
 								<label ng-init="datepicker('.datepicker')">
-									fecha nacimiento:
+									Fecha nacimiento (AAAA-MM-DD):
 									<input type="text" class="datepicker" ng-model="af.fecha_nacimiento" placeholder="ingrese una fecha">
 								</label>
 

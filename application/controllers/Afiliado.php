@@ -57,10 +57,13 @@ class Afiliado extends CI_Controller {
 		$post = json_decode(file_get_contents('php://input'));
 		$this->load->model('afiliado_db', 'myaf');
 		$ret =  new stdClass();
-		if ( isset($post->idafiliado) ) {
+		if( !isset($post->identificacion) || !isset($post->nombres) || !isset($post->apellidos) ){
+			$ret->success = FALSE;
+			$ret->msj = 'Algunos datos no han sido registrados, por favor diligencia los datos minimos. '.date('Y-m-d H:i:s');
+		}elseif ( isset($post->idafiliado) ) {
 			$this->myaf->update($post);
 			$ret->success = TRUE;
-			$ret->msj = 'Datos actualizado exitosamente.  '.date('Y-m-d H:i:s');
+			$ret->msj = 'Datos actualizado exitosamente. '.date('Y-m-d H:i:s');
 		}else{
 			if ( $this->existeAfiliado($post) ) {
 				$ret->success = FALSE;

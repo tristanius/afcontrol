@@ -16,7 +16,7 @@
 	    	<a> <i class="fa fa-address-book-o"></i> Afiliados</a>
     		<ul class="menu vertical nested">
       			<li><a class="" ng-click="clickOpcionMenu('afiliado/add','Add afiliado');" data-toggle="offCanvas"> Add. Afiliado</a></li>
-      			<li><a class="" ng-click="clickOpcionMenu('afiliado/lista','Lista de afiliados')" data-toggle="offCanvas"> Ver mis Afiliados</a></li>
+      			<li><a class="" ng-click="clickOpcionMenu('afiliado/mylista/','Lista de afiliados')" data-toggle="offCanvas"> Ver mis Afiliados</a></li>
       			<li><a class="" ng-click="clickOpcionMenu('afiliado/lista','Lista de afiliados')" data-toggle="offCanvas"> Lista de Afiliados</a></li>
     		</ul>
 	  	</li>
@@ -34,6 +34,14 @@
       			<li><a class="" href="#"> Afiliados</a></li>
       			<li><a class="" href="#"> Examenes medicos</a></li>
       			<li><a class="" href="#"> Categorias</a></li>
+    		</ul>
+	  	</li>
+	  	<li>
+	  		<a> <i class="fa fa-wrench"></i> Agrupaciones</a>
+	  		<ul class="menu vertical nested">
+      			<li><a class="" href="#" data-toggle="offCanvas"> Categorias</a></li>
+      			<li><a class="" href="#" data-toggle="offCanvas"> Sedes</a></li>
+      			<li><a class="" ng-click="clickOpcionMenu('grupo/add', 'Grupos')" data-toggle="offCanvas"> Grupos</a></li>
     		</ul>
 	  	</li>
 	  	<li>

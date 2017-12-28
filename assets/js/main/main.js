@@ -145,6 +145,11 @@ app.controller('main', function($scope, $http, $timeout, $templateCache){
 
 	$scope.datepicker = function(selector){
 		$( selector ).datepicker({
+			currentText: "Hoy",
+			monthNames: [ "enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre" ],
+			monthNamesShort: [ "ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic" ],
+			dayNames: [ "domingo","lunes","martes","miércoles","jueves","viernes","sábado" ],
+			dayNamesShort: [ "dom","lun","mar","mié","jue","vie","sáb" ],
 			dateFormat: 'yy-mm-dd',
 			changeMonth: true,
 			changeYear: true
@@ -178,6 +183,18 @@ app.controller('cambiar_password', function($scope, $http, $timeout, $templateCa
 	cambiar_password( $scope, $http, $timeout );
 } );
 
+// categoria
+app.controller('categoria_crud', function($scope, $http, $timeout, $templateCache){
+	categoria_crud( $scope, $http, $timeout );
+} );
+
+// grupo
+app.controller('grupo_crud', function($scope, $http, $timeout, $templateCache){
+	grupo_crud( $scope, $http, $timeout );
+} );
+
+
+// Directiva de tatables
 app.directive('myDatatable', function($compile) {
   return function(scope, element, attrs) {
     scope.datatableObj(element);
