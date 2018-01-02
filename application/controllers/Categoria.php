@@ -14,7 +14,8 @@ class Categoria extends CI_Controller {
 
 	public function add($value='')
 	{
-		# code...
+		$vw = $this->load->view('agrupaciones/categorias/categorias.php', array(), TRUE);
+		$this->load->view('util/plantilla', array('titulo'=>'Manejo de categorias', 'content'=>$vw) );
 	}
 
 	public function edit($value='')
@@ -50,6 +51,5 @@ class Categoria extends CI_Controller {
 	}
 
 }
-
 /* End of file Categoria.php */
 /* Location: ./application/controllers/Categoria.php */
