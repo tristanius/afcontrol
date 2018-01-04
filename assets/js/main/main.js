@@ -59,7 +59,7 @@ app.controller('main', function($scope, $http, $timeout, $templateCache){
 		returnList = [];
 		angular.forEach(list, function(v,k){
 			var myField = v[field].toLowerCase();
-			if (myField.includes(valField)) {
+			if (myField.includes( valField.toLowerCase() )) {
 				returnList.push(v);
 			}
 		});
