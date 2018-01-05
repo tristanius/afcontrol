@@ -36,10 +36,10 @@ var crud = function($scope, $http, $timeout){
 		$scope.listaConsulta = $scope.$parent.findWordsBy( lista, llave, valor );
 	}
 
-	$scope.add = function( lnk, data, model ){
+	$scope.add = function( lnk, model ){
 		$http.post(
 				$scope.$parent.site_url+lnk,
-				data
+				model
 			).then(
 				function(resp){
 					if(resp.data.success){

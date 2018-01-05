@@ -1,3 +1,3 @@
-var grupo_crud = function($scope, $http, $timeout){
+var grupo = function($scope, $http, $timeout){
 
 }

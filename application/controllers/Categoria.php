@@ -14,7 +14,7 @@ class Categoria extends CI_Controller {
 
 	public function add($value='')
 	{
-		$vw = $this->load->view('agrupaciones/categorias/categorias.php', array(), TRUE);
+		$vw = $this->load->view('agrupaciones/categoria/categorias.php', array(), TRUE);
 		$this->load->view('util/plantilla', array('titulo'=>'Manejo de categorias', 'content'=>$vw) );
 	}
 

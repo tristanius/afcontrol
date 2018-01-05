@@ -39,7 +39,7 @@
 	  	<li>
 	  		<a> <i class="fa fa-wrench"></i> Agrupaciones</a>
 	  		<ul class="menu vertical nested">
-      			<li><a class="" href="#" data-toggle="offCanvas"> Categorias</a></li>
+      			<li><a class="" ng-click="clickOpcionMenu('categoria/add', 'Categorias')" data-toggle="offCanvas"> Categorias</a></li>
       			<li><a class="" href="#" data-toggle="offCanvas"> Sedes</a></li>
       			<li><a class="" ng-click="clickOpcionMenu('grupo/add', 'Grupos')" data-toggle="offCanvas"> Grupos</a></li>
     		</ul>

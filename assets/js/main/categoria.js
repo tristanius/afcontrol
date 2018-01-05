@@ -1,3 +1,3 @@
-var categoria_crud = function($scope, $http, $timeout){
+var categoria = function($scope, $http, $timeout){
 
 }
